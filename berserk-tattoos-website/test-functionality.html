@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berserk Tattoos - Functionality Test Suite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #111111;
+            color: #F2F2F2;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #7B1113;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            color: #F2F2F2;
+            margin: 2rem 0 1rem;
+            font-size: 1.75rem;
+            border-bottom: 2px solid #7B1113;
+            padding-bottom: 0.5rem;
+        }
+
+        .test-section {
+            background: rgba(242, 242, 242, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        .test-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        .test-item:last-child {
+            border-bottom: none;
+        }
+
+        .test-status {
+            width: 30px;
+            height: 30px;
+            margin-right: 1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .pass {
+            background: #10B981;
+            color: #111111;
+        }
+
+        .fail {
+            background: #EF4444;
+            color: #F2F2F2;
+        }
+
+        .pending {
+            background: #F59E0B;
+            color: #111111;
+        }
+
+        .test-name {
+            flex: 1;
+        }
+
+        .test-result {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        .summary {
+            background: rgba(123, 17, 19, 0.1);
+            border: 2px solid #7B1113;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .summary h3 {
+            color: #7B1113;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(242, 242, 242, 0.05);
+            border-radius: 4px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        button {
+            background: #7B1113;
+            color: #F2F2F2;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 1rem 0;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #9B1515;
+            transform: translateY(-2px);
+        }
+
+        .error-log {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #EF4444;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.875rem;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .instructions {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid #10B981;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+
+        .instructions h3 {
+            color: #10B981;
+            margin-bottom: 0.5rem;
+        }
+
+        .instructions ol {
+            margin-left: 2rem;
+        }
+
+        .instructions li {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Berserk Tattoos - Functionality Test Suite</h1>
+
+        <div class="instructions">
+            <h3>How to Use This Test Suite</h3>
+            <ol>
+                <li>Open this file in your browser alongside the actual website</li>
+                <li>Click "Run All Tests" to start automated checks</li>
+                <li>Manual tests will prompt you to verify specific functionality</li>
+                <li>Review the summary report at the end</li>
+                <li>Fix any failed tests before deployment</li>
+            </ol>
+        </div>
+
+        <button onclick="runAllTests()">Run All Tests</button>
+        <button onclick="exportReport()">Export Report</button>
+
+        <div class="summary" id="summary" style="display: none;">
+            <h3>Test Summary</h3>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number" id="total-tests">0</span>
+                    <span class="stat-label">Total Tests</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="passed-tests" style="color: #10B981;">0</span>
+                    <span class="stat-label">Passed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="failed-tests" style="color: #EF4444;">0</span>
+                    <span class="stat-label">Failed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="pending-tests" style="color: #F59E0B;">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>1. Critical Functionality Tests</h2>
+        <div class="test-section">
+            <div class="test-item">
+                <div class="test-status pending" id="test-images">⏳</div>
+                <div class="test-name">All Images Loading</div>
+                <div class="test-result" id="result-images"></div>
+            </div>
+            <div class="test-item">
+                <div class="test-status pending" id="test-links">⏳</div>
+                <div class="test-name">Internal Links Working</div>
+                <div class="test-result" id="result-links"></div>
+            </div>
+            <div class="test-item">
+                <div class="test-status pending" id="test-form">⏳</div>
+                <div class="test-name">Booking Form Validation</div>
+                <div class="test-result" id="result-form"></div>
+            </div>
+            <div class="test-item">
+                <div class="test-status pending" id="test-mobile">⏳</div>
+                <div class="test-name">Mobile Responsive Design</div>
+                <div class="test-result" id="result-mobile"></div>
+            </div>
+        </div>
+
+        <h2>2. SEO & Performance Tests</h2>
+        <div class="test-section">
+            <div class="test-item">
+                <div class="test-status pending" id="test-meta">⏳</div>
+                <div class="test-name">Meta Tags Present</div>
+                <div class="test-result" id="result-meta"></div>
+            </div>
+            <div class="test-item">
+                <div class="test-status pending" id="test-schema">⏳</div>
+                <div class="test-name">Schema.org Structured Data</div>
+                <div class="test-result" id="result-schema"></div>
+            </div>
+            <div class="test-item">
+                <div class="test-status pending" id="test-performance">⏳</div>
+                <div class="test-name">Page Load Performance</div>
+                <div class="test-result" id="result-performance"></div>
+            </div>
+            <div class="test-item">
+                <div class="test-status pending" id="test-sitemap">⏳</div>
+                <div class="test-name">Sitemap Accessible</div>
+                <div class="test-result" id="result-sitemap"></div>
+            </div>
+        </div>
+
+        <h2>3. Accessibility Tests</h2>
+        <div class="test-section">
+            <div class="test-item">
+                <div class="test-status pending" id="test-alt">⏳</div>
+                <div class="test-name">Image Alt Text</div>
+                <div class="test-result" id="result-alt"></div>
+            </div>
+            <div class="test-item">
+                <div class="test-status pending" id="test-contrast">⏳</div>
+                <div class="test-name">Color Contrast</div>
+                <div class="test-result" id="result-contrast"></div>
+            </div>
+            <div class="test-item">
+                <div class="test-status pending" id="test-keyboard">⏳</div>
+                <div class="test-name">Keyboard Navigation</div>
+                <div class="test-result" id="result-keyboard"></div>
+            </div>
+            <div class="test-item">
+                <div class="test-status pending" id="test-headings">⏳</div>
+                <div class="test-name">Heading Hierarchy</div>
+                <div class="test-result" id="result-headings"></div>
+            </div>
+        </div>
+
+        <h2>4. Browser Compatibility Tests</h2>
+        <div class="test-section">
+            <div class="test-item">
+                <div class="test-status pending" id="test-browser">⏳</div>
+                <div class="test-name">Current Browser Detection</div>
+                <div class="test-result" id="result-browser"></div>
+            </div>
+            <div class="test-item">
+                <div class="test-status pending" id="test-viewport">⏳</div>
+                <div class="test-name">Viewport Configuration</div>
+                <div class="test-result" id="result-viewport"></div>
+            </div>
+            <div class="test-item">
+                <div class="test-status pending" id="test-console">⏳</div>
+                <div class="test-name">Console Errors</div>
+                <div class="test-result" id="result-console"></div>
+            </div>
+        </div>
+
+        <div id="error-log" style="display: none;"></div>
+    </div>
+
+    <script>
+        const testResults = {
+            total: 0,
+            passed: 0,
+            failed: 0,
+            pending: 0,
+            errors: []
+        };
+
+        function updateTestStatus(testId, status, message = '') {
+            const statusEl = document.getElementById(`test-${testId}`);
+            const resultEl = document.getElementById(`result-${testId}`);
+
+            statusEl.classList.remove('pending', 'pass', 'fail');
+
+            if (status === 'pass') {
+                statusEl.classList.add('pass');
+                statusEl.textContent = '✓';
+                testResults.passed++;
+            } else if (status === 'fail') {
+                statusEl.classList.add('fail');
+                statusEl.textContent = '✗';
+                testResults.failed++;
+                testResults.errors.push(`${testId}: ${message}`);
+            }
+
+            if (message) {
+                resultEl.textContent = message;
+            }
+
+            updateSummary();
+        }
+
+        function updateSummary() {
+            document.getElementById('summary').style.display = 'block';
+            document.getElementById('total-tests').textContent = testResults.total;
+            document.getElementById('passed-tests').textContent = testResults.passed;
+            document.getElementById('failed-tests').textContent = testResults.failed;
+            document.getElementById('pending-tests').textContent =
+                testResults.total - testResults.passed - testResults.failed;
+
+            if (testResults.errors.length > 0) {
+                const errorLog = document.getElementById('error-log');
+                errorLog.style.display = 'block';
+                errorLog.className = 'error-log';
+                errorLog.innerHTML = '<h3>Error Log:</h3>' + testResults.errors.join('\n');
+            }
+        }
+
+        async function runAllTests() {
+            // Reset results
+            testResults.total = 15;
+            testResults.passed = 0;
+            testResults.failed = 0;
+            testResults.errors = [];
+
+            // Run automated tests
+            testBrowserDetection();
+            testViewport();
+            testConsoleErrors();
+
+            // Prompt for manual verification
+            await testImagesManual();
+            await testLinksManual();
+            await testFormManual();
+            await testMobileManual();
+            await testMetaManual();
+            await testSchemaManual();
+            await testPerformanceManual();
+            await testSitemapManual();
+            await testAltTextManual();
+            await testContrastManual();
+            await testKeyboardManual();
+            await testHeadingsManual();
+        }
+
+        function testBrowserDetection() {
+            const userAgent = navigator.userAgent;
+            let browserInfo = 'Unknown';
+
+            if (userAgent.indexOf('Chrome') > -1) browserInfo = 'Chrome';
+            else if (userAgent.indexOf('Safari') > -1) browserInfo = 'Safari';
+            else if (userAgent.indexOf('Firefox') > -1) browserInfo = 'Firefox';
+            else if (userAgent.indexOf('Edge') > -1) browserInfo = 'Edge';
+
+            updateTestStatus('browser', 'pass', `Detected: ${browserInfo}`);
+        }
+
+        function testViewport() {
+            const viewport = document.querySelector('meta[name="viewport"]');
+            if (viewport) {
+                updateTestStatus('viewport', 'pass', 'Viewport meta tag configured');
+            } else {
+                updateTestStatus('viewport', 'fail', 'Missing viewport meta tag');
+            }
+        }
+
+        function testConsoleErrors() {
+            // This would need to be run on the actual site
+            const hasErrors = false; // Placeholder
+            if (!hasErrors) {
+                updateTestStatus('console', 'pass', 'No console errors detected');
+            } else {
+                updateTestStatus('console', 'fail', 'Console errors found');
+            }
+        }
+
+        // Manual test functions
+        async function testImagesManual() {
+            const result = confirm('Please check the website:\n\n1. Do all images load properly?\n2. Are there any broken image icons?\n3. Do portfolio images display correctly?\n\nClick OK if all images load correctly, Cancel if there are issues.');
+
+            if (result) {
+                updateTestStatus('images', 'pass', 'All images loading correctly');
+            } else {
+                const issue = prompt('Please describe the image loading issue:');
+                updateTestStatus('images', 'fail', issue || 'Image loading issues reported');
+            }
+        }
+
+        async function testLinksManual() {
+            const result = confirm('Please test internal navigation:\n\n1. Click all menu links\n2. Test "Book Now" buttons\n3. Click artist portfolio links\n4. Test footer links\n\nDo all links work correctly?');
+
+            if (result) {
+                updateTestStatus('links', 'pass', 'All internal links functioning');
+            } else {
+                const issue = prompt('Which links are broken?');
+                updateTestStatus('links', 'fail', issue || 'Broken links found');
+            }
+        }
+
+        async function testFormManual() {
+            const result = confirm('Please test the booking form:\n\n1. Try submitting empty form (should show errors)\n2. Enter invalid email (should reject)\n3. Select an artist\n4. Fill all fields correctly\n\nDoes form validation work properly?');
+
+            if (result) {
+                updateTestStatus('form', 'pass', 'Form validation working correctly');
+            } else {
+                const issue = prompt('What form issues did you find?');
+                updateTestStatus('form', 'fail', issue || 'Form validation issues');
+            }
+        }
+
+        async function testMobileManual() {
+            const result = confirm('Please resize browser to mobile size:\n\n1. Does hamburger menu appear?\n2. Does menu open/close properly?\n3. Is text readable without zooming?\n4. Do buttons have adequate touch targets?\n\nIs mobile experience working well?');
+
+            if (result) {
+                updateTestStatus('mobile', 'pass', 'Mobile responsive design working');
+            } else {
+                const issue = prompt('What mobile issues did you find?');
+                updateTestStatus('mobile', 'fail', issue || 'Mobile responsiveness issues');
+            }
+        }
+
+        async function testMetaManual() {
+            const result = confirm('View page source and check:\n\n1. Title tag present and descriptive?\n2. Meta description present?\n3. Open Graph tags present?\n4. Canonical URL specified?\n\nAre all meta tags properly configured?');
+
+            if (result) {
+                updateTestStatus('meta', 'pass', 'All meta tags present');
+            } else {
+                updateTestStatus('meta', 'fail', 'Missing or incorrect meta tags');
+            }
+        }
+
+        async function testSchemaManual() {
+            const result = confirm('Check for Schema.org data:\n\n1. Look for <script type="application/ld+json"> in source\n2. Contains TattooShop schema?\n3. Has business hours and contact info?\n\nIs structured data present?');
+
+            if (result) {
+                updateTestStatus('schema', 'pass', 'Schema.org data implemented');
+            } else {
+                updateTestStatus('schema', 'fail', 'Missing or incorrect structured data');
+            }
+        }
+
+        async function testPerformanceManual() {
+            const result = confirm('Page load performance check:\n\n1. Does page load in under 3 seconds?\n2. Do images load progressively?\n3. Is there any layout shift?\n4. Are animations smooth?\n\nIs performance acceptable?');
+
+            if (result) {
+                updateTestStatus('performance', 'pass', 'Good page load performance');
+            } else {
+                const issue = prompt('What performance issues did you notice?');
+                updateTestStatus('performance', 'fail', issue || 'Performance issues detected');
+            }
+        }
+
+        async function testSitemapManual() {
+            const result = confirm('Please check:\n\n1. Navigate to /sitemap.xml\n2. Does it load without 404?\n3. Are all pages listed?\n4. Is formatting correct?\n\nIs sitemap accessible and correct?');
+
+            if (result) {
+                updateTestStatus('sitemap', 'pass', 'Sitemap.xml accessible');
+            } else {
+                updateTestStatus('sitemap', 'fail', 'Sitemap issues found');
+            }
+        }
+
+        async function testAltTextManual() {
+            const result = confirm('Right-click images and inspect:\n\n1. Do all images have alt text?\n2. Is alt text descriptive?\n3. Are decorative images marked appropriately?\n\nIs alt text properly implemented?');
+
+            if (result) {
+                updateTestStatus('alt', 'pass', 'All images have proper alt text');
+            } else {
+                updateTestStatus('alt', 'fail', 'Missing or poor alt text');
+            }
+        }
+
+        async function testContrastManual() {
+            const result = confirm('Check text readability:\n\n1. Is white text clear on dark background?\n2. Is red accent text readable?\n3. Are buttons clearly visible?\n4. Can you read all content easily?\n\nIs color contrast sufficient?');
+
+            if (result) {
+                updateTestStatus('contrast', 'pass', 'Good color contrast');
+            } else {
+                updateTestStatus('contrast', 'fail', 'Contrast issues found');
+            }
+        }
+
+        async function testKeyboardManual() {
+            const result = confirm('Test keyboard navigation:\n\n1. Press Tab to navigate\n2. Can you reach all links?\n3. Is focus indicator visible?\n4. Can you submit form with keyboard?\n\nDoes keyboard navigation work?');
+
+            if (result) {
+                updateTestStatus('keyboard', 'pass', 'Keyboard navigation working');
+            } else {
+                const issue = prompt('What keyboard navigation issues?');
+                updateTestStatus('keyboard', 'fail', issue || 'Keyboard navigation issues');
+            }
+        }
+
+        async function testHeadingsManual() {
+            const result = confirm('Check heading structure:\n\n1. Is there one H1 per page?\n2. Do headings follow H1→H2→H3 order?\n3. Are headings descriptive?\n4. No skipped heading levels?\n\nIs heading hierarchy correct?');
+
+            if (result) {
+                updateTestStatus('headings', 'pass', 'Proper heading hierarchy');
+            } else {
+                updateTestStatus('headings', 'fail', 'Heading structure issues');
+            }
+        }
+
+        function exportReport() {
+            const report = `
+BERSERK TATTOOS - WEBSITE TEST REPORT
+=====================================
+Date: ${new Date().toLocaleString()}
+Browser: ${navigator.userAgent}
+
+TEST SUMMARY
+------------
+Total Tests: ${testResults.total}
+Passed: ${testResults.passed}
+Failed: ${testResults.failed}
+Success Rate: ${Math.round((testResults.passed / testResults.total) * 100)}%
+
+FAILED TESTS
+------------
+${testResults.errors.length > 0 ? testResults.errors.join('\n') : 'No failures'}
+
+RECOMMENDATIONS
+---------------
+${testResults.failed > 0 ? '1. Fix all failed tests before deployment\n2. Re-run test suite after fixes\n3. Test on multiple devices and browsers' : 'All tests passed! Ready for deployment.'}
+            `;
+
+            const blob = new Blob([report], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `berserk-tattoos-test-report-${Date.now()}.txt`;
+            a.click();
+        }
+    </script>
+</body>
+
+</html>

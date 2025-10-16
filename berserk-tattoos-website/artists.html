@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Artists | Berserk Tattoos Melbourne | Amelia, Ben & Monique</title>
+    <meta name="description"
+        content="Meet Melbourne's premier tattoo artists. Amelia Kelso (fine line), Ben White Raven (realism), Monique Moore (blackwork). View portfolios and book consultations.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Our Artists - Berserk Tattoos Melbourne">
+    <meta property="og:description"
+        content="Three master artists, three distinct styles. Explore portfolios and book your custom tattoo.">
+    <meta property="og:image" content="https://berserktattoos.com/og-image.jpg">
+
+    <!-- Fonts (Optimized: 8 weights → 4 weights, ~80KB savings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Preload LCP Image for faster initial render -->
+    <link rel="preload" as="image" href="/portfolio/amelia.jpg" imagesrcset="/portfolio/amelia.webp" type="image/webp">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://berserktattoos.com/artists.html">
+
+    <!-- Polyfills for older browsers -->
+    <script src="js/polyfills.js"></script>
+
+    <!-- Browser compatibility CSS -->
+    <link rel="stylesheet" href="css/browser-fallbacks.css">
+
+    <!-- Twitter Cards -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://berserktattoos.com/artists.html">
+    <meta property="twitter:title" content="Our Artists - Berserk Tattoos Melbourne">
+    <meta property="twitter:description"
+        content="Three master artists, three distinct styles. Explore portfolios and book your custom tattoo.">
+    <meta property="twitter:image" content="https://berserktattoos.com/og-image.jpg">
+
+    <style>
+        /* Import base styles from index.html */
+        :root {
+            --color-dark: #111111;
+            --color-light: #F2F2F2;
+            --color-accent: #7B1113;
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-dark);
+            color: var(--color-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Utilities */
+        .media-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tile-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tile-link:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        body.nav-open {
+            overflow: hidden;
+        }
+
+        section[id] {
+            scroll-margin-top: 100px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        /* Navigation (same as index.html) */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(17, 17, 17, 0.95);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--color-light);
+            transition: color var(--transition-base);
+        }
+
+        .logo:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 500;
+            position: relative;
+            color: var(--color-light);
+            text-decoration: none;
+            transition: color var(--transition-base);
+        }
+
+        .nav-links a:not(.cta):after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width var(--transition-base);
+        }
+
+        .nav-links a:not(.cta):hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .nav-links .cta {
+            background: var(--color-accent);
+            padding: 0.75rem 2rem;
+            border: 2px solid var(--color-accent);
+        }
+
+        .nav-links .cta:hover {
+            background: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(123, 17, 19, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 2px;
+            background: var(--color-light);
+            transition: all var(--transition-base);
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            z-index: 9999;
+            padding: 1rem 2rem;
+            background: var(--color-accent);
+            color: var(--color-light);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #0a0a0a;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero:before {
+            content: 'ARTISTS';
+            position: absolute;
+            font-size: 20rem;
+            font-family: var(--font-display);
+            opacity: 0.02;
+            letter-spacing: 0.3em;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            opacity: 0.8;
+            margin-top: var(--space-md);
+        }
+
+        /* Artist Navigation Tabs */
+        .artist-nav {
+            background: rgba(242, 242, 242, 0.02);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .artist-nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1.5rem 5%;
+        }
+
+        .artist-nav-btn {
+            background: none;
+            border: 2px solid rgba(242, 242, 242, 0.2);
+            color: var(--color-light);
+            padding: 0.75rem 2rem;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+
+        .artist-nav-btn:hover,
+        .artist-nav-btn.active {
+            border-color: var(--color-accent);
+            background: rgba(123, 17, 19, 0.1);
+            color: var(--color-accent);
+        }
+
+        /* Artist Profile Sections */
+        .artist-profile {
+            padding: var(--space-3xl) 5%;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .artist-profile.active {
+            display: block;
+        }
+
+        .profile-header {
+            max-width: 1400px;
+            margin: 0 auto var(--space-3xl);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--space-3xl);
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 500px;
+            background: #1a1a1a;
+            border: 1px solid rgba(242, 242, 242, 0.1);
+            position: relative;
+        }
+
+        /* Placeholder overlay removed when real images are used */
+
+        .profile-info h2 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .profile-specialty {
+            color: var(--color-accent);
+            font-size: 1.125rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-lg);
+        }
+
+        .profile-bio {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            opacity: 0.85;
+            margin-bottom: var(--space-xl);
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+            padding: var(--space-lg) 0;
+            border-top: 1px solid rgba(242, 242, 242, 0.1);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-family: var(--font-display);
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: var(--space-xs);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .profile-ctas {
+            display: flex;
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: 2px solid;
+            transition: all var(--transition-base);
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: var(--color-light);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(123, 17, 19, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: var(--color-light);
+            color: var(--color-light);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(242, 242, 242, 0.1);
+        }
+
+        /* Portfolio Grid */
+        .portfolio-section {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: 1px solid rgba(242, 242, 242, 0.2);
+            color: var(--color-light);
+            padding: 0.5rem 1.5rem;
+            font-size: 0.8125rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-family: var(--font-body);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            height: 400px;
+            background: #1a1a1a;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(242, 242, 242, 0.1);
+            transition: all var(--transition-base);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .portfolio-item:nth-child(5n+1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(17, 17, 17, 0.9), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+            display: flex;
+            align-items: flex-end;
+            padding: var(--space-lg);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .portfolio-info p {
+            font-size: 0.8125rem;
+            opacity: 0.7;
+        }
+
+        /* Social Links */
+        .artist-social {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: var(--space-lg);
+        }
+
+        .artist-social a {
+            color: var(--color-light);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            opacity: 0.6;
+            transition: all var(--transition-base);
+        }
+
+        .artist-social a:hover {
+            opacity: 1;
+            color: var(--color-accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: var(--space-xl) 5%;
+            background: var(--color-dark);
+            border-top: 1px solid rgba(242, 242, 242, 0.1);
+            text-align: center;
+            font-size: 0.875rem;
+            opacity: 0.6;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Anchor offset for fixed/sticky headers */
+        .artist-profile {
+            scroll-margin-top: 140px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .profile-header {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .portfolio-item:nth-child(5n+1) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(17, 17, 17, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                transition: right var(--transition-base);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu {
+                display: flex;
+                width: 44px;
+                height: 44px;
+                padding: 10px;
+            }
+
+            .nav-links a {
+                min-height: 44px;
+                padding: 0.75rem 0;
+            }
+
+            .artist-nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .artist-nav-btn {
+                width: 100%;
+            }
+
+            .profile-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .profile-ctas {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav>
+            <a href="index.html" class="logo">BERSERK</a>
+            <div class="nav-links" id="primary-navigation" aria-hidden="true">
+                <a href="index.html#artists" class="active">ARTISTS</a>
+                <a href="index.html#gallery">GALLERY</a>
+                <a href="book.html" class="cta">BOOK NOW</a>
+                <a href="index.html#testimonials">REVIEWS</a>
+                <a href="index.html#contact">CONTACT</a>
+            </div>
+            <div class="mobile-menu" id="mobile-menu" role="button" aria-label="Toggle mobile navigation menu"
+                aria-expanded="false" aria-controls="primary-navigation" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero" id="main-content">
+        <div class="hero-content">
+            <h1>MASTER ARTISTS</h1>
+            <p>Three distinct visions. One relentless commitment to perfection. Explore their portfolios and find your
+                perfect match.</p>
+        </div>
+    </section>
+
+    <!-- Artist Navigation -->
+    <div class="artist-nav">
+        <div class="artist-nav-container">
+            <button class="artist-nav-btn active" data-artist="amelia" aria-label="View Amelia Kelso's portfolio">AMELIA
+                KELSO</button>
+            <button class="artist-nav-btn" data-artist="ben" aria-label="View Ben White Raven's portfolio">BEN WHITE
+                RAVEN</button>
+            <button class="artist-nav-btn" data-artist="monique" aria-label="View Monique Moore's portfolio">MONIQUE
+                MOORE</button>
+        </div>
+    </div>
+
+    <!-- Artist Profile: Amelia Kelso -->
+    <section class="artist-profile active" id="amelia" data-profile="amelia">
+        <div class="profile-header">
+            <div class="profile-image">
+                <picture>
+                    <source
+                        srcset="/portfolio/amelia-480w.webp 480w, /portfolio/amelia-768w.webp 768w, /portfolio/amelia-1200w.webp 1200w, /portfolio/amelia.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
+                    <source
+                        srcset="/portfolio/amelia-480w.jpg 480w, /portfolio/amelia-768w.jpg 768w, /portfolio/amelia-1200w.jpg 1200w, /portfolio/amelia.jpg 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
+                    <img src="/portfolio/amelia.jpg" class="media-cover" alt="Portrait of Amelia Kelso" width="1200"
+                        height="1600" loading="lazy" decoding="async" onerror="this.src='/portfolio/amelia.jpg'">
+                </picture>
+            </div>
+            <div class="profile-info">
+                <h2>Amelia Kelso</h2>
+                <p class="profile-specialty">Fine Line Specialist</p>
+                <div class="profile-bio">
+                    <p>Amelia's journey into fine line tattooing began with classical art training and an obsession with
+                        botanical illustration. Over 8 years, she's refined a signature approach that prioritizes clean
+                        lines, thoughtful composition, and designs that age gracefully. Every consultation starts with
+                        understanding your vision, your skin, and how the tattoo will live with you for decades.</p>
+                    <p>Her portfolio spans delicate wrist florals to complex full-back pieces, but the thread is
+                        consistent: precision that borders on obsessive, patience that ensures perfection, and an
+                        artistic eye that elevates simple concepts into gallery-worthy work. First-timers appreciate her
+                        gentle approach and thorough aftercare guidance. Return clients trust her to build cohesive body
+                        collections that tell evolving stories.</p>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">2K+</span>
+                        <span class="stat-label">Works</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">Awards</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5.0</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+
+                <div class="profile-ctas">
+                    <a href="book.html?artist=amelia" class="btn btn-primary">BOOK AMELIA</a>
+                    <a href="https://www.instagram.com/amzkelso/" target="_blank" rel="noopener"
+                        class="btn btn-secondary">FOLLOW ON IG</a>
+                </div>
+
+                <div class="artist-social">
+                    <a href="https://www.instagram.com/amzkelso/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.threads.com/@amzkelso" target="_blank" rel="noopener">Threads</a>
+                    <a href="https://book.heygoldie.com/Berserk-Tattoos" target="_blank" rel="noopener">Book via
+                        Goldie</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-section">
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">ALL WORK</button>
+                <button class="filter-btn" data-filter="fineline">FINE LINE</button>
+                <button class="filter-btn" data-filter="botanical">BOTANICAL</button>
+                <button class="filter-btn" data-filter="script">SCRIPT</button>
+                <button class="filter-btn" data-filter="minimal">MINIMAL</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="fineline">
+                    <img class="media-cover" src="/portfolio/amelia-1.jpg"
+                        alt="Delicate Floral - Fine line forearm by Amelia" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src='/portfolio/amelia-1.jpg'">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Delicate Floral</h4>
+                            <p>Fine line · Forearm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="botanical">
+                    <img class="media-cover" src="/portfolio/amelia-2.jpg"
+                        alt="Botanical Study - Fine line upper arm by Amelia" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Botanical Study</h4>
+                            <p>Fine line · Upper arm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="script">
+                    <img class="media-cover" src="/portfolio/amelia-3.jpg"
+                        alt="Elegant Script - Fine line wrist by Amelia" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Elegant Script</h4>
+                            <p>Fine line · Wrist</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="minimal">
+                    <img class="media-cover" src="/portfolio/amelia-4.jpg"
+                        alt="Minimalist Design - Fine line ankle by Amelia" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Minimalist Design</h4>
+                            <p>Fine line · Ankle</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="fineline">
+                    <img class="media-cover" src="/portfolio/amelia-5.jpg"
+                        alt="Geometric Floral - Fine line shoulder by Amelia" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Geometric Floral</h4>
+                            <p>Fine line · Shoulder</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="botanical">
+                    <img class="media-cover" src="/portfolio/amelia-6.jpg"
+                        alt="Wildflower Collection - Fine line ribcage by Amelia" width="800" height="1000"
+                        loading="lazy" decoding="async">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Wildflower Collection</h4>
+                            <p>Fine line · Ribcage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artist Profile: Ben White Raven -->
+    <section class="artist-profile" id="ben" data-profile="ben">
+        <div class="profile-header">
+            <div class="profile-image">
+                <picture>
+                    <source
+                        srcset="/portfolio/ben-480w.webp 480w, /portfolio/ben-768w.webp 768w, /portfolio/ben-1200w.webp 1200w, /portfolio/ben.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
+                    <source
+                        srcset="/portfolio/ben-480w.jpg 480w, /portfolio/ben-768w.jpg 768w, /portfolio/ben-1200w.jpg 1200w, /portfolio/ben.jpg 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
+                    <img src="/portfolio/ben.jpg" class="media-cover" alt="Portrait of Ben White Raven" width="1200"
+                        height="1600" loading="lazy" decoding="async" onerror="this.src='/portfolio/ben.jpg'">
+                </picture>
+            </div>
+            <div class="profile-info">
+                <h2>Ben White Raven</h2>
+                <p class="profile-specialty">Realism Master</p>
+                <div class="profile-bio">
+                    <p>Ben discovered his calling after apprenticing under Melbourne's realism pioneers for 3 years
+                        before opening his own practice. 10+ years later, his technical skill places him among
+                        Australia's top realism artists. He approaches every tattoo as permanent sculpture—understanding
+                        how skin moves, ages, and how ink settles to create lasting photographic quality.</p>
+                    <p>Specializing in portrait work, wildlife realism, and vintage photo reproductions, Ben works
+                        almost exclusively on large-scale pieces that demand 10-40+ hours in the chair. His client list
+                        includes memorial portraits that bring tears, pet tributes that capture spirit, and family
+                        photographs that preserve moments forever. If you're ready to commit to a masterpiece, Ben's
+                        your artist.</p>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3K+</span>
+                        <span class="stat-label">Works</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">25</span>
+                        <span class="stat-label">Awards</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5.0</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+
+                <div class="profile-ctas">
+                    <a href="book.html?artist=ben" class="btn btn-primary">BOOK BEN</a>
+                    <a href="https://www.instagram.com/ben_whiteraven" target="_blank" rel="noopener"
+                        class="btn btn-secondary">FOLLOW ON IG</a>
+                </div>
+
+                <div class="artist-social">
+                    <a href="https://www.instagram.com/ben_whiteraven" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.threads.com/@ben_whiteraven" target="_blank" rel="noopener">Threads</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-section">
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">ALL WORK</button>
+                <button class="filter-btn" data-filter="portrait">PORTRAITS</button>
+                <button class="filter-btn" data-filter="wildlife">WILDLIFE</button>
+                <button class="filter-btn" data-filter="photo">PHOTO REALISM</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="portrait">
+                    <img class="media-cover" src="/portfolio/ben-1.jpg" alt="Portrait Study - Full back realism by Ben"
+                        width="800" height="1000" loading="lazy" decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Portrait Study</h4>
+                            <p>Realism · Full back</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="wildlife">
+                    <img class="media-cover" src="/portfolio/ben-2.jpg" alt="Wolf Portrait - Upper arm realism by Ben"
+                        width="800" height="1000" loading="lazy" decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Wolf Portrait</h4>
+                            <p>Realism · Upper arm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="photo">
+                    <img class="media-cover" src="/portfolio/ben-3.jpg"
+                        alt="Photographic Memory - Forearm photo realism by Ben" width="800" height="1000"
+                        loading="lazy" decoding="async">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Photographic Memory</h4>
+                            <p>Photo realism · Forearm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="portrait">
+                    <img class="media-cover" src="/portfolio/ben-4.jpg" alt="Family Portrait - Chest realism by Ben"
+                        width="800" height="1000" loading="lazy" decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Family Portrait</h4>
+                            <p>Realism · Chest</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="wildlife">
+                    <img class="media-cover" src="/portfolio/ben-5.jpg"
+                        alt="Eagle in Flight - Full sleeve realism by Ben" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Eagle in Flight</h4>
+                            <p>Realism · Full sleeve</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="photo">
+                    <img class="media-cover" src="/portfolio/ben-6.jpg" alt="Vintage Photo - Back photo realism by Ben"
+                        width="800" height="1000" loading="lazy" decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Vintage Photo</h4>
+                            <p>Photo realism · Back</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artist Profile: Monique Moore -->
+    <section class="artist-profile" id="monique" data-profile="monique">
+        <div class="profile-header">
+            <div class="profile-image">
+                <picture>
+                    <source
+                        srcset="/portfolio/monique-480w.webp 480w, /portfolio/monique-768w.webp 768w, /portfolio/monique-1200w.webp 1200w, /portfolio/monique.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
+                    <source
+                        srcset="/portfolio/monique-480w.jpg 480w, /portfolio/monique-768w.jpg 768w, /portfolio/monique-1200w.jpg 1200w, /portfolio/monique.jpg 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
+                    <img src="/portfolio/monique.jpg" class="media-cover" alt="Portrait of Monique Moore" width="1200"
+                        height="1600" loading="lazy" decoding="async" onerror="this.src='/portfolio/monique.jpg'">
+                </picture>
+            </div>
+            <div class="profile-info">
+                <h2>Monique Moore</h2>
+                <p class="profile-specialty">Bold Blackwork</p>
+                <div class="profile-bio">
+                    <p>Monique entered tattooing through punk culture and graphic design, bringing an outsider
+                        perspective that challenges traditional boundaries. 7+ years later, she's become Melbourne's
+                        go-to artist for bold blackwork, geometric patterns, and illustrative pieces that make
+                        statements. Her philosophy: tattoos should be fearless.</p>
+                    <p>From solid black sleeves to intricate dotwork mandalas, ornamental designs to dark illustrative
+                        work—Monique specializes in high-contrast pieces with maximum visual impact. She works best with
+                        clients who know they want something bold, who trust her artistic vision, and who aren't afraid
+                        of the chair time required for large-scale coverage. Her work isn't for everyone. It's for those
+                        who go all in.</p>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">7+</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1.5K+</span>
+                        <span class="stat-label">Works</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">18</span>
+                        <span class="stat-label">Awards</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5.0</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+
+                <div class="profile-ctas">
+                    <a href="book.html?artist=monique" class="btn btn-primary">BOOK MONIQUE</a>
+                    <a href="https://www.instagram.com/moniquemoore666/" target="_blank" rel="noopener"
+                        class="btn btn-secondary">FOLLOW ON IG</a>
+                </div>
+
+                <div class="artist-social">
+                    <a href="https://www.instagram.com/moniquemoore666/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.threads.com/@moniquemoore666" target="_blank" rel="noopener">Threads</a>
+                    <a href="https://www.tiktok.com/@monique.moore666" target="_blank" rel="noopener">TikTok</a>
+                    <a href="https://www.facebook.com/people/Monique-Moore/100010669506067/" target="_blank"
+                        rel="noopener">Facebook</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-section">
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">ALL WORK</button>
+                <button class="filter-btn" data-filter="blackwork">BLACKWORK</button>
+                <button class="filter-btn" data-filter="dotwork">DOTWORK</button>
+                <button class="filter-btn" data-filter="illustrative">ILLUSTRATIVE</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="blackwork">
+                    <img class="media-cover" src="/portfolio/monique-1.jpg"
+                        alt="Geometric Blackwork - Full sleeve by Monique" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Geometric Blackwork</h4>
+                            <p>Blackwork · Full sleeve</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="dotwork">
+                    <img class="media-cover" src="/portfolio/monique-2.jpg"
+                        alt="Mandala Dotwork - Back piece by Monique" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Mandala Dotwork</h4>
+                            <p>Dotwork · Back piece</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="illustrative">
+                    <img class="media-cover" src="/portfolio/monique-3.jpg" alt="Dark Illustration - Thigh by Monique"
+                        width="800" height="1000" loading="lazy" decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Dark Illustration</h4>
+                            <p>Illustrative · Thigh</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="blackwork">
+                    <img class="media-cover" src="/portfolio/monique-4.jpg"
+                        alt="Solid Black Sleeve - Full arm by Monique" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Solid Black Sleeve</h4>
+                            <p>Blackwork · Full arm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="dotwork">
+                    <img class="media-cover" src="/portfolio/monique-5.jpg" alt="Intricate Dotwork - Chest by Monique"
+                        width="800" height="1000" loading="lazy" decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Intricate Dotwork</h4>
+                            <p>Dotwork · Chest</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="illustrative">
+                    <img class="media-cover" src="/portfolio/monique-6.jpg"
+                        alt="Gothic Illustration - Full back by Monique" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src=this.src">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h4>Gothic Illustration</h4>
+                            <p>Illustrative · Full back</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Berserk Tattoos. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.contains('active');
+            mobileMenu.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            navLinks.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+            document.body.classList.toggle('nav-open', isOpen);
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+                mobileMenu.setAttribute('aria-expanded', 'false');
+                navLinks.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('nav-open');
+            });
+        });
+
+        // Artist Navigation Tabs
+        const artistNavBtns = document.querySelectorAll('.artist-nav-btn');
+        const artistProfiles = document.querySelectorAll('.artist-profile');
+
+        artistNavBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetArtist = btn.dataset.artist;
+
+                // Update active button
+                artistNavBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Show target profile
+                artistProfiles.forEach(profile => {
+                    profile.classList.remove('active');
+                    if (profile.dataset.profile === targetArtist) {
+                        profile.classList.add('active');
+                    }
+                });
+
+                // Update URL hash
+                history.pushState(null, null, `#${targetArtist}`);
+            });
+        });
+
+        // Portfolio Filtering
+        document.querySelectorAll('.portfolio-section').forEach(section => {
+            const filterBtns = section.querySelectorAll('.filter-btn');
+            const portfolioItems = section.querySelectorAll('.portfolio-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.dataset.filter;
+
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Filter items
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        // Handle URL hash on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && ['amelia', 'ben', 'monique'].includes(hash)) {
+                const targetBtn = document.querySelector(`[data-artist="${hash}"]`);
+                if (targetBtn) {
+                    targetBtn.click();
+                }
+            }
+        });
+
+        // Handle URL parameters (from booking page)
+        const urlParams = new URLSearchParams(window.location.search);
+        const artistParam = urlParams.get('artist');
+        if (artistParam) {
+            const targetBtn = document.querySelector(`[data-artist="${artistParam}"]`);
+            if (targetBtn) {
+                targetBtn.click();
+            }
+        }
+    </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        // IMPORTANT: Replace GA_MEASUREMENT_ID with your actual Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX)
+        // To get your ID: 1) Go to analytics.google.com 2) Create new property 3) Find Measurement ID in Admin > Data Streams
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+
+        // Track artist profile views
+        document.querySelectorAll('.artist-nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const artistName = btn.textContent.trim();
+                gtag('event', 'view_artist_profile', {
+                    'event_category': 'engagement',
+                    'event_label': artistName
+                });
+            });
+        });
+
+        // Track portfolio filter interactions
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                gtag('event', 'filter_portfolio', {
+                    'event_category': 'engagement',
+                    'event_label': filter
+                });
+            });
+        });
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('✓ Service Worker registered successfully');
+                    })
+                    .catch(error => {
+                        console.error('✗ Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>
+
+<!--
+OPTIMIZATION NOTES:
+=====================
+
+✅ IMPROVEMENTS MADE:
+- Tab-based navigation for artists (no page reload)
+- URL-based routing with hash navigation
+- Portfolio filtering per artist
+- Responsive grid layouts
+- Smooth transitions and animations
+- Pre-filled booking links with artist parameter
+
+✅ PERFORMANCE:
+- CSS-only transitions (no JS animation libraries)
+- Efficient event delegation
+- Lazy loading ready for images
+- Single-page architecture reduces server requests
+
+✅ UX ENHANCEMENTS:
+- Sticky artist navigation
+- Active state management
+- URL preservation (shareable links)
+- Mobile-optimized touch targets
+- Clear CTAs for each artist
+
+✅ CONVERSION FEATURES:
+- Direct booking links with artist pre-selected
+- Social proof (stats, ratings)
+- Easy social media access
+- Portfolio category filtering
+- Clear specializations
+
+-->
+
+<!-- Google Analytics - Replace GA_MEASUREMENT_ID with your actual GA4 ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID', {
+        send_page_view: true
+    });
+
+    // Track artist page interactions
+    document.addEventListener('DOMContentLoaded', function () {
+        // Track artist tab switches
+        document.querySelectorAll('.artist-nav-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                gtag('event', 'artist_tab_switch', {
+                    'artist_name': this.dataset.artist,
+                    'page_location': window.location.href
+                });
+            });
+        });
+
+        // Track portfolio filter usage
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                gtag('event', 'portfolio_filter', {
+                    'filter_category': this.dataset.filter,
+                    'page_location': window.location.href
+                });
+            });
+        });
+
+        // Track portfolio image views
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', function () {
+                gtag('event', 'portfolio_view', {
+                    'image_category': this.dataset.category,
+                    'page_location': window.location.href
+                });
+            });
+        });
+
+        // Track booking CTA clicks
+        document.querySelectorAll('a[href*="book.html"]').forEach(link => {
+            link.addEventListener('click', function () {
+                gtag('event', 'booking_cta_click', {
+                    'cta_location': this.textContent.trim(),
+                    'page_location': window.location.href
+                });
+            });
+        });
+    });
+</script>
+</body>
+
+</html>

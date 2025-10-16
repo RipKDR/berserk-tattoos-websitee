@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Berserk Tattoos</title>
+    <meta name="robots" content="noindex">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #111111;
+            color: #F2F2F2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .error-container {
+            max-width: 600px;
+        }
+        
+        .error-code {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(6rem, 20vw, 12rem);
+            font-weight: 700;
+            color: #7B1113;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #7B1113;
+            border-color: #7B1113;
+            color: #F2F2F2;
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(123, 17, 19, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border-color: #F2F2F2;
+            color: #F2F2F2;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(242, 242, 242, 0.1);
+        }
+        
+        .contact-info {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(242, 242, 242, 0.1);
+            font-size: 0.9375rem;
+            opacity: 0.7;
+        }
+        
+        .contact-info a {
+            color: #7B1113;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1>PAGE NOT FOUND</h1>
+        <p>The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+        
+        <div class="btn-group">
+            <a href="/" class="btn btn-primary">BACK TO HOME</a>
+            <a href="/book.html" class="btn btn-secondary">BOOK APPOINTMENT</a>
+        </div>
+        
+        <div class="contact-info">
+            <p>Need help? Call us at <a href="tel:+61478128212">0478 128 212</a><br>
+            or email <a href="mailto:berserk.tattoos.au@gmail.com">berserk.tattoos.au@gmail.com</a></p>
+        </div>
+    </div>
+</body>
+</html>

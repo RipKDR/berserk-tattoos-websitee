@@ -1,0 +1,178 @@
+# Netlify Configuration for Berserk Tattoos
+# Documentation: https://docs.netlify.com/configure-builds/file-based-configuration/
+# BMad Method Stage 5: Advanced Caching & Security Headers
+
+[build]
+  # No build command needed for static site
+  publish = "."
+  
+  # Command to run before build (none needed)
+  # command = ""
+
+# Custom Headers for Security and Performance
+[[headers]]
+  # Apply to all pages - Enhanced Security Headers
+  for = "/*"
+  [headers.values]
+    # Security Headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Content Security Policy (CSP) - Enhanced Security
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none';"
+    
+    # Permissions Policy (Feature Policy)
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    
+    # Strict Transport Security (HSTS) - Force HTTPS
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    
+    # Cache Control for HTML (no cache - always fresh)
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  # Cache images for 1 year
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Cache portfolio images for 1 year (main image directory)
+  for = "/portfolio/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Cache WebP images for 1 year
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  # Cache JPG images for 1 year
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Cache favicon for 1 week
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  # Cache PNG icons for 1 week
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    
+[[headers]]
+  # Cache fonts for 1 year (if self-hosted in Stage 6)
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  # Cache CSS files for 1 year (if externalized in Stage 6)
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  # Cache JS files for 1 year (if externalized in Stage 6)
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirects and Rewrites
+[[redirects]]
+  # Redirect old URLs to new structure (if migrating from old site)
+  # from = "/old-booking"
+  # to = "/book.html"
+  # status = 301
+
+[[redirects]]
+  # Redirect www to non-www (or vice versa)
+  from = "https://www.berserktattoos.com/*"
+  to = "https://berserktattoos.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  # Handle 404 with custom page
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  # Artist deep links (optional - for cleaner URLs)
+  from = "/artist/amelia"
+  to = "/artists.html#amelia"
+  status = 200
+
+[[redirects]]
+  from = "/artist/ben"
+  to = "/artists.html#ben"
+  status = 200
+
+[[redirects]]
+  from = "/artist/monique"
+  to = "/artists.html#monique"
+  status = 200
+
+# Form submissions (if using Netlify Forms instead of Formspree)
+# Uncomment if you want to use Netlify Forms:
+# [[forms]]
+#   name = "booking"
+#   action = "/thank-you"
+#   method = "POST"
+
+# Environment Variables (set in Netlify UI, not here)
+# [build.environment]
+#   NODE_VERSION = "18"
+
+# Plugin configuration (optional - for additional functionality)
+# [[plugins]]
+#   package = "@netlify/plugin-lighthouse"
+
+# Context-specific settings
+[context.production]
+  # Production-specific settings
+  environment = { NODE_ENV = "production" }
+
+[context.deploy-preview]
+  # Deploy preview settings
+  environment = { NODE_ENV = "staging" }
+
+[context.branch-deploy]
+  # Branch deploy settings
+  environment = { NODE_ENV = "development" }
+
+# Performance optimizations - BMad Method Enhanced
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+  
+# Image optimization settings (Netlify automatically optimizes images)
+[build.processing.images]
+  compress = true
+  quality = 85
+  
+# Enable automatic WebP generation (if not manually created)
+[build.environment]
+  # Future: Can enable automatic image optimization here

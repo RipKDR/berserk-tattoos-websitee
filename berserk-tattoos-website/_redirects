@@ -1,0 +1,10 @@
+# Redirect www to non-www
+https://www.berserktattoos.com/* https://berserktattoos.com/:splat 301!
+
+# 404 handling
+/* /404.html 404
+
+# Redirect old booking URLs (if any)
+/booking /book.html 301
+/contact /index.html#contact 301
+/gallery /index.html#gallery 301

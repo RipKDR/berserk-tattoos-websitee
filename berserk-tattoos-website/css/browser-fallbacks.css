@@ -1,0 +1,481 @@
+/* Browser Compatibility Fallbacks - Berserk Tattoos */
+/* This file contains enhanced fallbacks for better cross-browser support */
+
+/* =================================================================
+   CSS GRID FALLBACKS
+   ================================================================= */
+
+/* Artists Grid - Enhanced Flexbox fallback for IE11 and older browsers */
+@supports not (display: grid) {
+    .artists-grid {
+        display: flex !important;
+        flex-wrap: wrap;
+        margin: -1rem; /* Negative margin to simulate gap */
+    }
+    
+    .artist-card {
+        flex: 1 1 320px;
+        margin: 1rem; /* Positive margin to create gap */
+        max-width: calc(33.333% - 2rem); /* Three columns on desktop */
+    }
+    
+    @media (max-width: 1024px) {
+        .artist-card {
+            max-width: calc(50% - 2rem); /* Two columns on tablet */
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .artist-card {
+            max-width: 100%; /* Single column on mobile */
+        }
+    }
+}
+
+/* Gallery Grid - Flexbox fallback */
+@supports not (display: grid) {
+    .gallery-grid {
+        display: flex !important;
+        flex-wrap: wrap;
+        margin: -0.5rem;
+    }
+    
+    .gallery-item {
+        flex: 1 1 300px;
+        margin: 0.5rem;
+        max-width: calc(33.333% - 1rem);
+    }
+    
+    /* Remove grid-specific spanning for older browsers */
+    .gallery-item:nth-child(3n+1) {
+        grid-row: auto;
+        height: 400px;
+    }
+    
+    @media (max-width: 768px) {
+        .gallery-item {
+            max-width: 100%;
+        }
+    }
+}
+
+/* Contact Grid - Flexbox fallback */
+@supports not (display: grid) {
+    .contact-grid {
+        display: flex !important;
+        flex-wrap: wrap;
+        margin: -1rem;
+    }
+    
+    .contact-card {
+        flex: 1 1 250px;
+        margin: 1rem;
+    }
+}
+
+/* Portfolio Grid - Flexbox fallback */
+@supports not (display: grid) {
+    .portfolio-grid {
+        display: flex !important;
+        flex-wrap: wrap;
+        margin: -0.5rem;
+    }
+    
+    .portfolio-item {
+        flex: 1 1 300px;
+        margin: 0.5rem;
+        max-width: calc(33.333% - 1rem);
+    }
+    
+    /* Reset grid spanning */
+    .portfolio-item:nth-child(5n+1) {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
+
+/* Booking Form Grid - Flexbox fallback */
+@supports not (display: grid) {
+    .form-row {
+        display: flex !important;
+        flex-wrap: wrap;
+        margin: -0.5rem;
+    }
+    
+    .form-row .form-group {
+        flex: 1 1 250px;
+        margin: 0.5rem;
+    }
+    
+    .artist-cards {
+        display: flex !important;
+        flex-wrap: wrap;
+        margin: -0.5rem;
+    }
+    
+    .artist-card {
+        flex: 1 1 200px;
+        margin: 0.5rem;
+    }
+}
+
+/* =================================================================
+   BACKDROP FILTER FALLBACKS
+   ================================================================= */
+
+/* Navigation - Solid background for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+    @supports not (-webkit-backdrop-filter: blur(10px)) {
+        .nav-container {
+            background: rgb(17, 17, 17) !important; /* Fully opaque */
+            background: rgba(17, 17, 17, 0.98) !important; /* Slightly transparent if rgba supported */
+        }
+        
+        .artist-nav {
+            background: rgb(17, 17, 17) !important;
+            background: rgba(17, 17, 17, 0.98) !important;
+        }
+        
+        .nav-links {
+            background: rgb(17, 17, 17) !important;
+            background: rgba(17, 17, 17, 0.98) !important;
+        }
+    }
+}
+
+/* =================================================================
+   CSS VARIABLES FALLBACKS (for IE11)
+   ================================================================= */
+
+/* Define fallback values for browsers without CSS variable support */
+.no-css-variables {
+    /* Colors */
+    color: #F2F2F2;
+    background-color: #111111;
+}
+
+.no-css-variables .nav-container,
+.no-css-variables nav,
+.no-css-variables .hero,
+.no-css-variables .artists,
+.no-css-variables .gallery,
+.no-css-variables .contact,
+.no-css-variables footer {
+    color: #F2F2F2;
+    background-color: #111111;
+}
+
+.no-css-variables .btn-primary,
+.no-css-variables .nav-links .cta,
+.no-css-variables .artist-specialty,
+.no-css-variables .artist-cta,
+.no-css-variables h2,
+.no-css-variables h3 {
+    color: #7B1113;
+}
+
+.no-css-variables .btn-primary,
+.no-css-variables .nav-links .cta {
+    background-color: #7B1113;
+    border-color: #7B1113;
+}
+
+/* =================================================================
+   CLAMP() FALLBACKS
+   ================================================================= */
+
+/* Typography fallbacks for browsers without clamp() support */
+@supports not (font-size: clamp(1rem, 2vw, 3rem)) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    @media (min-width: 768px) {
+        h1 {
+            font-size: 3.5rem;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        h1 {
+            font-size: 5rem;
+        }
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+        h2 {
+            font-size: 2.5rem;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        h2 {
+            font-size: 3.5rem;
+        }
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+    
+    @media (min-width: 768px) {
+        h3 {
+            font-size: 1.75rem;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        h3 {
+            font-size: 2rem;
+        }
+    }
+    
+    .hero-tagline {
+        font-size: 1.25rem;
+    }
+    
+    @media (min-width: 768px) {
+        .hero-tagline {
+            font-size: 1.5rem;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .hero-tagline {
+            font-size: 1.75rem;
+        }
+    }
+}
+
+/* =================================================================
+   SMOOTH SCROLL POLYFILL STYLES
+   ================================================================= */
+
+/* Add class when polyfill is active */
+.smooth-scroll-polyfill {
+    scroll-behavior: auto !important;
+}
+
+/* =================================================================
+   FOCUS-VISIBLE FALLBACK
+   ================================================================= */
+
+/* For browsers without :focus-visible support */
+@supports not selector(:focus-visible) {
+    a:focus,
+    button:focus,
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: 2px solid #7B1113;
+        outline-offset: 2px;
+    }
+}
+
+/* =================================================================
+   OBJECT-FIT FALLBACK (IE11)
+   ================================================================= */
+
+/* For browsers without object-fit support */
+@supports not (object-fit: cover) {
+    .media-cover {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+    }
+    
+    .artist-image,
+    .profile-image,
+    .gallery-item,
+    .portfolio-item {
+        position: relative;
+        overflow: hidden;
+    }
+}
+
+/* =================================================================
+   INTERSECTION OBSERVER FALLBACK STYLES
+   ================================================================= */
+
+/* When IntersectionObserver is not supported, show all images immediately */
+.no-intersection-observer img[data-src] {
+    opacity: 1 !important;
+}
+
+/* =================================================================
+   FORM VALIDATION STYLES FOR OLDER BROWSERS
+   ================================================================= */
+
+/* Enhanced form validation styles for better cross-browser support */
+input:invalid,
+select:invalid,
+textarea:invalid {
+    border-color: #7B1113;
+}
+
+input:valid,
+select:valid,
+textarea:valid {
+    border-color: rgba(242, 242, 242, 0.2);
+}
+
+/* Firefox-specific form styling */
+@-moz-document url-prefix() {
+    input:invalid,
+    select:invalid,
+    textarea:invalid {
+        box-shadow: none;
+    }
+}
+
+/* =================================================================
+   MOBILE-SPECIFIC FIXES
+   ================================================================= */
+
+/* iOS Safari fixes */
+@supports (-webkit-touch-callout: none) {
+    /* Prevent zoom on input focus */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+    
+    /* Fix 100vh issue */
+    .hero {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Android Chrome fixes */
+@media screen and (max-width: 768px) {
+    /* Ensure tap targets are large enough */
+    button,
+    a,
+    input,
+    select,
+    textarea {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* =================================================================
+   PRINT STYLES
+   ================================================================= */
+
+@media print {
+    /* Hide non-essential elements */
+    .nav-container,
+    .mobile-menu,
+    .hero-gallery,
+    .gallery,
+    .modal,
+    footer {
+        display: none !important;
+    }
+    
+    /* Ensure text is black on white */
+    body {
+        color: #000 !important;
+        background: #fff !important;
+    }
+    
+    /* Remove backgrounds and shadows */
+    * {
+        background: transparent !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    /* Ensure links are visible */
+    a {
+        color: #000 !important;
+        text-decoration: underline !important;
+    }
+}
+
+/* =================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ================================================================= */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .btn-primary {
+        border: 2px solid #fff;
+    }
+    
+    input,
+    select,
+    textarea {
+        border: 2px solid #fff;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* =================================================================
+   BROWSER-SPECIFIC HACKS (Use sparingly!)
+   ================================================================= */
+
+/* IE11 specific styles */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    /* IE11 specific fixes */
+    .artists-grid,
+    .gallery-grid,
+    .contact-grid,
+    .portfolio-grid {
+        display: flex !important;
+        flex-wrap: wrap;
+    }
+    
+    /* Fix flexbox bugs in IE11 */
+    .artist-card,
+    .gallery-item,
+    .contact-card,
+    .portfolio-item {
+        flex: 0 0 auto;
+        width: calc(33.333% - 2rem);
+        margin: 1rem;
+    }
+}
+
+/* Edge Legacy specific styles */
+@supports (-ms-ime-align: auto) {
+    /* Edge Legacy specific fixes */
+    .nav-container {
+        background: rgba(17, 17, 17, 0.98);
+    }
+}
+
+/* Safari specific styles */
+@media not all and (min-resolution:.001dpcm) { 
+    @supports (-webkit-appearance:none) {
+        /* Safari specific fixes */
+        .hero {
+            min-height: -webkit-fill-available;
+        }
+    }
+}

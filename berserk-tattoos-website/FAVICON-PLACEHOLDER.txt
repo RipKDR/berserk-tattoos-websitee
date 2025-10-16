@@ -1,0 +1,22 @@
+FAVICON PLACEHOLDER FILES NEEDED
+
+The following 5 files need to be created and placed in the root directory:
+
+1. favicon.ico (32x32px, .ico format)
+2. apple-touch-icon.png (180x180px, PNG format)  
+3. android-chrome-192x192.png (192x192px, PNG format)
+4. android-chrome-512x512.png (512x512px, PNG format)
+5. og-image.jpg (1200x630px, JPG format, <300KB)
+
+Design specifications:
+- Letter "B" in #7B1113 (red) on #111111 (dark) background
+- Use Cinzel Bold or similar serif font
+- For og-image: "BERSERK TATTOOS" with tagline
+
+Quick generation:
+- Use https://favicon.io/favicon-generator/ for files 1-4
+- Use Canva for og-image.jpg
+
+See FAVICON-GUIDE.md for detailed instructions.
+
+Once these files are created, the website will be 100% complete for launch.

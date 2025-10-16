@@ -1,0 +1,28 @@
+{
+  "name": "berserk-tattoos-website",
+  "version": "1.0.0",
+  "description": "Production-ready static website for Berserk Tattoos Melbourne with BMad Method performance optimizations",
+  "scripts": {
+    "optimize-images": "node optimize-images.js",
+    "update-html": "node update-html-images.js",
+    "optimize-all": "npm run optimize-images && npm run update-html",
+    "minify-html": "html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true --input-dir . --output-dir ./dist --file-ext html",
+    "build": "npm run optimize-all && npm run minify-html"
+  },
+  "keywords": [
+    "tattoo",
+    "website",
+    "static",
+    "performance",
+    "optimization"
+  ],
+  "author": "Berserk Tattoos",
+  "license": "MIT",
+  "devDependencies": {
+    "sharp": "^0.33.0",
+    "html-minifier-terser": "^7.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

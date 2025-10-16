@@ -1,0 +1,32 @@
+# Robots.txt for Berserk Tattoos Website
+# Allows all search engines to crawl the entire site
+
+User-agent: *
+Allow: /
+
+# Sitemap location (update with your actual domain)
+Sitemap: https://berserktattoos.com/sitemap.xml
+
+# Block access to sensitive files/folders (none currently)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Crawl-delay (optional - remove if not needed)
+# Crawl-delay: 10
+
+# Block specific bad bots (optional)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Allow all good bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
