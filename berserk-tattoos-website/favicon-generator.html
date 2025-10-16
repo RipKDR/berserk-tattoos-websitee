@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favicon Generator - Berserk Tattoos</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111111;
+      color: #F2F2F2;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      color: #7B1113;
+      font-family: 'Cinzel', serif;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: #7B1113;
+      color: #F2F2F2;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 1rem;
+    }
+
+    .btn:hover {
+      background: #8B1A1A;
+    }
+
+    .preview {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .preview-item {
+      text-align: center;
+      background: rgba(242, 242, 242, 0.05);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .preview-icon {
+      width: 64px;
+      height: 64px;
+      background: #111111;
+      border: 2px solid #7B1113;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #7B1113;
+    }
+
+    .instructions {
+      background: rgba(242, 242, 242, 0.05);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    .success {
+      background: rgba(0, 128, 0, 0.2);
+      border: 1px solid #00ff00;
+      padding: 1rem;
+      border-radius: 4px;
+      margin: 1rem 0;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🎨 Favicon Generator</h1>
+    <p>Generate all 5 required favicon files for Berserk Tattoos website</p>
+
+    <div class="preview">
+      <div class="preview-item">
+        <div class="preview-icon">B</div>
+        <strong>favicon.ico</strong><br>
+        <small>32x32px</small>
+      </div>
+      <div class="preview-item">
+        <div class="preview-icon">B</div>
+        <strong>apple-touch-icon.png</strong><br>
+        <small>180x180px</small>
+      </div>
+      <div class="preview-item">
+        <div class="preview-icon">B</div>
+        <strong>android-chrome-192x192.png</strong><br>
+        <small>192x192px</small>
+      </div>
+      <div class="preview-item">
+        <div class="preview-icon">B</div>
+        <strong>android-chrome-512x512.png</strong><br>
+        <small>512x512px</small>
+      </div>
+      <div class="preview-item">
+        <div class="preview-icon" style="width: 120px; height: 64px; font-size: 1.5rem;">B</div>
+        <strong>og-image.jpg</strong><br>
+        <small>1200x630px</small>
+      </div>
+    </div>
+
+    <button class="btn" onclick="generateAllFavicons()">🚀 Generate All Favicons</button>
+
+    <div class="success" id="success">
+      ✅ All favicon files generated successfully!<br>
+      Check your downloads folder and place the files in your website root directory.
+    </div>
+
+    <div class="instructions">
+      <h3>📋 Instructions:</h3>
+      <ol>
+        <li>Click "Generate All Favicons" button above</li>
+        <li>5 files will download automatically</li>
+        <li>Place all files in your website root directory</li>
+        <li>Test by opening your website in a browser</li>
+      </ol>
+
+      <h3>📁 Files to place in root directory:</h3>
+      <ul>
+        <li>favicon.ico</li>
+        <li>apple-touch-icon.png</li>
+        <li>android-chrome-192x192.png</li>
+        <li>android-chrome-512x512.png</li>
+        <li>og-image.jpg</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function createFavicon(size, filename) {
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+
+      // Background
+      ctx.fillStyle = '#111111';
+      ctx.fillRect(0, 0, size, size);
+
+      // Text "B"
+      ctx.fillStyle = '#7B1113';
+      ctx.font = `bold ${size * 0.7}px serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('B', size / 2, size / 2);
+
+      return canvas;
+    }
+
+    function createOGImage() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1200;
+      canvas.height = 630;
+      const ctx = canvas.getContext('2d');
+
+      // Background
+      ctx.fillStyle = '#111111';
+      ctx.fillRect(0, 0, 1200, 630);
+
+      // Main text
+      ctx.fillStyle = '#F2F2F2';
+      ctx.font = 'bold 80px serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('BERSERK TATTOOS', 600, 250);
+
+      // Subtitle
+      ctx.font = '32px sans-serif';
+      ctx.fillStyle = '#F2F2F2';
+      ctx.fillText('Melbourne\'s Premier Tattoo Artists', 600, 350);
+
+      // Accent line
+      ctx.strokeStyle = '#7B1113';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(300, 400);
+      ctx.lineTo(900, 400);
+      ctx.stroke();
+
+      return canvas;
+    }
+
+    function downloadCanvas(canvas, filename) {
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL();
+      link.click();
+    }
+
+    function generateAllFavicons() {
+      console.log('Generating favicon files...');
+
+      // Generate all files
+      const favicon32 = createFavicon(32, 'favicon.ico');
+      downloadCanvas(favicon32, 'favicon.ico');
+
+      const apple180 = createFavicon(180, 'apple-touch-icon.png');
+      downloadCanvas(apple180, 'apple-touch-icon.png');
+
+      const android192 = createFavicon(192, 'android-chrome-192x192.png');
+      downloadCanvas(android192, 'android-chrome-192x192.png');
+
+      const android512 = createFavicon(512, 'android-chrome-512x512.png');
+      downloadCanvas(android512, 'android-chrome-512x512.png');
+
+      const ogImage = createOGImage();
+      downloadCanvas(ogImage, 'og-image.jpg');
+
+      // Show success message
+      document.getElementById('success').style.display = 'block';
+
+      console.log('All favicon files generated! Place them in your website root directory.');
+    }
+  </script>
+</body>
+
+</html>

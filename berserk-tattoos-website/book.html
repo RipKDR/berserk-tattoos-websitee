@@ -1132,11 +1132,8 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        // IMPORTANT: Replace GA_MEASUREMENT_ID with your actual Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX)
-        // To get your ID: 1) Go to analytics.google.com 2) Create new property 3) Find Measurement ID in Admin > Data Streams
         gtag('config', 'GA_MEASUREMENT_ID', {
-            'anonymize_ip': true,
-            'cookie_flags': 'SameSite=None;Secure'
+            send_page_view: true
         });
 
         // Track booking funnel events
@@ -1245,100 +1242,6 @@
             });
         }
     </script>
-</body>
-
-</html>
-
-<!--
-OPTIMIZATION NOTES:
-=====================
-
-✅ CONVERSION-FOCUSED IMPROVEMENTS:
-- Artist pre-selection via URL parameters
-- Real-time price estimation based on size
-- Dynamic summary sidebar (shows selections)
-- Clear multi-step visual indicator
-- Afterpay prominence for larger purchases
-- Success modal with clear next steps
-
-✅ FORM OPTIMIZATION:
-- Required fields marked clearly
-- Logical field grouping
-- Smart defaults and helpful labels
-- Mobile-friendly inputs
-- Clear error handling
-- Formspree integration ready
-
-✅ UX ENHANCEMENTS:
-- Visual artist selection (not dropdown)
-- Sticky sidebar summary
-- Live form validation
-- Progress tracking
-- Multiple contact options if stuck
-- Quick-help sidebar
-
-✅ PERFORMANCE:
-- Inline CSS (critical above-fold)
-- No external dependencies
-- Efficient form handling
-- Smooth transitions
-
-CRITICAL NEXT STEP:
-Replace 'YOUR_FORM_ID' in form action with your actual Formspree ID
-
--->
-
-<!-- Google Analytics - Replace GA_MEASUREMENT_ID with your actual GA4 ID -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'GA_MEASUREMENT_ID', {
-        send_page_view: true
-    });
-
-    // Track booking form interactions
-    document.addEventListener('DOMContentLoaded', function () {
-        // Track artist selection
-        document.querySelectorAll('.artist-card').forEach(card => {
-            card.addEventListener('click', function () {
-                const artist = this.dataset.artist;
-                gtag('event', 'booking_artist_select', {
-                    'artist_name': artist,
-                    'page_location': window.location.href
-                });
-            });
-        });
-
-        // Track form field interactions
-        const formFields = document.querySelectorAll('input, select, textarea');
-        formFields.forEach(field => {
-            field.addEventListener('blur', function () {
-                if (this.value.trim()) {
-                    gtag('event', 'form_field_complete', {
-                        'field_name': this.name || this.id,
-                        'field_type': this.type || 'textarea',
-                        'page_location': window.location.href
-                    });
-                }
-            });
-        });
-
-        // Track form submission
-        const bookingForm = document.getElementById('booking-form');
-        if (bookingForm) {
-            bookingForm.addEventListener('submit', function () {
-                const selectedArtist = document.querySelector('input[name="artist"]:checked');
-                gtag('event', 'booking_form_submit', {
-                    'artist_name': selectedArtist ? selectedArtist.value : 'none',
-                    'form_completion': 'attempted',
-                    'page_location': window.location.href
-                });
-            });
-        }
-    });
-</script>
 </body>
 
 </html>

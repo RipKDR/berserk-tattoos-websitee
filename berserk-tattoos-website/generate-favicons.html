@@ -1,255 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favicon Generator - Berserk Tattoos</title>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #111111;
-            color: #F2F2F2;
-            margin: 0;
-            padding: 2rem;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        h1 {
-            color: #7B1113;
-            font-family: 'Cinzel', serif;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .step {
-            background: rgba(242, 242, 242, 0.05);
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 8px;
-            border-left: 4px solid #7B1113;
-        }
-        .step h3 {
-            color: #7B1113;
-            margin-top: 0;
-        }
-        .favicon-preview {
-            display: flex;
-            gap: 2rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-        .favicon-item {
-            text-align: center;
-            background: rgba(242, 242, 242, 0.05);
-            padding: 1rem;
-            border-radius: 8px;
-            min-width: 120px;
-        }
-        .favicon-icon {
-            width: 64px;
-            height: 64px;
-            background: #111111;
-            border: 2px solid #7B1113;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 0.5rem;
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #7B1113;
-        }
-        .btn {
-            background: #7B1113;
-            color: #F2F2F2;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin: 0.5rem 0.5rem 0.5rem 0;
-            font-weight: 600;
-        }
-        .btn:hover {
-            background: #8B1A1A;
-        }
-        .code {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 1rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            margin: 1rem 0;
-            overflow-x: auto;
-        }
-        .warning {
-            background: rgba(139, 26, 26, 0.2);
-            border: 1px solid #7B1113;
-            padding: 1rem;
-            border-radius: 4px;
-            margin: 1rem 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favicon Generator - Berserk Tattoos</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111111;
+      color: #F2F2F2;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #7B1113;
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .step {
+      background: rgba(242, 242, 242, 0.05);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+      border-left: 4px solid #7B1113;
+    }
+
+    .step h3 {
+      color: #7B1113;
+      margin-top: 0;
+    }
+
+    .favicon-preview {
+      display: flex;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .favicon-item {
+      text-align: center;
+      background: rgba(242, 242, 242, 0.05);
+      padding: 1rem;
+      border-radius: 8px;
+      min-width: 120px;
+    }
+
+    .favicon-icon {
+      width: 64px;
+      height: 64px;
+      background: #111111;
+      border: 2px solid #7B1113;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #7B1113;
+    }
+
+    .btn {
+      background: #7B1113;
+      color: #F2F2F2;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      background: #8B1A1A;
+    }
+
+    .code {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .warning {
+      background: rgba(139, 26, 26, 0.2);
+      border: 1px solid #7B1113;
+      padding: 1rem;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>🎨 Favicon Generator</h1>
-        <p style="text-align: center; font-size: 1.1rem; opacity: 0.8;">Create all 5 required favicon files for Berserk Tattoos website</p>
+  <div class="container">
+    <h1>🎨 Favicon Generator</h1>
+    <p style="text-align: center; font-size: 1.1rem; opacity: 0.8;">Create all 5 required favicon files for Berserk
+      Tattoos website</p>
 
-        <div class="favicon-preview">
-            <div class="favicon-item">
-                <div class="favicon-icon">B</div>
-                <strong>favicon.ico</strong><br>
-                <small>32x32px</small>
-            </div>
-            <div class="favicon-item">
-                <div class="favicon-icon">B</div>
-                <strong>apple-touch-icon.png</strong><br>
-                <small>180x180px</small>
-            </div>
-            <div class="favicon-item">
-                <div class="favicon-icon">B</div>
-                <strong>android-chrome-192x192.png</strong><br>
-                <small>192x192px</small>
-            </div>
-            <div class="favicon-item">
-                <div class="favicon-icon">B</div>
-                <strong>android-chrome-512x512.png</strong><br>
-                <small>512x512px</small>
-            </div>
-            <div class="favicon-item">
-                <div class="favicon-icon" style="width: 120px; height: 64px; font-size: 1.5rem;">B</div>
-                <strong>og-image.jpg</strong><br>
-                <small>1200x630px</small>
-            </div>
-        </div>
-
-        <div class="step">
-            <h3>🚀 Quick Method (Recommended - 5 minutes)</h3>
-            <p>Use Favicon.io to generate all files at once:</p>
-            <ol>
-                <li>Go to <a href="https://favicon.io/favicon-generator/" target="_blank" class="btn">Favicon.io Generator</a></li>
-                <li>Settings:
-                    <div class="code">
-Text: B<br>
-Background: #111111<br>
-Font Color: #7B1113<br>
-Font Family: Cinzel (or similar serif)<br>
-Font Size: 110<br>
-Shape: Square
-                    </div>
-                </li>
-                <li>Click "Download" - this gives you files 1-4</li>
-                <li>Rename the files to match the required names</li>
-                <li>Place all files in your website root directory</li>
-            </ol>
-        </div>
-
-        <div class="step">
-            <h3>🎨 Custom Design Method (10-15 minutes)</h3>
-            <p>Create a custom design using Canva:</p>
-            <ol>
-                <li>Go to <a href="https://www.canva.com" target="_blank" class="btn">Canva</a></li>
-                <li>Create a 512x512px design</li>
-                <li>Design your "B" logo with brand colors (#111111 background, #7B1113 text)</li>
-                <li>Download as PNG</li>
-                <li>Go to <a href="https://realfavicongenerator.net" target="_blank" class="btn">RealFaviconGenerator</a></li>
-                <li>Upload your PNG and generate all sizes</li>
-                <li>Download and extract to your website root</li>
-            </ol>
-        </div>
-
-        <div class="step">
-            <h3>📱 OG Image Creation</h3>
-            <p>Create the social media preview image:</p>
-            <ol>
-                <li>Go to <a href="https://www.canva.com" target="_blank" class="btn">Canva</a></li>
-                <li>Search "Facebook Post" or create 1200x630px</li>
-                <li>Design with:
-                    <div class="code">
-Background: Dark (#111111) or dramatic tattoo photo<br>
-Main text: "BERSERK TATTOOS" (Cinzel Bold, #F2F2F2)<br>
-Subtitle: "Melbourne's Premier Tattoo Artists" (Inter, #F2F2F2)<br>
-Optional: Artist photos or best work
-                    </div>
-                </li>
-                <li>Download as JPG</li>
-                <li>Compress at <a href="https://tinypng.com" target="_blank" class="btn">TinyPNG</a> (target &lt;300KB)</li>
-                <li>Save as <code>og-image.jpg</code> in your website root</li>
-            </ol>
-        </div>
-
-        <div class="warning">
-            <h3>⚠️ Important Notes</h3>
-            <ul>
-                <li>All files must be placed in the <strong>root directory</strong> of your website</li>
-                <li>The website HTML already references these files - they just need to be created</li>
-                <li>Test your favicon by opening your site in a browser and checking the tab icon</li>
-                <li>Test OG image by sharing your site link on Facebook/Twitter</li>
-            </ul>
-        </div>
-
-        <div class="step">
-            <h3>✅ Testing Your Favicons</h3>
-            <ol>
-                <li><strong>Favicon Test:</strong> Open your site in browser, check tab icon</li>
-                <li><strong>iOS Test:</strong> Add to home screen on iPhone, check icon</li>
-                <li><strong>Android Test:</strong> Add to home screen on Android, check icon</li>
-                <li><strong>OG Image Test:</strong> Share link on Facebook/Twitter, check preview at <a href="https://www.opengraph.xyz/" target="_blank">OpenGraph.xyz</a></li>
-            </ol>
-        </div>
-
-        <div class="step">
-            <h3>📁 File Structure After Creation</h3>
-            <div class="code">
-berserk-tattoos-website/<br>
-├── favicon.ico ✓<br>
-├── apple-touch-icon.png ✓<br>
-├── android-chrome-192x192.png ✓<br>
-├── android-chrome-512x512.png ✓<br>
-├── og-image.jpg ✓<br>
-├── index.html<br>
-├── artists.html<br>
-├── book.html<br>
-└── ...
-            </div>
-        </div>
-
-        <div style="text-align: center; margin: 3rem 0; padding: 2rem; background: rgba(123, 17, 19, 0.1); border-radius: 8px;">
-            <h2 style="color: #7B1113; margin-top: 0;">🎉 Once Complete</h2>
-            <p>Your website will be <strong>100% production-ready</strong> and ready to launch!</p>
-            <p><strong>Estimated Time:</strong> 15-20 minutes total</p>
-        </div>
+    <div class="favicon-preview">
+      <div class="favicon-item">
+        <div class="favicon-icon">B</div>
+        <strong>favicon.ico</strong><br>
+        <small>32x32px</small>
+      </div>
+      <div class="favicon-item">
+        <div class="favicon-icon">B</div>
+        <strong>apple-touch-icon.png</strong><br>
+        <small>180x180px</small>
+      </div>
+      <div class="favicon-item">
+        <div class="favicon-icon">B</div>
+        <strong>android-chrome-192x192.png</strong><br>
+        <small>192x192px</small>
+      </div>
+      <div class="favicon-item">
+        <div class="favicon-icon">B</div>
+        <strong>android-chrome-512x512.png</strong><br>
+        <small>512x512px</small>
+      </div>
+      <div class="favicon-item">
+        <div class="favicon-icon" style="width: 120px; height: 64px; font-size: 1.5rem;">B</div>
+        <strong>og-image.jpg</strong><br>
+        <small>1200x630px</small>
+      </div>
     </div>
 
-    <script>
-        // Add some interactivity
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (this.href) {
-                    // Track external link clicks
-                    console.log('Opening:', this.href);
-                }
-            });
-        });
+    <div class="step">
+      <h3>🚀 Quick Method (Recommended - 5 minutes)</h3>
+      <p>Use Favicon.io to generate all files at once:</p>
+      <ol>
+        <li>Go to <a href="https://favicon.io/favicon-generator/" target="_blank" class="btn">Favicon.io Generator</a>
+        </li>
+        <li>Settings:
+          <div class="code">
+            Text: B<br>
+            Background: #111111<br>
+            Font Color: #7B1113<br>
+            Font Family: Cinzel (or similar serif)<br>
+            Font Size: 110<br>
+            Shape: Square
+          </div>
+        </li>
+        <li>Click "Download" - this gives you files 1-4</li>
+        <li>Rename the files to match the required names</li>
+        <li>Place all files in your website root directory</li>
+      </ol>
+    </div>
 
-        // Add copy functionality for code blocks
-        document.querySelectorAll('.code').forEach(code => {
-            code.addEventListener('click', function() {
-                navigator.clipboard.writeText(this.textContent).then(() => {
-                    const original = this.style.background;
-                    this.style.background = 'rgba(123, 17, 19, 0.3)';
-                    setTimeout(() => {
-                        this.style.background = original;
-                    }, 1000);
-                });
-            });
-            code.style.cursor = 'pointer';
-            code.title = 'Click to copy';
+    <div class="step">
+      <h3>🎨 Custom Design Method (10-15 minutes)</h3>
+      <p>Create a custom design using Canva:</p>
+      <ol>
+        <li>Go to <a href="https://www.canva.com" target="_blank" class="btn">Canva</a></li>
+        <li>Create a 512x512px design</li>
+        <li>Design your "B" logo with brand colors (#111111 background, #7B1113 text)</li>
+        <li>Download as PNG</li>
+        <li>Go to <a href="https://realfavicongenerator.net" target="_blank" class="btn">RealFaviconGenerator</a></li>
+        <li>Upload your PNG and generate all sizes</li>
+        <li>Download and extract to your website root</li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3>📱 OG Image Creation</h3>
+      <p>Create the social media preview image:</p>
+      <ol>
+        <li>Go to <a href="https://www.canva.com" target="_blank" class="btn">Canva</a></li>
+        <li>Search "Facebook Post" or create 1200x630px</li>
+        <li>Design with:
+          <div class="code">
+            Background: Dark (#111111) or dramatic tattoo photo<br>
+            Main text: "BERSERK TATTOOS" (Cinzel Bold, #F2F2F2)<br>
+            Subtitle: "Melbourne's Premier Tattoo Artists" (Inter, #F2F2F2)<br>
+            Optional: Artist photos or best work
+          </div>
+        </li>
+        <li>Download as JPG</li>
+        <li>Compress at <a href="https://tinypng.com" target="_blank" class="btn">TinyPNG</a> (target &lt;300KB)</li>
+        <li>Save as <code>og-image.jpg</code> in your website root</li>
+      </ol>
+    </div>
+
+    <div class="warning">
+      <h3>⚠️ Important Notes</h3>
+      <ul>
+        <li>All files must be placed in the <strong>root directory</strong> of your website</li>
+        <li>The website HTML already references these files - they just need to be created</li>
+        <li>Test your favicon by opening your site in a browser and checking the tab icon</li>
+        <li>Test OG image by sharing your site link on Facebook/Twitter</li>
+      </ul>
+    </div>
+
+    <div class="step">
+      <h3>✅ Testing Your Favicons</h3>
+      <ol>
+        <li><strong>Favicon Test:</strong> Open your site in browser, check tab icon</li>
+        <li><strong>iOS Test:</strong> Add to home screen on iPhone, check icon</li>
+        <li><strong>Android Test:</strong> Add to home screen on Android, check icon</li>
+        <li><strong>OG Image Test:</strong> Share link on Facebook/Twitter, check preview at <a
+            href="https://www.opengraph.xyz/" target="_blank">OpenGraph.xyz</a></li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3>📁 File Structure After Creation</h3>
+      <div class="code">
+        berserk-tattoos-website/<br>
+        ├── favicon.ico ✓<br>
+        ├── apple-touch-icon.png ✓<br>
+        ├── android-chrome-192x192.png ✓<br>
+        ├── android-chrome-512x512.png ✓<br>
+        ├── og-image.jpg ✓<br>
+        ├── index.html<br>
+        ├── artists.html<br>
+        ├── book.html<br>
+        └── ...
+      </div>
+    </div>
+
+    <div
+      style="text-align: center; margin: 3rem 0; padding: 2rem; background: rgba(123, 17, 19, 0.1); border-radius: 8px;">
+      <h2 style="color: #7B1113; margin-top: 0;">🎉 Once Complete</h2>
+      <p>Your website will be <strong>100% production-ready</strong> and ready to launch!</p>
+      <p><strong>Estimated Time:</strong> 15-20 minutes total</p>
+    </div>
+  </div>
+
+  <script>
+    // Add some interactivity
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        if (this.href) {
+          // Track external link clicks
+          console.log('Opening:', this.href);
+        }
+      });
+    });
+
+    // Add copy functionality for code blocks
+    document.querySelectorAll('.code').forEach(code => {
+      code.addEventListener('click', function () {
+        navigator.clipboard.writeText(this.textContent).then(() => {
+          const original = this.style.background;
+          this.style.background = 'rgba(123, 17, 19, 0.3)';
+          setTimeout(() => {
+            this.style.background = original;
+          }, 1000);
         });
-    </script>
+      });
+      code.style.cursor = 'pointer';
+      code.title = 'Click to copy';
+    });
+  </script>
 </body>
+
 </html>
