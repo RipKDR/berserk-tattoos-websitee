@@ -7,7 +7,7 @@
 
     <title>Book Your Tattoo | Berserk Tattoos Melbourne | Online Booking</title>
     <meta name="description"
-        content="Book your custom tattoo consultation at Berserk Tattoos Melbourne. Choose your artist, describe your vision, and secure your appointment. Afterpay available.">
+        content="Book your custom tattoo consultation at Berserk Tattoos Melbourne. Choose your artist, describe your vision, and secure your appointment. Secure payment via Stripe.">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://berserktattoos.com/book.html">
@@ -27,43 +27,26 @@
     <meta property="twitter:description" content="Book your custom tattoo consultation today.">
     <meta property="twitter:image" content="https://berserktattoos.com/og-image.jpg">
 
-    <!-- Fonts (Optimized: 8 weights → 4 weights, ~80KB savings) -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@400;600&display=swap"
         rel="stylesheet">
 
-    <!-- Preload artist avatar images for faster render -->
-    <link rel="preload" as="image" href="/portfolio/amelia.jpg" imagesrcset="/portfolio/amelia.webp" type="image/webp">
-    <link rel="preload" as="image" href="/portfolio/ben.jpg" imagesrcset="/portfolio/ben.webp" type="image/webp">
-    <link rel="preload" as="image" href="/portfolio/monique.jpg" imagesrcset="/portfolio/monique.webp"
-        type="image/webp">
-
-    <!-- Polyfills for older browsers -->
+    <!-- Polyfills -->
     <script src="js/polyfills.js"></script>
 
-    <!-- Browser compatibility CSS -->
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="css/core/variables.css">
+    <link rel="stylesheet" href="css/core/animations.css">
+    <link rel="stylesheet" href="css/core/utilities.css">
+    
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="css/components/booking-wizard.css">
     <link rel="stylesheet" href="css/browser-fallbacks.css">
-    <link rel="stylesheet" href="css/forms.css">
-    <link rel="stylesheet" href="css/booking-enhancements.css">
 
     <style>
-        :root {
-            --color-dark: #111111;
-            --color-light: #F2F2F2;
-            --color-accent: #7B1113;
-            --font-display: 'Cinzel', serif;
-            --font-body: 'Inter', sans-serif;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2rem;
-            --space-xl: 3rem;
-            --space-2xl: 4rem;
-            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
+        /* Base Styles */
         *,
         *::before,
         *::after {
@@ -80,14 +63,14 @@
             font-family: var(--font-body);
             background: var(--color-dark);
             color: var(--color-light);
-            line-height: 1.6;
+            line-height: var(--line-height-normal);
         }
 
         h1,
         h2,
         h3 {
             font-family: var(--font-display);
-            letter-spacing: 0.05em;
+            letter-spacing: var(--letter-spacing-wider);
         }
 
         /* Navigation */
@@ -96,9 +79,8 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
+            z-index: var(--z-fixed);
             background: rgba(17, 17, 17, 0.95);
-            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(242, 242, 242, 0.1);
         }
@@ -108,7 +90,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.25rem 5%;
-            max-width: 1600px;
+            max-width: var(--container-3xl);
             margin: 0 auto;
         }
 
@@ -129,7 +111,7 @@
 
         .nav-links a {
             font-size: 0.875rem;
-            letter-spacing: 0.1em;
+            letter-spacing: var(--letter-spacing-widest);
             text-transform: uppercase;
             font-weight: 500;
             color: var(--color-light);
@@ -138,6 +120,10 @@
         }
 
         .nav-links a.active {
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover {
             color: var(--color-accent);
         }
 
@@ -167,16 +153,17 @@
             justify-content: center;
             text-align: center;
             padding: 8rem 5% 3rem;
-            background: #0a0a0a;
+            background: var(--color-gray-900);
             position: relative;
         }
 
-        .booking-hero:before {
+        .booking-hero::before {
             content: 'BOOK';
             position: absolute;
             font-size: 15rem;
             font-family: var(--font-display);
             opacity: 0.02;
+            pointer-events: none;
         }
 
         .booking-hero h1 {
@@ -185,61 +172,17 @@
         }
 
         .booking-hero p {
-            font-size: 1.125rem;
+            font-size: var(--font-size-lg);
             opacity: 0.8;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
-        }
-
-        /* Progress Steps */
-        .progress-steps {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            padding: var(--space-lg) 5%;
-            background: rgba(242, 242, 242, 0.02);
-            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
-        }
-
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            opacity: 0.4;
-            transition: opacity var(--transition-base);
-        }
-
-        .step.active {
-            opacity: 1;
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--color-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display);
-            font-size: 1.125rem;
-        }
-
-        .step.active .step-number {
-            background: var(--color-accent);
-            border-color: var(--color-accent);
-        }
-
-        .step-label {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            line-height: var(--line-height-relaxed);
         }
 
         /* Main Booking Section */
         .booking-main {
             padding: var(--space-2xl) 5%;
-            max-width: 1400px;
+            max-width: var(--container-2xl);
             margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -247,142 +190,10 @@
             align-items: start;
         }
 
-        /* Form Styles */
-        .booking-form {
-            background: rgba(242, 242, 242, 0.02);
-            border: 1px solid rgba(242, 242, 242, 0.1);
-            padding: var(--space-xl);
-        }
-
-        .form-section {
-            margin-bottom: var(--space-xl);
-            padding-bottom: var(--space-xl);
-            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
-        }
-
-        .form-section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .form-section h3 {
-            font-size: 1.25rem;
-            margin-bottom: var(--space-lg);
-            color: var(--color-accent);
-        }
-
-        .form-group {
-            margin-bottom: var(--space-lg);
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.025em;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(242, 242, 242, 0.05);
-            border: 1px solid rgba(242, 242, 242, 0.2);
-            color: var(--color-light);
-            font-family: var(--font-body);
-            font-size: 0.9375rem;
-            transition: all var(--transition-base);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-            border-color: var(--color-accent);
-            background: rgba(123, 17, 19, 0.05);
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-md);
-        }
-
-        /* Artist Selection */
-        .artist-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-md);
-        }
-
-        .artist-card {
-            background: rgba(242, 242, 242, 0.02);
-            border: 2px solid rgba(242, 242, 242, 0.1);
-            padding: var(--space-md);
-            text-align: center;
-            cursor: pointer;
-            transition: all var(--transition-base);
-            position: relative;
-        }
-
-        .artist-card:hover {
-            border-color: var(--color-accent);
-            transform: translateY(-5px);
-        }
-
-        .artist-card.selected {
-            border-color: var(--color-accent);
-            background: rgba(123, 17, 19, 0.1);
-        }
-
-        .artist-card.selected:after {
-            content: '✓';
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            width: 30px;
-            height: 30px;
-            background: var(--color-accent);
-            color: var(--color-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .artist-avatar {
-            width: 80px;
-            height: 80px;
-            background: #1a1a1a;
-            border-radius: 50%;
-            margin: 0 auto var(--space-md);
-        }
-
-        .artist-card h4 {
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .artist-card p {
-            font-size: 0.8125rem;
-            opacity: 0.6;
-            margin-bottom: 0;
-        }
-
         /* Sidebar */
         .booking-sidebar {
             position: sticky;
-            top: 100px;
+            top: 120px;
         }
 
         .sidebar-card {
@@ -390,11 +201,13 @@
             border: 1px solid rgba(242, 242, 242, 0.1);
             padding: var(--space-lg);
             margin-bottom: var(--space-lg);
+            border-radius: var(--border-radius-sm);
         }
 
         .sidebar-card h3 {
-            font-size: 1.125rem;
+            font-size: var(--font-size-md);
             margin-bottom: var(--space-md);
+            color: var(--color-accent);
         }
 
         .price-estimate {
@@ -414,7 +227,7 @@
             justify-content: space-between;
             padding: 0.75rem 0;
             border-bottom: 1px solid rgba(242, 242, 242, 0.1);
-            font-size: 0.9375rem;
+            font-size: var(--font-size-sm);
         }
 
         .summary-list li:last-child {
@@ -426,109 +239,27 @@
             font-weight: 600;
         }
 
-        /* Submit Button */
-        .submit-btn {
-            width: 100%;
-            padding: 1.25rem 2rem;
-            background: var(--color-accent);
-            border: 2px solid var(--color-accent);
-            color: var(--color-light);
-            font-size: 0.9375rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all var(--transition-base);
-            font-family: var(--font-body);
-        }
-
-        .submit-btn:hover {
-            background: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(123, 17, 19, 0.4);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Afterpay Badge */
-        .afterpay-info {
+        /* Payment Security Badge */
+        .payment-security {
             text-align: center;
             margin-top: var(--space-md);
             padding: var(--space-md);
             background: rgba(242, 242, 242, 0.02);
             border: 1px solid rgba(242, 242, 242, 0.1);
+            border-radius: var(--border-radius-sm);
         }
 
-        .afterpay-logo {
-            font-size: 1.5rem;
+        .payment-security-title {
+            font-size: var(--font-size-md);
             font-weight: 700;
             color: var(--color-accent);
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-xs);
         }
 
-        .afterpay-info p {
-            font-size: 0.8125rem;
+        .payment-methods {
+            font-size: var(--font-size-xs);
             opacity: 0.7;
-            margin: 0;
-        }
-
-        /* Success Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--color-dark);
-            border: 2px solid var(--color-accent);
-            padding: var(--space-2xl);
-            max-width: 500px;
-            text-align: center;
-            position: relative;
-        }
-
-        .modal-icon {
-            font-size: 4rem;
-            color: var(--color-accent);
-            margin-bottom: var(--space-md);
-        }
-
-        .modal-content h2 {
-            margin-bottom: var(--space-md);
-        }
-
-        .modal-content p {
-            margin-bottom: var(--space-lg);
-            opacity: 0.8;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--color-light);
-            font-size: 2rem;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: opacity var(--transition-base);
-        }
-
-        .modal-close:hover {
-            opacity: 1;
+            margin-top: var(--space-xs);
         }
 
         /* Footer */
@@ -537,7 +268,7 @@
             background: var(--color-dark);
             border-top: 1px solid rgba(242, 242, 242, 0.1);
             text-align: center;
-            font-size: 0.875rem;
+            font-size: var(--font-size-sm);
             opacity: 0.6;
         }
 
@@ -553,28 +284,26 @@
         }
 
         @media (max-width: 768px) {
-            .progress-steps {
-                flex-direction: column;
-                gap: 1rem;
+            .nav-links {
+                gap: 1.5rem;
             }
 
-            .form-row {
-                grid-template-columns: 1fr;
+            .nav-links a {
+                font-size: 0.75rem;
             }
 
-            .artist-cards {
-                grid-template-columns: 1fr;
+            .booking-hero {
+                padding: 6rem 5% 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                display: none;
             }
 
-            .step {
-                justify-content: center;
-            }
-
-            /* Prevent iOS zoom on form input focus */
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                font-size: 16px;
+            .logo {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -603,233 +332,319 @@
         <div>
             <h1>BOOK YOUR TATTOO</h1>
             <p>Ready to create something extraordinary? Our consultation process ensures your vision becomes reality.
-                Fill out the form below with as much detail as possible—the more we know about your concept, placement,
-                and timeline, the better we can match you with the perfect artist and prepare for your consultation.</p>
+                Complete the booking wizard below to secure your consultation appointment.</p>
         </div>
     </section>
 
-    <!-- Progress Steps -->
-    <div class="progress-steps">
-        <div class="step active">
-            <div class="step-number">1</div>
-            <span class="step-label">Select Artist</span>
-        </div>
-        <div class="step">
-            <div class="step-number">2</div>
-            <span class="step-label">Your Details</span>
-        </div>
-        <div class="step">
-            <div class="step-number">3</div>
-            <span class="step-label">Design Brief</span>
-        </div>
-        <div class="step">
-            <div class="step-number">4</div>
-            <span class="step-label">Confirm</span>
-        </div>
-    </div>
-
     <!-- Main Booking Section -->
     <div class="booking-main">
-        <!-- Booking Form -->
-        <div class="booking-form">
-            <form id="booking-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <!-- IMPORTANT: Replace YOUR_FORM_ID with your actual Formspree form ID -->
-                <!-- To get your form ID: 1) Sign up at formspree.io 2) Create new form 3) Copy the ID -->
-                <!-- Honeypot spam protection -->
-                <input type="text" name="_gotcha" class="honeypot" aria-label="Leave this field empty" tabindex="-1">
-                <!-- Formspree configuration -->
-                <input type="hidden" name="_subject" value="New Booking Request - Berserk Tattoos">
-                <input type="hidden" name="_next" value="https://berserktattoos.com/thank-you.html">
-                <input type="hidden" name="_replyto" value="">
+        <!-- Booking Wizard -->
+        <div class="booking-wizard">
+            <!-- Progress Indicator -->
+            <div class="wizard-progress">
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <span class="step-label">Artist</span>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <span class="step-label">Details</span>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <span class="step-label">Schedule</span>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <span class="step-label">Design</span>
+                    </div>
+                    <div class="progress-step" data-step="5">
+                        <div class="step-circle">5</div>
+                        <span class="step-label">Confirm</span>
+                    </div>
+                </div>
+            </div>
 
-                <!-- Artist Selection -->
-                <div class="form-section">
-                    <h3>SELECT YOUR ARTIST</h3>
-                    <div class="artist-cards">
-                        <div class="artist-card" data-artist="amelia" role="button" tabindex="0"
-                            aria-label="Select Amelia Kelso, fine line specialist">
-                            <div class="artist-avatar" style="background: url('/portfolio/amelia.jpg') center/cover;"
-                                role="img" aria-label="Portrait of Amelia Kelso"></div>
-                            <h4>Amelia Kelso</h4>
-                            <p>Fine Line Specialist</p>
-                            <input type="radio" name="artist" value="amelia" style="display:none">
+            <!-- Wizard Steps -->
+            <div class="wizard-steps">
+                <!-- Step 1: Artist Selection -->
+                <div class="wizard-step active" data-step="1">
+                    <div class="step-header">
+                        <h2 class="step-title">Select Your Artist</h2>
+                        <p class="step-description">Choose the artist whose style best matches your vision</p>
+                    </div>
+
+                    <div class="artist-selection">
+                        <div class="artist-card" data-artist-id="amelia" tabindex="0" role="button">
+                            <div class="artist-avatar">
+                                <img src="/portfolio/amelia.jpg" alt="Amelia Kelso">
+                            </div>
+                            <h3 class="artist-name">Amelia Kelso</h3>
+                            <p class="artist-specialty">Fine Line Specialist</p>
+                            <p class="artist-bio">Delicate, intricate designs with precision and elegance</p>
                         </div>
-                        <div class="artist-card" data-artist="ben" role="button" tabindex="0"
-                            aria-label="Select Ben White Raven, realism master">
-                            <div class="artist-avatar" style="background: url('/portfolio/ben.jpg') center/cover;"
-                                role="img" aria-label="Portrait of Ben White Raven"></div>
-                            <h4>Ben White Raven</h4>
-                            <p>Realism Master</p>
-                            <input type="radio" name="artist" value="ben" style="display:none">
+
+                        <div class="artist-card" data-artist-id="ben" tabindex="0" role="button">
+                            <div class="artist-avatar">
+                                <img src="/portfolio/ben.jpg" alt="Ben White Raven">
+                            </div>
+                            <h3 class="artist-name">Ben White Raven</h3>
+                            <p class="artist-specialty">Realism Master</p>
+                            <p class="artist-bio">Photorealistic portraits and detailed compositions</p>
                         </div>
-                        <div class="artist-card" data-artist="monique" role="button" tabindex="0"
-                            aria-label="Select Monique Moore, bold blackwork artist">
-                            <div class="artist-avatar" style="background: url('/portfolio/monique.jpg') center/cover;"
-                                role="img" aria-label="Portrait of Monique Moore"></div>
-                            <h4>Monique Moore</h4>
-                            <p>Bold Blackwork</p>
-                            <input type="radio" name="artist" value="monique" style="display:none">
+
+                        <div class="artist-card" data-artist-id="monique" tabindex="0" role="button">
+                            <div class="artist-avatar">
+                                <img src="/portfolio/monique.jpg" alt="Monique Moore">
+                            </div>
+                            <h3 class="artist-name">Monique Moore</h3>
+                            <p class="artist-specialty">Bold Blackwork</p>
+                            <p class="artist-bio">Strong, graphic designs with powerful visual impact</p>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="artist" id="selected-artist">
+                </div>
+
+                <!-- Step 2: Personal Details -->
+                <div class="wizard-step" data-step="2">
+                    <div class="step-header">
+                        <h2 class="step-title">Your Details</h2>
+                        <p class="step-description">Tell us how to reach you</p>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label required">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label required">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="form-label required">Email</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label required">Phone</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Personal Details -->
-                <div class="form-section">
-                    <h3>YOUR DETAILS</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="first-name">First Name *</label>
-                            <input type="text" id="first-name" name="first_name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="last-name">Last Name *</label>
-                            <input type="text" id="last-name" name="last_name" required>
-                        </div>
+                <!-- Step 3: Schedule -->
+                <div class="wizard-step" data-step="3">
+                    <div class="step-header">
+                        <h2 class="step-title">Choose Date & Time</h2>
+                        <p class="step-description">Select your preferred consultation appointment</p>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone *</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
+
+                    <div id="calendar-widget"></div>
+                </div>
+
+                <!-- Step 4: Design Brief -->
+                <div class="wizard-step" data-step="4">
+                    <div class="step-header">
+                        <h2 class="step-title">Design Brief</h2>
+                        <p class="step-description">Tell us about your tattoo vision</p>
                     </div>
-                    <div class="form-group">
-                        <label for="age">Age</label>
-                        <select id="age" name="age">
-                            <option value="">Select age range</option>
-                            <option value="18-25">18-25</option>
-                            <option value="26-35">26-35</option>
-                            <option value="36-45">36-45</option>
-                            <option value="46+">46+</option>
-                        </select>
+
+                    <div class="form-section">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="placement" class="form-label required">Placement on Body</label>
+                                <select id="placement" name="placement" class="form-select" required>
+                                    <option value="">Select placement</option>
+                                    <option value="arm">Arm</option>
+                                    <option value="forearm">Forearm</option>
+                                    <option value="shoulder">Shoulder</option>
+                                    <option value="back">Back</option>
+                                    <option value="chest">Chest</option>
+                                    <option value="leg">Leg</option>
+                                    <option value="ribs">Ribs</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="size" class="form-label required">Approximate Size</label>
+                                <select id="size" name="size" class="form-select" required>
+                                    <option value="">Select size</option>
+                                    <option value="small">Small (2-4 inches)</option>
+                                    <option value="medium">Medium (4-8 inches)</option>
+                                    <option value="large">Large (8-12 inches)</option>
+                                    <option value="extra-large">Extra Large (12+ inches)</option>
+                                    <option value="sleeve">Full Sleeve</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description" class="form-label required">Describe Your Vision</label>
+                            <textarea id="description" name="description" class="form-textarea" required
+                                placeholder="Tell us about your tattoo idea, style preferences, any reference images you have in mind..."></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="budget" class="form-label">Budget Range</label>
+                                <select id="budget" name="budget" class="form-select">
+                                    <option value="">Select budget</option>
+                                    <option value="500-1000">$500 - $1,000</option>
+                                    <option value="1000-2500">$1,000 - $2,500</option>
+                                    <option value="2500-5000">$2,500 - $5,000</option>
+                                    <option value="5000+">$5,000+</option>
+                                    <option value="discuss">Prefer to discuss</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="timeline" class="form-label">Preferred Timeline</label>
+                                <select id="timeline" name="timeline" class="form-select">
+                                    <option value="">Select timeline</option>
+                                    <option value="asap">As soon as possible</option>
+                                    <option value="1month">Within 1 month</option>
+                                    <option value="2months">Within 2-3 months</option>
+                                    <option value="flexible">I'm flexible</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Design Brief -->
-                <div class="form-section">
-                    <h3>DESIGN BRIEF</h3>
-                    <div class="form-group">
-                        <label for="placement">Placement on Body *</label>
-                        <select id="placement" name="placement" required>
-                            <option value="">Select placement</option>
-                            <option value="arm">Arm</option>
-                            <option value="forearm">Forearm</option>
-                            <option value="shoulder">Shoulder</option>
-                            <option value="back">Back</option>
-                            <option value="chest">Chest</option>
-                            <option value="leg">Leg</option>
-                            <option value="ribs">Ribs</option>
-                            <option value="other">Other</option>
-                        </select>
+                <!-- Step 5: Confirmation -->
+                <div class="wizard-step" data-step="5">
+                    <div class="step-header">
+                        <h2 class="step-title">Confirm Your Booking</h2>
+                        <p class="step-description">Review your details before proceeding to payment</p>
                     </div>
-                    <div class="form-group">
-                        <label for="size">Approximate Size</label>
-                        <select id="size" name="size">
-                            <option value="">Select size</option>
-                            <option value="small">Small (2-4 inches)</option>
-                            <option value="medium">Medium (4-8 inches)</option>
-                            <option value="large">Large (8-12 inches)</option>
-                            <option value="extra-large">Extra Large (12+ inches)</option>
-                            <option value="sleeve">Full Sleeve</option>
-                        </select>
+
+                    <div class="booking-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Artist:</span>
+                            <span class="summary-value" data-summary="artistName">Not selected</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Name:</span>
+                            <span class="summary-value">
+                                <span data-summary="firstName"></span> <span data-summary="lastName"></span>
+                            </span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Email:</span>
+                            <span class="summary-value" data-summary="email"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Phone:</span>
+                            <span class="summary-value" data-summary="phone"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Appointment:</span>
+                            <span class="summary-value">
+                                <span data-summary="appointmentDate"></span> at <span data-summary="appointmentTime"></span>
+                            </span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Placement:</span>
+                            <span class="summary-value" data-summary="placement"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Size:</span>
+                            <span class="summary-value" data-summary="size"></span>
+                        </div>
+                        <div class="summary-item summary-total">
+                            <span class="summary-label">Consultation Fee:</span>
+                            <span class="summary-value">$50.00</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="description">Describe Your Vision *</label>
-                        <textarea id="description" name="description"
-                            placeholder="Tell us about your tattoo idea, style preferences, any reference images you have in mind..."
-                            required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="budget">Budget Range</label>
-                        <select id="budget" name="budget">
-                            <option value="">Select budget</option>
-                            <option value="500-1000">$500 - $1,000</option>
-                            <option value="1000-2500">$1,000 - $2,500</option>
-                            <option value="2500-5000">$2,500 - $5,000</option>
-                            <option value="5000+">$5,000+</option>
-                            <option value="discuss">Prefer to discuss</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="timeline">Preferred Timeline</label>
-                        <select id="timeline" name="timeline">
-                            <option value="">Select timeline</option>
-                            <option value="asap">As soon as possible</option>
-                            <option value="1month">Within 1 month</option>
-                            <option value="2months">Within 2-3 months</option>
-                            <option value="flexible">I'm flexible</option>
-                        </select>
-                    </div>
+
+                    <p style="font-size: var(--font-size-xs); opacity: 0.7; margin-top: var(--space-md); text-align: center;">
+                        * Consultation fee is credited toward your final tattoo price
+                    </p>
                 </div>
+            </div>
 
-                <!-- Enhanced Booking Features -->
-                <div id="deposit-section"></div>
-                <div id="reminder-preferences"></div>
-                <div id="referral-section"></div>
-                <div id="consent-section"></div>
-                <div id="calendar-section"></div>
+            <!-- Navigation Buttons -->
+            <div class="wizard-navigation">
+                <button type="button" class="wizard-btn wizard-btn-secondary wizard-btn-prev" disabled>
+                    Previous
+                </button>
+                <button type="button" class="wizard-btn wizard-btn-primary wizard-btn-next">
+                    Next Step
+                </button>
+            </div>
 
-                <button type="submit" class="submit-btn">SUBMIT BOOKING REQUEST</button>
-
-                <div class="afterpay-info">
-                    <div class="afterpay-logo">SECURE PAYMENT</div>
-                    <p>Pay consultation deposit securely via Stripe. Afterpay available for larger tattoos.</p>
-                    <div class="payment-methods">
-                        💳 Visa • Mastercard • Afterpay • Apple Pay • Google Pay
-                    </div>
-                </div>
-            </form>
+            <!-- Loading State -->
+            <div class="wizard-loading">
+                <div class="loading-spinner"></div>
+                <p>Processing your booking...</p>
+            </div>
         </div>
 
         <!-- Sidebar -->
         <div class="booking-sidebar">
             <div class="sidebar-card">
                 <h3>BOOKING SUMMARY</h3>
-                <div class="price-estimate" id="price-estimate">$0</div>
-                <p style="font-size: 0.8125rem; opacity: 0.6; text-align: center; margin-bottom: 1.5rem;">Estimated
-                    price range</p>
+                <div class="price-estimate" data-summary="price">$0</div>
+                <p style="font-size: var(--font-size-xs); opacity: 0.6; text-align: center; margin-bottom: 1.5rem;">
+                    Estimated price range
+                </p>
                 <ul class="summary-list">
                     <li>
-                        <span>Selected Artist:</span>
-                        <span class="highlight" id="summary-artist">Not selected</span>
+                        <span>Artist:</span>
+                        <span class="highlight" data-summary="artist">Not selected</span>
                     </li>
                     <li>
                         <span>Placement:</span>
-                        <span id="summary-placement">Not specified</span>
+                        <span data-summary="placement-sidebar">Not specified</span>
                     </li>
                     <li>
                         <span>Size:</span>
-                        <span id="summary-size">Not specified</span>
+                        <span data-summary="size-sidebar">Not specified</span>
                     </li>
                     <li>
                         <span>Consultation Fee:</span>
                         <span>$50*</span>
                     </li>
                 </ul>
-                <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem;">*Credited toward final tattoo price</p>
+                <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem;">
+                    *Credited toward final tattoo price
+                </p>
             </div>
 
             <div class="sidebar-card">
                 <h3>WHAT HAPPENS NEXT?</h3>
-                <ol style="list-style: none; font-size: 0.875rem; line-height: 2; padding: 0;">
-                    <li>1. We review your request within 24 hours</li>
-                    <li>2. Artist reviews your concept</li>
-                    <li>3. We contact you to schedule consultation</li>
-                    <li>4. Pay deposit to confirm appointment</li>
-                    <li>5. Your tattoo journey begins!</li>
+                <ol style="list-style: none; font-size: var(--font-size-sm); line-height: 2; padding: 0;">
+                    <li>1. Secure your consultation ($50)</li>
+                    <li>2. Receive confirmation email</li>
+                    <li>3. Meet with your artist</li>
+                    <li>4. Finalize design & pricing</li>
+                    <li>5. Book your tattoo session!</li>
                 </ol>
+            </div>
+
+            <div class="payment-security">
+                <div class="payment-security-title">🔒 SECURE PAYMENT</div>
+                <p style="font-size: var(--font-size-xs); opacity: 0.8; margin: var(--space-xs) 0;">
+                    Powered by Stripe. Your payment information is encrypted and secure.
+                </p>
+                <div class="payment-methods">
+                    💳 Visa • Mastercard • Amex • Apple Pay • Google Pay
+                </div>
             </div>
 
             <div class="sidebar-card">
                 <h3>NEED HELP?</h3>
-                <p style="font-size: 0.875rem; opacity: 0.8; margin-bottom: 1rem;">Not sure which artist to choose or
-                    have questions?</p>
-                <p style="font-size: 0.9375rem; margin-bottom: 0;">
-                    <strong>Call us:</strong> <a href="tel:+61478128212" style="color: var(--color-accent);">0478 128
-                        212</a><br>
+                <p style="font-size: var(--font-size-sm); opacity: 0.8; margin-bottom: 1rem;">
+                    Questions about the booking process?
+                </p>
+                <p style="font-size: var(--font-size-sm); margin-bottom: 0;">
+                    <strong>Call:</strong> <a href="tel:+61478128212" style="color: var(--color-accent);">0478 128 212</a><br>
                     <strong>Email:</strong> <a href="mailto:berserk.tattoos.au@gmail.com"
                         style="color: var(--color-accent); word-break: break-all;">berserk.tattoos.au@gmail.com</a>
                 </p>
@@ -837,291 +652,44 @@
         </div>
     </div>
 
-    <!-- Success Modal -->
-    <div class="modal" id="success-modal">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div class="modal-icon">✓</div>
-            <h2>BOOKING REQUEST SENT!</h2>
-            <p>Thank you for choosing Berserk Tattoos. We've received your booking request and will get back to you
-                within 24 hours.</p>
-            <p style="font-size: 0.875rem; opacity: 0.7;">Check your email for confirmation and next steps.</p>
-            <a href="index.html" class="submit-btn" style="display: inline-block; text-decoration: none;">RETURN
-                HOME</a>
-        </div>
-    </div>
-
-    <!-- FAQ Section -->
-    <section style="padding: 4rem 5%; max-width: 1200px; margin: 0 auto; background: var(--color-dark);">
-        <h2
-            style="text-align: center; margin-bottom: 3rem; font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem);">
-            BOOKING FAQ</h2>
-        <div style="display: grid; gap: 2.5rem;">
-            <div>
-                <h3
-                    style="color: var(--color-accent); margin-bottom: 0.75rem; font-size: 1.25rem; font-family: var(--font-display);">
-                    What's the consultation process?</h3>
-                <p style="line-height: 1.8; opacity: 0.85;">After submitting this form, we review your request within 24
-                    hours. Your chosen artist evaluates your concept for feasibility, placement, and sizing. We then
-                    contact you to schedule a 30-minute in-person consultation ($50, credited toward your tattoo).
-                    During consultation, we discuss design details, create custom sketches, provide accurate pricing,
-                    and book your session.</p>
-            </div>
-            <div>
-                <h3
-                    style="color: var(--color-accent); margin-bottom: 0.75rem; font-size: 1.25rem; font-family: var(--font-display);">
-                    How much will my tattoo cost?</h3>
-                <p style="line-height: 1.8; opacity: 0.85;">Pricing varies by size, complexity, and artist. Small pieces
-                    (2-4") typically range $300-$800. Medium work (4-8") runs $800-$2,500. Large pieces and sleeves are
-                    quoted hourly ($200-$300/hour depending on artist). We provide exact quotes during consultation.
-                    Deposit required to book: $100-$500 depending on project scale.</p>
-            </div>
-            <div>
-                <h3
-                    style="color: var(--color-accent); margin-bottom: 0.75rem; font-size: 1.25rem; font-family: var(--font-display);">
-                    How far in advance should I book?</h3>
-                <p style="line-height: 1.8; opacity: 0.85;">Our artists typically book 2-8 weeks out depending on
-                    project complexity and their schedule. Large custom pieces may require 3+ months for design
-                    development and scheduling multiple sessions. We recommend booking as early as possible, especially
-                    for specific date requirements.</p>
-            </div>
-            <div>
-                <h3
-                    style="color: var(--color-accent); margin-bottom: 0.75rem; font-size: 1.25rem; font-family: var(--font-display);">
-                    Do you offer Afterpay?</h3>
-                <p style="line-height: 1.8; opacity: 0.85;">Yes! Afterpay is available for tattoos over $500. Pay in 4
-                    interest-free installments. This makes larger pieces and full sleeves more accessible. Discuss
-                    payment options during your consultation.</p>
-            </div>
-            <div>
-                <h3
-                    style="color: var(--color-accent); margin-bottom: 0.75rem; font-size: 1.25rem; font-family: var(--font-display);">
-                    What if I'm not sure which artist to choose?</h3>
-                <p style="line-height: 1.8; opacity: 0.85;">No problem! In your design description, tell us about your
-                    concept and what draws you to certain styles. We'll recommend the best artist match for your vision.
-                    You can also call us at <a href="tel:+61478128212" style="color: var(--color-accent);">0478 128
-                        212</a> to discuss your ideas before booking.</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Berserk Tattoos. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Scripts -->
+    <script src="js/calendar-widget.js"></script>
+    <script src="js/booking-wizard.js"></script>
+
     <script>
-        // Artist Selection
-        const artistCards = document.querySelectorAll('.artist-card');
-        const summaryArtist = document.getElementById('summary-artist');
+        // Initialize calendar widget when step 3 is shown
+        let calendarWidget;
 
-        artistCards.forEach(card => {
-            card.addEventListener('click', function () {
-                // Remove previous selection
-                artistCards.forEach(c => c.classList.remove('selected'));
-
-                // Add selection to clicked card
-                this.classList.add('selected');
-
-                // Update hidden radio button
-                const radio = this.querySelector('input[type="radio"]');
-                radio.checked = true;
-
-                // Update summary
-                const artistName = this.querySelector('h4').textContent;
-                summaryArtist.textContent = artistName;
-            });
-
-            // Add keyboard accessibility
-            card.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.click();
-                }
-            });
-        });
-
-        // Pre-select artist from URL parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        const artistParam = urlParams.get('artist');
-        if (artistParam) {
-            const targetCard = document.querySelector(`[data-artist="${artistParam}"]`);
-            if (targetCard) {
-                targetCard.click();
-            }
-        }
-
-        // Update Summary Based on Form Input
-        const placementSelect = document.getElementById('placement');
-        const sizeSelect = document.getElementById('size');
-        const summaryPlacement = document.getElementById('summary-placement');
-        const summarySize = document.getElementById('summary-size');
-        const priceEstimate = document.getElementById('price-estimate');
-
-        placementSelect.addEventListener('change', function () {
-            summaryPlacement.textContent = this.value || 'Not specified';
-            updatePriceEstimate();
-        });
-
-        sizeSelect.addEventListener('change', function () {
-            summarySize.textContent = this.options[this.selectedIndex].text || 'Not specified';
-            updatePriceEstimate();
-        });
-
-        // Simple Price Estimation Logic
-        function updatePriceEstimate() {
-            const size = sizeSelect.value;
-            let estimate = '';
-
-            switch (size) {
-                case 'small':
-                    estimate = '$500 - $1,000';
-                    break;
-                case 'medium':
-                    estimate = '$1,000 - $2,500';
-                    break;
-                case 'large':
-                    estimate = '$2,500 - $5,000';
-                    break;
-                case 'extra-large':
-                    estimate = '$5,000 - $10,000';
-                    break;
-                case 'sleeve':
-                    estimate = '$10,000+';
-                    break;
-                default:
-                    estimate = '$0';
-            }
-
-            priceEstimate.textContent = estimate;
-        }
-
-        // Form Submission with Formspree
-        const bookingForm = document.getElementById('booking-form');
-        const successModal = document.getElementById('success-modal');
-        const submitBtn = document.querySelector('.submit-btn');
-
-        bookingForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Check if artist is selected
-            const selectedArtist = document.querySelector('input[name="artist"]:checked');
-            if (!selectedArtist) {
-                showError('Please select an artist before submitting.');
-                return;
-            }
-
-            // Set reply-to email
-            const emailField = document.getElementById('email');
-            const replyToField = document.querySelector('input[name="_replyto"]');
-            replyToField.value = emailField.value;
-
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'SUBMITTING...';
-
-            // Submit to Formspree
-            fetch(this.action, {
-                method: 'POST',
-                body: new FormData(this),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-                .then(response => {
-                    if (response.ok) {
-                        // Success - redirect to Stripe payment for consultation deposit
-                        const selectedArtist = document.querySelector('input[name="artist"]:checked').value;
-                        const clientName = document.getElementById('first-name').value + ' ' + document.getElementById('last-name').value;
-                        const clientEmail = document.getElementById('email').value;
-
-                        // Create Stripe Payment Link with metadata
-                        const stripeUrl = `https://buy.stripe.com/YOUR_PAYMENT_LINK_ID?client_reference_id=${Date.now()}&prefilled_email=${encodeURIComponent(clientEmail)}&prefilled_name=${encodeURIComponent(clientName)}&prefilled_artist=${encodeURIComponent(selectedArtist)}`;
-
-                        // Redirect to Stripe
-                        window.location.href = stripeUrl;
-                    } else {
-                        return response.json().then(data => {
-                            if (data.errors) {
-                                throw new Error(data.errors.map(error => error.message).join(', '));
-                            } else {
-                                throw new Error('Oops! There was a problem submitting your form');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Create calendar on step 3
+            const bookingWizard = window.bookingWizard;
+            
+            if (bookingWizard) {
+                const originalShowStep = bookingWizard.showStep.bind(bookingWizard);
+                bookingWizard.showStep = function(stepNumber) {
+                    originalShowStep(stepNumber);
+                    
+                    // Initialize calendar on step 3
+                    if (stepNumber === 3 && !calendarWidget) {
+                        calendarWidget = new CalendarWidget('calendar-widget', {
+                            onDateSelect: (date) => {
+                                console.log('Date selected:', date);
+                            },
+                            onTimeSelect: (date, time) => {
+                                console.log('Time selected:', time);
+                                bookingWizard.setAppointment(
+                                    date.toISOString().split('T')[0],
+                                    time
+                                );
                             }
                         });
                     }
-                })
-                .catch(error => {
-                    showError(error.message);
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'SUBMIT BOOKING REQUEST';
-                });
-        });
-
-        // Error display function
-        function showError(message) {
-            // Remove existing error messages
-            const existingError = document.querySelector('.form-error');
-            if (existingError) {
-                existingError.remove();
-            }
-
-            // Create error message
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'form-error';
-            errorDiv.textContent = message;
-
-            // Insert before submit button
-            submitBtn.parentNode.insertBefore(errorDiv, submitBtn);
-
-            // Scroll to error
-            errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-        // Modal Close
-        document.querySelector('.modal-close').addEventListener('click', function () {
-            successModal.classList.remove('active');
-        });
-
-        successModal.addEventListener('click', function (e) {
-            if (e.target === this) {
-                this.classList.remove('active');
-            }
-        });
-
-        // Enhanced Field Validation
-        const requiredFields = document.querySelectorAll('[required]');
-        requiredFields.forEach(field => {
-            field.addEventListener('blur', function () {
-                if (!this.value.trim()) {
-                    this.style.borderColor = '#7B1113';
-                } else {
-                    this.style.borderColor = 'rgba(242, 242, 242, 0.2)';
-                }
-            });
-
-            field.addEventListener('input', function () {
-                if (this.value.trim()) {
-                    this.style.borderColor = 'rgba(242, 242, 242, 0.2)';
-                }
-            });
-        });
-
-        // Email validation
-        const emailField = document.getElementById('email');
-        emailField.addEventListener('blur', function () {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (this.value && !emailRegex.test(this.value)) {
-                this.style.borderColor = '#7B1113';
-            }
-        });
-
-        // Phone validation
-        const phoneField = document.getElementById('phone');
-        phoneField.addEventListener('blur', function () {
-            const phoneRegex = /^[\d\s\-\+\(\)]{8,}$/;
-            if (this.value && !phoneRegex.test(this.value)) {
-                this.style.borderColor = '#7B1113';
+                };
             }
         });
     </script>
@@ -1132,116 +700,23 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID', {
-            send_page_view: true
-        });
+        gtag('config', 'GA_MEASUREMENT_ID');
 
-        // Track booking funnel events
-
-        // Artist selection
-        document.querySelectorAll('.artist-card').forEach(card => {
-            card.addEventListener('click', function () {
-                const artistName = this.querySelector('h4').textContent;
-                gtag('event', 'select_artist', {
-                    'event_category': 'booking_funnel',
-                    'event_label': artistName,
-                    'value': 1
-                });
-            });
-        });
-
-        // Track form field interactions (engagement)
-        let formEngagement = {
-            placement: false,
-            size: false,
-            description: false
-        };
-
-        document.getElementById('placement').addEventListener('change', function () {
-            if (!formEngagement.placement) {
-                gtag('event', 'form_placement_filled', {
-                    'event_category': 'booking_funnel',
-                    'event_label': this.value
-                });
-                formEngagement.placement = true;
-            }
-        });
-
-        document.getElementById('size').addEventListener('change', function () {
-            if (!formEngagement.size) {
-                gtag('event', 'form_size_filled', {
-                    'event_category': 'booking_funnel',
-                    'event_label': this.value
-                });
-                formEngagement.size = true;
-            }
-        });
-
-        document.getElementById('description').addEventListener('blur', function () {
-            if (!formEngagement.description && this.value.trim().length > 20) {
-                gtag('event', 'form_description_filled', {
-                    'event_category': 'booking_funnel',
-                    'event_label': 'Description Complete'
-                });
-                formEngagement.description = true;
-            }
-        });
-
-        // Track form submission (conversion event)
-        document.getElementById('booking-form').addEventListener('submit', function (e) {
-            const selectedArtist = document.querySelector('input[name="artist"]:checked');
-            const artistName = selectedArtist ? selectedArtist.value : 'none';
-            const size = document.getElementById('size').value;
-
-            gtag('event', 'booking_request_submitted', {
-                'event_category': 'conversion',
-                'event_label': artistName,
-                'value': 1
-            });
-
-            // Send to Google Analytics 4 as conversion
-            gtag('event', 'generate_lead', {
-                'event_category': 'conversion',
-                'artist': artistName,
-                'tattoo_size': size,
-                'value': 1
-            });
-        });
-
-        // Track help interactions
-        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-            link.addEventListener('click', () => {
-                gtag('event', 'click_phone', {
-                    'event_category': 'contact',
-                    'event_label': 'Phone Click'
-                });
-            });
-        });
-
-        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
-            link.addEventListener('click', () => {
-                gtag('event', 'click_email', {
-                    'event_category': 'contact',
-                    'event_label': 'Email Click'
-                });
-            });
-        });
-    </script>
-
-    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('✓ Service Worker registered successfully');
-                    })
-                    .catch(error => {
-                        console.error('✗ Service Worker registration failed:', error);
+        // Track wizard steps
+        document.addEventListener('DOMContentLoaded', () => {
+            const wizard = window.bookingWizard;
+            if (wizard && typeof gtag !== 'undefined') {
+                wizard.onStepChange = function(stepNumber) {
+                    gtag('event', 'booking_step_' + stepNumber, {
+                        event_category: 'booking_funnel',
+                        event_label: 'Step ' + stepNumber,
+                        value: stepNumber
                     });
-            });
-        }
+                };
+            }
+        });
     </script>
 </body>
 
 </html>
+

@@ -40,6 +40,11 @@
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet">
 
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="css/core/variables.css">
+  <link rel="stylesheet" href="css/core/animations.css">
+  <link rel="stylesheet" href="css/core/utilities.css">
+
   <!-- Structured Data -->
   <script type="application/ld+json">
     {
@@ -93,6 +98,7 @@
     /* Header */
     .header {
       background: rgba(17, 17, 17, 0.95);
+      -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       position: fixed;
       top: 0;
@@ -712,6 +718,11 @@
     </div>
   </footer>
 
+  <!-- Enhanced UX Scripts -->
+  <script src="js/aftercare-timeline.js"></script>
+  <script src="js/scroll-animations.js"></script>
+  <script src="js/micro-interactions.js"></script>
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
   <script>
@@ -729,6 +740,21 @@
     gtag('event', 'view_aftercare_guide', {
       'event_category': 'engagement',
       'event_label': 'Aftercare Guide'
+    });
+
+    // Track progress tracker interactions
+    document.addEventListener('DOMContentLoaded', () => {
+      const trackBtn = document.getElementById('track-progress');
+      if (trackBtn) {
+        trackBtn.addEventListener('click', () => {
+          const day = document.getElementById('healing-day')?.value;
+          gtag('event', 'track_healing_progress', {
+            'event_category': 'aftercare',
+            'event_label': `Day ${day}`,
+            'value': parseInt(day)
+          });
+        });
+      }
     });
   </script>
 </body>

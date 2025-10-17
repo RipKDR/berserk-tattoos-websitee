@@ -1,0 +1,399 @@
+/**
+ * Berserk Tattoos - Gallery Component
+ * Advanced gallery with lightbox modal, touch gestures, and filter animations
+ */
+
+/* ===== GALLERY CONTAINER ===== */
+.gallery {
+  padding: var(--space-3xl) 5%;
+  background: var(--color-gray-900);
+  position: relative;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  max-width: var(--container-3xl);
+  margin: 0 auto;
+}
+
+/* ===== GALLERY ITEMS ===== */
+.gallery-item {
+  position: relative;
+  height: 400px;
+  background: var(--color-gray-800);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--duration-base) var(--ease-out);
+  border-radius: var(--border-radius-base);
+}
+
+.gallery-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-base);
+  z-index: 1;
+}
+
+.gallery-item:hover {
+  transform: scale(0.98);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.gallery-item:hover::before {
+  opacity: 1;
+}
+
+.gallery-item img {
+  transition: transform var(--duration-slow) var(--ease-out);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* ===== GALLERY OVERLAY ===== */
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-lg);
+  color: var(--color-light);
+  transform: translateY(100%);
+  transition: transform var(--duration-base) var(--ease-out);
+  z-index: 2;
+}
+
+.gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.gallery-overlay h4 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-xs);
+  color: var(--color-light);
+}
+
+.gallery-overlay p {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ===== MASONRY LAYOUT ===== */
+.gallery-item:nth-child(3n + 1) {
+  grid-row: span 2;
+  height: 100%;
+}
+
+/* ===== LIGHTBOX MODAL ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: var(--z-modal);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-2xl);
+  animation: lightboxZoomIn var(--duration-base) var(--ease-out);
+}
+
+/* ===== LIGHTBOX CONTROLS ===== */
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: var(--color-light);
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-base);
+  z-index: 1;
+}
+
+.lightbox-close:hover {
+  background: var(--color-accent);
+  transform: scale(1.1);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: var(--color-light);
+  font-size: 1.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-base);
+  opacity: 0.7;
+}
+
+.lightbox-nav:hover {
+  background: var(--color-accent);
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev {
+  left: 1rem;
+}
+
+.lightbox-next {
+  right: 1rem;
+}
+
+/* ===== LIGHTBOX INFO ===== */
+.lightbox-info {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  padding: var(--space-md);
+  border-radius: var(--border-radius-base);
+  color: var(--color-light);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.lightbox-info h4 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-xs);
+  color: var(--color-light);
+}
+
+.lightbox-info p {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ===== GALLERY FILTERS ===== */
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: var(--space-sm) var(--space-lg);
+  background: transparent;
+  border: 2px solid var(--border-color);
+  color: var(--color-light);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  cursor: pointer;
+  transition: all var(--duration-base);
+  border-radius: var(--border-radius-full);
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out);
+  z-index: -1;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+  transform: scaleX(1);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  color: var(--color-light);
+  border-color: var(--color-accent);
+}
+
+/* ===== LOADING STATES ===== */
+.gallery-item.loading {
+  background: var(--color-gray-800);
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-item.loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(242, 242, 242, 0.05) 50%,
+    transparent 100%
+  );
+  animation: shimmerGradient 2s infinite;
+}
+
+/* ===== TOUCH GESTURES ===== */
+.gallery-item {
+  touch-action: manipulation;
+}
+
+.gallery-item:active {
+  transform: scale(0.95);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .gallery-item:nth-child(3n + 1) {
+    grid-row: span 1;
+    height: 400px;
+  }
+
+  .gallery-filters {
+    gap: var(--space-sm);
+  }
+
+  .filter-btn {
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--font-size-xs);
+  }
+
+  .lightbox {
+    padding: 1rem;
+  }
+
+  .lightbox-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .lightbox-close {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
+/* ===== ANIMATION KEYFRAMES ===== */
+@keyframes lightboxZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmerGradient {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-item,
+  .gallery-item img,
+  .gallery-overlay,
+  .lightbox-image {
+    transition: none;
+    animation: none;
+  }
+
+  .gallery-item:hover {
+    transform: none;
+  }
+
+  .gallery-item:hover img {
+    transform: none;
+  }
+}
+
+/* ===== HIGH CONTRAST MODE ===== */
+@media (prefers-contrast: high) {
+  .gallery-item {
+    border-color: var(--border-color-light);
+  }
+
+  .gallery-item:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px var(--color-accent);
+  }
+
+  .filter-btn {
+    border-color: var(--border-color-light);
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    border-color: var(--color-accent);
+  }
+}

@@ -1,28 +1,44 @@
 {
-  "name": "berserk-tattoos-website",
-  "version": "1.0.0",
-  "description": "Production-ready static website for Berserk Tattoos Melbourne with BMad Method performance optimizations",
-  "scripts": {
-    "optimize-images": "node optimize-images.js",
-    "update-html": "node update-html-images.js",
-    "optimize-all": "npm run optimize-images && npm run update-html",
-    "minify-html": "html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true --input-dir . --output-dir ./dist --file-ext html",
-    "build": "npm run optimize-all && npm run minify-html"
-  },
-  "keywords": [
-    "tattoo",
-    "website",
-    "static",
-    "performance",
-    "optimization"
-  ],
-  "author": "Berserk Tattoos",
-  "license": "MIT",
-  "devDependencies": {
-    "sharp": "^0.33.0",
-    "html-minifier-terser": "^7.2.0"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  }
+	"name": "berserk-tattoos-website",
+	"version": "1.0.0",
+	"description": "Production-ready static website for Berserk Tattoos Melbourne with BMad Method performance optimizations",
+	"scripts": {
+		"optimize-images": "node optimize-images.js",
+		"update-html": "node update-html-images.js",
+		"optimize-all": "npm run optimize-images && npm run update-html",
+		"minify-html": "html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true --input-dir . --output-dir ./dist --file-ext html",
+		"build": "npm run optimize-all && npm run minify-html",
+		"lint:js": "eslint \"**/*.js\" --ignore-path .gitignore",
+		"lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore",
+		"lint:html": "htmlhint \"**/*.html\" --config .htmlhintrc",
+		"lint": "npm-run-all --parallel lint:*",
+		"format": "prettier --write \"**/*.{js,css,html,json,md}\""
+	},
+	"keywords": [
+		"tattoo",
+		"website",
+		"static",
+		"performance",
+		"optimization"
+	],
+	"author": "Berserk Tattoos",
+	"license": "MIT",
+	"dependencies": {
+		"stripe": "^14.0.0"
+	},
+	"devDependencies": {
+		"sharp": "^0.33.0",
+		"html-minifier-terser": "^7.2.0",
+		"eslint": "^8.56.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-import": "^2.29.0",
+		"prettier": "^3.1.0",
+		"stylelint": "^15.11.0",
+		"stylelint-config-standard": "^34.0.0",
+		"htmlhint": "^1.1.5",
+		"npm-run-all": "^4.1.5"
+	},
+	"engines": {
+		"node": ">=14.0.0"
+	}
 }

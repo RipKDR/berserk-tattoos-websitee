@@ -1,0 +1,223 @@
+/**
+ * Berserk Tattoos - Design System Variables
+ * Central source of truth for all design tokens
+ * Professional, modern, and refined aesthetic
+ */
+
+:root {
+    /* ===== COLOR PALETTE ===== */
+    /* Primary Colors */
+    --color-dark: #111111;
+    --color-dark-rgb: 17, 17, 17;
+    --color-light: #F2F2F2;
+    --color-light-rgb: 242, 242, 242;
+    --color-accent: #7B1113;
+    --color-accent-rgb: 123, 17, 19;
+    
+    /* Secondary Colors */
+    --color-accent-light: #9B1515;
+    --color-accent-dark: #5B0D0F;
+    --color-accent-alpha-10: rgba(123, 17, 19, 0.1);
+    --color-accent-alpha-20: rgba(123, 17, 19, 0.2);
+    --color-accent-alpha-30: rgba(123, 17, 19, 0.3);
+    --color-accent-alpha-50: rgba(123, 17, 19, 0.5);
+    
+    /* Neutral Shades */
+    --color-gray-900: #0a0a0a;
+    --color-gray-800: #1a1a1a;
+    --color-gray-700: #2a2a2a;
+    --color-gray-600: #3a3a3a;
+    --color-gray-500: #5a5a5a;
+    --color-gray-400: #7a7a7a;
+    --color-gray-300: #9a9a9a;
+    --color-gray-200: #cacaca;
+    --color-gray-100: #e2e2e2;
+    
+    /* Feedback Colors */
+    --color-success: #10B981;
+    --color-error: #EF4444;
+    --color-warning: #F59E0B;
+    --color-info: #3B82F6;
+    
+    /* ===== TYPOGRAPHY ===== */
+    /* Font Families */
+    --font-display: 'Cinzel', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'Courier New', monospace;
+    
+    /* Font Sizes - Fluid Scale */
+    --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+    --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    --font-size-md: clamp(1.125rem, 1.05rem + 0.375vw, 1.25rem);
+    --font-size-lg: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+    --font-size-xl: clamp(1.5rem, 1.35rem + 0.75vw, 2rem);
+    --font-size-2xl: clamp(2rem, 1.75rem + 1.25vw, 2.5rem);
+    --font-size-3xl: clamp(2.5rem, 2rem + 2.5vw, 3.5rem);
+    --font-size-4xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+    --font-size-5xl: clamp(3.5rem, 3rem + 2.5vw, 5rem);
+    
+    /* Font Weights */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Line Heights */
+    --line-height-tight: 1.2;
+    --line-height-snug: 1.4;
+    --line-height-normal: 1.6;
+    --line-height-relaxed: 1.8;
+    --line-height-loose: 2;
+    
+    /* Letter Spacing */
+    --letter-spacing-tight: -0.025em;
+    --letter-spacing-normal: 0;
+    --letter-spacing-wide: 0.025em;
+    --letter-spacing-wider: 0.05em;
+    --letter-spacing-widest: 0.1em;
+    
+    /* ===== SPACING SCALE ===== */
+    --space-xxs: 0.25rem;   /* 4px */
+    --space-xs: 0.5rem;     /* 8px */
+    --space-sm: 1rem;       /* 16px */
+    --space-md: 1.5rem;     /* 24px */
+    --space-lg: 2rem;       /* 32px */
+    --space-xl: 3rem;       /* 48px */
+    --space-2xl: 4rem;      /* 64px */
+    --space-3xl: 6rem;      /* 96px */
+    --space-4xl: 8rem;      /* 128px */
+    --space-5xl: 12rem;     /* 192px */
+    
+    /* ===== LAYOUT ===== */
+    /* Container Widths */
+    --container-xs: 480px;
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+    --container-2xl: 1400px;
+    --container-3xl: 1600px;
+    
+    /* Z-Index Scale */
+    --z-base: 1;
+    --z-sticky: 100;
+    --z-fixed: 500;
+    --z-overlay: 1000;
+    --z-modal: 2000;
+    --z-toast: 3000;
+    --z-tooltip: 4000;
+    
+    /* ===== TRANSITIONS ===== */
+    /* Timing Functions */
+    --ease-linear: linear;
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
+    
+    /* Duration */
+    --duration-instant: 50ms;
+    --duration-fast: 150ms;
+    --duration-base: 300ms;
+    --duration-slow: 600ms;
+    --duration-slower: 900ms;
+    --duration-slowest: 1200ms;
+    
+    /* Combined Transitions */
+    --transition-fast: var(--duration-fast) var(--ease-in-out);
+    --transition-base: var(--duration-base) var(--ease-in-out);
+    --transition-slow: var(--duration-slow) var(--ease-in-out);
+    --transition-smooth: var(--duration-base) var(--ease-in-out-smooth);
+    
+    /* ===== SHADOWS ===== */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.6);
+    --shadow-2xl: 0 28px 64px rgba(0, 0, 0, 0.7);
+    --shadow-glow: 0 0 20px rgba(123, 17, 19, 0.5);
+    --shadow-glow-strong: 0 0 40px rgba(123, 17, 19, 0.8);
+    
+    /* ===== BORDERS ===== */
+    --border-width-thin: 1px;
+    --border-width-base: 2px;
+    --border-width-thick: 3px;
+    
+    --border-radius-none: 0;
+    --border-radius-sm: 4px;
+    --border-radius-base: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px;
+    --border-radius-xl: 24px;
+    --border-radius-2xl: 32px;
+    --border-radius-full: 9999px;
+    
+    --border-color: rgba(242, 242, 242, 0.1);
+    --border-color-light: rgba(242, 242, 242, 0.2);
+    --border-color-dark: rgba(0, 0, 0, 0.2);
+    
+    /* ===== BLUR & BACKDROP ===== */
+    --blur-none: 0;
+    --blur-sm: 8px;
+    --blur-base: 12px;
+    --blur-md: 16px;
+    --blur-lg: 24px;
+    --blur-xl: 32px;
+    
+    /* ===== GRADIENTS ===== */
+    --gradient-dark: linear-gradient(180deg, rgba(17, 17, 17, 0) 0%, rgba(17, 17, 17, 0.9) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+    --gradient-radial: radial-gradient(ellipse at center, rgba(123, 17, 19, 0.2), transparent 70%);
+    
+    /* ===== ANIMATION ===== */
+    --animation-spin: spin 1s linear infinite;
+    --animation-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    --animation-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animation-bounce: bounce 1s infinite;
+    
+    /* ===== TOUCH TARGETS ===== */
+    --touch-target-min: 44px;
+    --touch-target-comfortable: 48px;
+    
+    /* ===== BREAKPOINTS (for reference) ===== */
+    --breakpoint-xs: 480px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+}
+
+/* ===== DARK MODE ADJUSTMENTS (Optional) ===== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Already optimized for dark mode */
+    }
+}
+
+/* ===== HIGH CONTRAST MODE ===== */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: rgba(242, 242, 242, 0.3);
+        --border-color-light: rgba(242, 242, 242, 0.4);
+    }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --duration-fast: 0ms;
+        --duration-base: 0ms;
+        --duration-slow: 0ms;
+        --duration-slower: 0ms;
+        --duration-slowest: 0ms;
+    }
+}
+

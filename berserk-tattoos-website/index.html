@@ -110,7 +110,16 @@
     <!-- Browser compatibility CSS -->
     <link rel="stylesheet" href="css/browser-fallbacks.css">
 
-    <!-- Performance monitoring (production only) -->
+    <!-- Enhanced CSS Architecture -->
+    <link rel="stylesheet" href="css/core/variables.css">
+    <link rel="stylesheet" href="css/core/animations.css">
+    <link rel="stylesheet" href="css/core/utilities.css">
+    <link rel="stylesheet" href="css/components/hero.css">
+    <link rel="stylesheet" href="css/components/gallery.css">
+
+    <!-- Enhanced JavaScript -->
+    <script src="js/image-loader.js" defer></script>
+    <script src="js/gallery-enhanced.js" defer></script>
     <script src="js/performance-monitor.js" defer></script>
 
     <style>
@@ -916,10 +925,13 @@
             <p class="hero-tagline">Where film noir meets fine art. Three master artists crafting custom tattoos that
                 tell your story. Melbourne's most sought-after studio for bold, refined ink.</p>
             <div class="hero-ctas">
-                <a href="book.html" class="btn btn-primary">BOOK CONSULTATION</a>
-                <a href="#artists" class="btn btn-secondary">MEET OUR ARTISTS</a>
+                <a href="book.html" class="btn btn-primary magnetic-hover">BOOK CONSULTATION</a>
+                <a href="#artists" class="btn btn-secondary magnetic-hover">MEET OUR ARTISTS</a>
             </div>
         </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" aria-label="Scroll down to see more content"></div>
 
         <!-- Hero Gallery Preview -->
         <div class="hero-gallery">
@@ -1070,126 +1082,150 @@
             <p class="section-subtitle">Every piece tells a story. Explore our artists' latest creations.</p>
         </div>
 
+        <!-- Gallery Filters -->
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">ALL WORK</button>
+            <button class="filter-btn" data-filter="fine-line">FINE LINE</button>
+            <button class="filter-btn" data-filter="realism">REALISM</button>
+            <button class="filter-btn" data-filter="blackwork">BLACKWORK</button>
+        </div>
+
         <div class="gallery-grid">
-            <div class="gallery-item" data-artist="amelia">
-                <a class="tile-link" href="artists.html#amelia">
-                    <picture>
-                        <source
-                            srcset="/portfolio/amelia-3-480w.webp 480w, /portfolio/amelia-3-768w.webp 768w, /portfolio/amelia-3-1200w.webp 1200w, /portfolio/amelia-3.webp 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
-                        <source
-                            srcset="/portfolio/amelia-3-480w.jpg 480w, /portfolio/amelia-3-768w.jpg 768w, /portfolio/amelia-3-1200w.jpg 1200w, /portfolio/amelia-3.jpg 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
-                        <img src="/portfolio/amelia-3.jpg" class="media-cover" alt="Fine line tattoo by Amelia Kelso"
-                            width="800" height="1000" loading="lazy" decoding="async"
-                            onerror="this.src='/portfolio/amelia-3.jpg'">
-                    </picture>
-                </a>
+            <div class="gallery-item" data-artist="amelia" data-category="fine-line">
+                <picture>
+                    <source
+                        srcset="/portfolio/amelia-3-480w.webp 480w, /portfolio/amelia-3-768w.webp 768w, /portfolio/amelia-3-1200w.webp 1200w, /portfolio/amelia-3.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
+                    <source
+                        srcset="/portfolio/amelia-3-480w.jpg 480w, /portfolio/amelia-3-768w.jpg 768w, /portfolio/amelia-3-1200w.jpg 1200w, /portfolio/amelia-3.jpg 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
+                    <img src="/portfolio/amelia-3.jpg" class="media-cover" alt="Fine line tattoo by Amelia Kelso"
+                        width="800" height="1000" loading="lazy" decoding="async"
+                        onerror="this.src='/portfolio/amelia-3.jpg'">
+                </picture>
+                <div class="gallery-overlay">
+                    <h4>Botanical Fine Line</h4>
+                    <p>Amelia Kelso • Fine Line</p>
+                </div>
             </div>
-            <div class="gallery-item" data-artist="ben">
-                <a class="tile-link" href="artists.html#ben">
-                    <picture>
-                        <source
-                            srcset="/portfolio/ben-2-480w.webp 480w, /portfolio/ben-2-768w.webp 768w, /portfolio/ben-2-1200w.webp 1200w, /portfolio/ben-2.webp 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
-                        <source
-                            srcset="/portfolio/ben-2-480w.jpg 480w, /portfolio/ben-2-768w.jpg 768w, /portfolio/ben-2-1200w.jpg 1200w, /portfolio/ben-2.jpg 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
-                        <img src="/portfolio/ben-2.jpg" class="media-cover"
-                            alt="Photorealistic tattoo by Ben White Raven" width="800" height="1000" loading="lazy"
-                            decoding="async" onerror="this.src='/portfolio/ben-2.jpg'">
-                    </picture>
-                </a>
+            <div class="gallery-item" data-artist="ben" data-category="realism">
+                <picture>
+                    <source
+                        srcset="/portfolio/ben-2-480w.webp 480w, /portfolio/ben-2-768w.webp 768w, /portfolio/ben-2-1200w.webp 1200w, /portfolio/ben-2.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
+                    <source
+                        srcset="/portfolio/ben-2-480w.jpg 480w, /portfolio/ben-2-768w.jpg 768w, /portfolio/ben-2-1200w.jpg 1200w, /portfolio/ben-2.jpg 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
+                    <img src="/portfolio/ben-2.jpg" class="media-cover" alt="Photorealistic tattoo by Ben White Raven"
+                        width="800" height="1000" loading="lazy" decoding="async"
+                        onerror="this.src='/portfolio/ben-2.jpg'">
+                </picture>
+                <div class="gallery-overlay">
+                    <h4>Wildlife Portrait</h4>
+                    <p>Ben White Raven • Realism</p>
+                </div>
             </div>
-            <div class="gallery-item" data-artist="monique">
-                <a class="tile-link" href="artists.html#monique">
-                    <picture>
-                        <source
-                            srcset="/portfolio/monique-2-480w.webp 480w, /portfolio/monique-2-768w.webp 768w, /portfolio/monique-2-1200w.webp 1200w, /portfolio/monique-2.webp 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
-                        <source
-                            srcset="/portfolio/monique-2-480w.jpg 480w, /portfolio/monique-2-768w.jpg 768w, /portfolio/monique-2-1200w.jpg 1200w, /portfolio/monique-2.jpg 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
-                        <img src="/portfolio/monique-2.jpg" class="media-cover" alt="Bold blackwork by Monique Moore"
-                            width="800" height="1000" loading="lazy" decoding="async"
-                            onerror="this.src='/portfolio/monique-2.jpg'">
-                    </picture>
-                </a>
+            <div class="gallery-item" data-artist="monique" data-category="blackwork">
+                <picture>
+                    <source
+                        srcset="/portfolio/monique-2-480w.webp 480w, /portfolio/monique-2-768w.webp 768w, /portfolio/monique-2-1200w.webp 1200w, /portfolio/monique-2.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
+                    <source
+                        srcset="/portfolio/monique-2-480w.jpg 480w, /portfolio/monique-2-768w.jpg 768w, /portfolio/monique-2-1200w.jpg 1200w, /portfolio/monique-2.jpg 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
+                    <img src="/portfolio/monique-2.jpg" class="media-cover" alt="Bold blackwork by Monique Moore"
+                        width="800" height="1000" loading="lazy" decoding="async"
+                        onerror="this.src='/portfolio/monique-2.jpg'">
+                </picture>
+                <div class="gallery-overlay">
+                    <h4>Geometric Blackwork</h4>
+                    <p>Monique Moore • Blackwork</p>
+                </div>
             </div>
-            <div class="gallery-item" data-artist="amelia">
-                <a class="tile-link" href="artists.html#amelia">
-                    <picture>
-                        <source
-                            srcset="/portfolio/amelia-4-480w.webp 480w, /portfolio/amelia-4-768w.webp 768w, /portfolio/amelia-4-1200w.webp 1200w, /portfolio/amelia-4.webp 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
-                        <source
-                            srcset="/portfolio/amelia-4-480w.jpg 480w, /portfolio/amelia-4-768w.jpg 768w, /portfolio/amelia-4-1200w.jpg 1200w, /portfolio/amelia-4.jpg 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
-                        <img src="/portfolio/amelia-4.jpg" class="media-cover"
-                            alt="Minimalist fine line work by Amelia Kelso" width="800" height="1000" loading="lazy"
-                            decoding="async" onerror="this.src='/portfolio/amelia-4.jpg'">
-                    </picture>
-                </a>
+            <div class="gallery-item" data-artist="amelia" data-category="fine-line">
+                <picture>
+                    <source
+                        srcset="/portfolio/amelia-4-480w.webp 480w, /portfolio/amelia-4-768w.webp 768w, /portfolio/amelia-4-1200w.webp 1200w, /portfolio/amelia-4.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
+                    <source
+                        srcset="/portfolio/amelia-4-480w.jpg 480w, /portfolio/amelia-4-768w.jpg 768w, /portfolio/amelia-4-1200w.jpg 1200w, /portfolio/amelia-4.jpg 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
+                    <img src="/portfolio/amelia-4.jpg" class="media-cover"
+                        alt="Minimalist fine line work by Amelia Kelso" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src='/portfolio/amelia-4.jpg'">
+                </picture>
+                <div class="gallery-overlay">
+                    <h4>Minimalist Script</h4>
+                    <p>Amelia Kelso • Fine Line</p>
+                </div>
             </div>
-            <div class="gallery-item" data-artist="ben">
-                <a class="tile-link" href="artists.html#ben">
-                    <picture>
-                        <source
-                            srcset="/portfolio/ben-3-480w.webp 480w, /portfolio/ben-3-768w.webp 768w, /portfolio/ben-3-1200w.webp 1200w, /portfolio/ben-3.webp 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
-                        <source
-                            srcset="/portfolio/ben-3-480w.jpg 480w, /portfolio/ben-3-768w.jpg 768w, /portfolio/ben-3-1200w.jpg 1200w, /portfolio/ben-3.jpg 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
-                        <img src="/portfolio/ben-3.jpg" class="media-cover"
-                            alt="Detailed realism tattoo by Ben White Raven" width="800" height="1000" loading="lazy"
-                            decoding="async" onerror="this.src='/portfolio/ben-3.jpg'">
-                    </picture>
-                </a>
+            <div class="gallery-item" data-artist="ben" data-category="realism">
+                <picture>
+                    <source
+                        srcset="/portfolio/ben-3-480w.webp 480w, /portfolio/ben-3-768w.webp 768w, /portfolio/ben-3-1200w.webp 1200w, /portfolio/ben-3.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
+                    <source
+                        srcset="/portfolio/ben-3-480w.jpg 480w, /portfolio/ben-3-768w.jpg 768w, /portfolio/ben-3-1200w.jpg 1200w, /portfolio/ben-3.jpg 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
+                    <img src="/portfolio/ben-3.jpg" class="media-cover" alt="Detailed realism tattoo by Ben White Raven"
+                        width="800" height="1000" loading="lazy" decoding="async"
+                        onerror="this.src='/portfolio/ben-3.jpg'">
+                </picture>
+                <div class="gallery-overlay">
+                    <h4>Portrait Study</h4>
+                    <p>Ben White Raven • Realism</p>
+                </div>
             </div>
-            <div class="gallery-item" data-artist="monique">
-                <a class="tile-link" href="artists.html#monique">
-                    <picture>
-                        <source
-                            srcset="/portfolio/monique-3-480w.webp 480w, /portfolio/monique-3-768w.webp 768w, /portfolio/monique-3-1200w.webp 1200w, /portfolio/monique-3.webp 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
-                        <source
-                            srcset="/portfolio/monique-3-480w.jpg 480w, /portfolio/monique-3-768w.jpg 768w, /portfolio/monique-3-1200w.jpg 1200w, /portfolio/monique-3.jpg 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
-                        <img src="/portfolio/monique-3.jpg" class="media-cover"
-                            alt="Geometric blackwork by Monique Moore" width="800" height="1000" loading="lazy"
-                            decoding="async" onerror="this.src='/portfolio/monique-3.jpg'">
-                    </picture>
-                </a>
+            <div class="gallery-item" data-artist="monique" data-category="blackwork">
+                <picture>
+                    <source
+                        srcset="/portfolio/monique-3-480w.webp 480w, /portfolio/monique-3-768w.webp 768w, /portfolio/monique-3-1200w.webp 1200w, /portfolio/monique-3.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
+                    <source
+                        srcset="/portfolio/monique-3-480w.jpg 480w, /portfolio/monique-3-768w.jpg 768w, /portfolio/monique-3-1200w.jpg 1200w, /portfolio/monique-3.jpg 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
+                    <img src="/portfolio/monique-3.jpg" class="media-cover" alt="Geometric blackwork by Monique Moore"
+                        width="800" height="1000" loading="lazy" decoding="async"
+                        onerror="this.src='/portfolio/monique-3.jpg'">
+                </picture>
+                <div class="gallery-overlay">
+                    <h4>Dotwork Mandala</h4>
+                    <p>Monique Moore • Blackwork</p>
+                </div>
             </div>
-            <div class="gallery-item" data-artist="amelia">
-                <a class="tile-link" href="artists.html#amelia">
-                    <picture>
-                        <source
-                            srcset="/portfolio/amelia-5-480w.webp 480w, /portfolio/amelia-5-768w.webp 768w, /portfolio/amelia-5-1200w.webp 1200w, /portfolio/amelia-5.webp 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
-                        <source
-                            srcset="/portfolio/amelia-5-480w.jpg 480w, /portfolio/amelia-5-768w.jpg 768w, /portfolio/amelia-5-1200w.jpg 1200w, /portfolio/amelia-5.jpg 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
-                        <img src="/portfolio/amelia-5.jpg" class="media-cover"
-                            alt="Botanical fine line tattoo by Amelia Kelso" width="800" height="1000" loading="lazy"
-                            decoding="async" onerror="this.src='/portfolio/amelia-5.jpg'">
-                    </picture>
-                </a>
+            <div class="gallery-item" data-artist="amelia" data-category="fine-line">
+                <picture>
+                    <source
+                        srcset="/portfolio/amelia-5-480w.webp 480w, /portfolio/amelia-5-768w.webp 768w, /portfolio/amelia-5-1200w.webp 1200w, /portfolio/amelia-5.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
+                    <source
+                        srcset="/portfolio/amelia-5-480w.jpg 480w, /portfolio/amelia-5-768w.jpg 768w, /portfolio/amelia-5-1200w.jpg 1200w, /portfolio/amelia-5.jpg 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
+                    <img src="/portfolio/amelia-5.jpg" class="media-cover"
+                        alt="Botanical fine line tattoo by Amelia Kelso" width="800" height="1000" loading="lazy"
+                        decoding="async" onerror="this.src='/portfolio/amelia-5.jpg'">
+                </picture>
+                <div class="gallery-overlay">
+                    <h4>Botanical Study</h4>
+                    <p>Amelia Kelso • Fine Line</p>
+                </div>
             </div>
-            <div class="gallery-item" data-artist="ben">
-                <a class="tile-link" href="artists.html#ben">
-                    <picture>
-                        <source
-                            srcset="/portfolio/ben-4-480w.webp 480w, /portfolio/ben-4-768w.webp 768w, /portfolio/ben-4-1200w.webp 1200w, /portfolio/ben-4.webp 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
-                        <source
-                            srcset="/portfolio/ben-4-480w.jpg 480w, /portfolio/ben-4-768w.jpg 768w, /portfolio/ben-4-1200w.jpg 1200w, /portfolio/ben-4.jpg 1200w"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
-                        <img src="/portfolio/ben-4.jpg" class="media-cover"
-                            alt="Portrait realism tattoo by Ben White Raven" width="800" height="1000" loading="lazy"
-                            decoding="async" onerror="this.src='/portfolio/ben-4.jpg'">
-                    </picture>
-                </a>
+            <div class="gallery-item" data-artist="ben" data-category="realism">
+                <picture>
+                    <source
+                        srcset="/portfolio/ben-4-480w.webp 480w, /portfolio/ben-4-768w.webp 768w, /portfolio/ben-4-1200w.webp 1200w, /portfolio/ben-4.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/webp">
+                    <source
+                        srcset="/portfolio/ben-4-480w.jpg 480w, /portfolio/ben-4-768w.jpg 768w, /portfolio/ben-4-1200w.jpg 1200w, /portfolio/ben-4.jpg 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
+                    <img src="/portfolio/ben-4.jpg" class="media-cover" alt="Portrait realism tattoo by Ben White Raven"
+                        width="800" height="1000" loading="lazy" decoding="async"
+                        onerror="this.src='/portfolio/ben-4.jpg'">
+                </picture>
+                <div class="gallery-overlay">
+                    <h4>Emotional Portrait</h4>
+                    <p>Ben White Raven • Realism</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1386,6 +1422,11 @@
             });
         });
     </script>
+
+    <!-- Enhanced UX Scripts -->
+    <script src="js/micro-interactions.js"></script>
+    <script src="js/scroll-animations.js"></script>
+    <script src="js/mobile-touch.js"></script>
 
     <!-- Service Worker Registration -->
     <script>

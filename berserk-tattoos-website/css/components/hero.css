@@ -1,0 +1,305 @@
+/**
+ * Berserk Tattoos - Hero Section Component
+ * Enhanced with staggered animations, parallax effects, and magnetic hover
+ */
+
+/* ===== HERO CONTAINER ===== */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--color-gray-900);
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      ellipse at top,
+      var(--color-accent-alpha-20),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      var(--color-accent-alpha-15),
+      transparent 60%
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== HERO CONTENT ===== */
+.hero-content {
+  max-width: var(--container-3xl);
+  margin: 0 auto;
+  padding: 0 5%;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* ===== HERO TYPOGRAPHY ===== */
+.hero h1 {
+  margin-bottom: var(--space-md);
+  animation: heroTextReveal 0.8s ease-out backwards;
+}
+
+.hero h1 span {
+  display: block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroTextReveal 0.8s ease-out forwards;
+}
+
+.hero h1 span:first-child {
+  font-size: 0.4em;
+  letter-spacing: var(--letter-spacing-widest);
+  opacity: 0.7;
+  font-weight: var(--font-weight-normal);
+  animation-delay: 0s;
+}
+
+.hero h1 span:nth-child(2) {
+  color: var(--color-accent);
+  margin-left: 0.2em;
+  animation-delay: 0.2s;
+}
+
+.hero h1 span:last-child {
+  animation-delay: 0.4s;
+}
+
+.hero-tagline {
+  font-size: var(--font-size-lg);
+  max-width: 800px;
+  margin-bottom: var(--space-xl);
+  opacity: 0.85;
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-relaxed);
+  animation: heroTextReveal 0.8s ease-out 0.2s both;
+}
+
+/* ===== HERO CTAs ===== */
+.hero-ctas {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  animation: heroTextReveal 0.8s ease-out 0.4s both;
+}
+
+/* ===== MAGNETIC HOVER EFFECT ===== */
+.magnetic-hover {
+  position: relative;
+  transition: transform var(--duration-base) var(--ease-out);
+  cursor: pointer;
+}
+
+.magnetic-hover:hover {
+  transform: translateY(-3px);
+}
+
+/* ===== HERO GALLERY ===== */
+.hero-gallery {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45%;
+  height: 70vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  opacity: 0.4;
+  transition: opacity var(--duration-base);
+  z-index: 1;
+}
+
+.hero-gallery:hover {
+  opacity: 0.8;
+}
+
+.hero-gallery-item {
+  background: var(--color-gray-800);
+  border: 1px solid var(--border-color);
+  transition: all var(--duration-base);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-gallery-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(123, 17, 19, 0.1) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-base);
+  z-index: 1;
+}
+
+.hero-gallery-item:hover {
+  border-color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.hero-gallery-item:hover::before {
+  opacity: 1;
+}
+
+.hero-gallery-item img {
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.hero-gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounce 2s infinite;
+}
+
+.scroll-indicator::before {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 30px;
+  background: var(--color-accent);
+  margin: 0 auto;
+  border-radius: var(--border-radius-full);
+}
+
+.scroll-indicator::after {
+  content: "";
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid var(--color-accent);
+}
+
+/* ===== PARALLAX EFFECT ===== */
+.parallax-element {
+  will-change: transform;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .hero-gallery {
+    display: none;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 80vh;
+    padding-top: 100px;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .hero h1 span:first-child {
+    font-size: 0.5em;
+  }
+
+  .scroll-indicator {
+    bottom: 1rem;
+  }
+}
+
+/* ===== ANIMATION KEYFRAMES ===== */
+@keyframes heroTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== LOADING STATES ===== */
+.hero.loading .hero-content > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero.loaded .hero-content > * {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 span,
+  .hero-tagline,
+  .hero-ctas {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .scroll-indicator {
+    animation: none;
+  }
+
+  .hero-gallery-item:hover {
+    transform: none;
+  }
+
+  .hero-gallery-item:hover img {
+    transform: none;
+  }
+}
+
+/* ===== HIGH CONTRAST MODE ===== */
+@media (prefers-contrast: high) {
+  .hero::before {
+    background: radial-gradient(
+        ellipse at top,
+        var(--color-accent-alpha-30),
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at bottom,
+        var(--color-accent-alpha-25),
+        transparent 60%
+      );
+  }
+
+  .hero-gallery-item {
+    border-color: var(--border-color-light);
+  }
+}
