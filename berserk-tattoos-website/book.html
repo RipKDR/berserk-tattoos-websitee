@@ -40,273 +40,12 @@
     <link rel="stylesheet" href="css/core/variables.css">
     <link rel="stylesheet" href="css/core/animations.css">
     <link rel="stylesheet" href="css/core/utilities.css">
-    
+
     <!-- Component CSS -->
     <link rel="stylesheet" href="css/components/booking-wizard.css">
     <link rel="stylesheet" href="css/browser-fallbacks.css">
+    <link rel="stylesheet" href="css/booking-enhancements.css">
 
-    <style>
-        /* Base Styles */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-body);
-            background: var(--color-dark);
-            color: var(--color-light);
-            line-height: var(--line-height-normal);
-        }
-
-        h1,
-        h2,
-        h3 {
-            font-family: var(--font-display);
-            letter-spacing: var(--letter-spacing-wider);
-        }
-
-        /* Navigation */
-        .nav-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: var(--z-fixed);
-            background: rgba(17, 17, 17, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.25rem 5%;
-            max-width: var(--container-3xl);
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            letter-spacing: 0.15em;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--color-light);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-size: 0.875rem;
-            letter-spacing: var(--letter-spacing-widest);
-            text-transform: uppercase;
-            font-weight: 500;
-            color: var(--color-light);
-            text-decoration: none;
-            transition: color var(--transition-base);
-        }
-
-        .nav-links a.active {
-            color: var(--color-accent);
-        }
-
-        .nav-links a:hover {
-            color: var(--color-accent);
-        }
-
-        /* Skip Link */
-        .skip-link {
-            position: absolute;
-            left: -9999px;
-            z-index: 9999;
-            padding: 1rem 2rem;
-            background: var(--color-accent);
-            color: var(--color-light);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 0 0 4px 0;
-        }
-
-        .skip-link:focus {
-            left: 0;
-            top: 0;
-        }
-
-        /* Booking Hero */
-        .booking-hero {
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 8rem 5% 3rem;
-            background: var(--color-gray-900);
-            position: relative;
-        }
-
-        .booking-hero::before {
-            content: 'BOOK';
-            position: absolute;
-            font-size: 15rem;
-            font-family: var(--font-display);
-            opacity: 0.02;
-            pointer-events: none;
-        }
-
-        .booking-hero h1 {
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            margin-bottom: var(--space-md);
-        }
-
-        .booking-hero p {
-            font-size: var(--font-size-lg);
-            opacity: 0.8;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: var(--line-height-relaxed);
-        }
-
-        /* Main Booking Section */
-        .booking-main {
-            padding: var(--space-2xl) 5%;
-            max-width: var(--container-2xl);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: var(--space-2xl);
-            align-items: start;
-        }
-
-        /* Sidebar */
-        .booking-sidebar {
-            position: sticky;
-            top: 120px;
-        }
-
-        .sidebar-card {
-            background: rgba(242, 242, 242, 0.02);
-            border: 1px solid rgba(242, 242, 242, 0.1);
-            padding: var(--space-lg);
-            margin-bottom: var(--space-lg);
-            border-radius: var(--border-radius-sm);
-        }
-
-        .sidebar-card h3 {
-            font-size: var(--font-size-md);
-            margin-bottom: var(--space-md);
-            color: var(--color-accent);
-        }
-
-        .price-estimate {
-            font-size: 2.5rem;
-            font-family: var(--font-display);
-            color: var(--color-accent);
-            text-align: center;
-            margin: var(--space-md) 0;
-        }
-
-        .summary-list {
-            list-style: none;
-        }
-
-        .summary-list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
-            font-size: var(--font-size-sm);
-        }
-
-        .summary-list li:last-child {
-            border-bottom: none;
-        }
-
-        .summary-list .highlight {
-            color: var(--color-accent);
-            font-weight: 600;
-        }
-
-        /* Payment Security Badge */
-        .payment-security {
-            text-align: center;
-            margin-top: var(--space-md);
-            padding: var(--space-md);
-            background: rgba(242, 242, 242, 0.02);
-            border: 1px solid rgba(242, 242, 242, 0.1);
-            border-radius: var(--border-radius-sm);
-        }
-
-        .payment-security-title {
-            font-size: var(--font-size-md);
-            font-weight: 700;
-            color: var(--color-accent);
-            margin-bottom: var(--space-xs);
-        }
-
-        .payment-methods {
-            font-size: var(--font-size-xs);
-            opacity: 0.7;
-            margin-top: var(--space-xs);
-        }
-
-        /* Footer */
-        footer {
-            padding: var(--space-xl) 5%;
-            background: var(--color-dark);
-            border-top: 1px solid rgba(242, 242, 242, 0.1);
-            text-align: center;
-            font-size: var(--font-size-sm);
-            opacity: 0.6;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .booking-main {
-                grid-template-columns: 1fr;
-            }
-
-            .booking-sidebar {
-                position: static;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .nav-links a {
-                font-size: 0.75rem;
-            }
-
-            .booking-hero {
-                padding: 6rem 5% 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-links {
-                display: none;
-            }
-
-            .logo {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -546,7 +285,8 @@
                         <div class="summary-item">
                             <span class="summary-label">Appointment:</span>
                             <span class="summary-value">
-                                <span data-summary="appointmentDate"></span> at <span data-summary="appointmentTime"></span>
+                                <span data-summary="appointmentDate"></span> at <span
+                                    data-summary="appointmentTime"></span>
                             </span>
                         </div>
                         <div class="summary-item">
@@ -563,9 +303,7 @@
                         </div>
                     </div>
 
-                    <p style="font-size: var(--font-size-xs); opacity: 0.7; margin-top: var(--space-md); text-align: center;">
-                        * Consultation fee is credited toward your final tattoo price
-                    </p>
+                    <p class="small-note">* Consultation fee is credited toward your final tattoo price</p>
                 </div>
             </div>
 
@@ -591,9 +329,7 @@
             <div class="sidebar-card">
                 <h3>BOOKING SUMMARY</h3>
                 <div class="price-estimate" data-summary="price">$0</div>
-                <p style="font-size: var(--font-size-xs); opacity: 0.6; text-align: center; margin-bottom: 1.5rem;">
-                    Estimated price range
-                </p>
+                <p class="price-note">Estimated price range</p>
                 <ul class="summary-list">
                     <li>
                         <span>Artist:</span>
@@ -612,14 +348,12 @@
                         <span>$50*</span>
                     </li>
                 </ul>
-                <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem;">
-                    *Credited toward final tattoo price
-                </p>
+                <p class="small-note">*Credited toward final tattoo price</p>
             </div>
 
             <div class="sidebar-card">
                 <h3>WHAT HAPPENS NEXT?</h3>
-                <ol style="list-style: none; font-size: var(--font-size-sm); line-height: 2; padding: 0;">
+                <ol class="process-list">
                     <li>1. Secure your consultation ($50)</li>
                     <li>2. Receive confirmation email</li>
                     <li>3. Meet with your artist</li>
@@ -630,23 +364,18 @@
 
             <div class="payment-security">
                 <div class="payment-security-title">🔒 SECURE PAYMENT</div>
-                <p style="font-size: var(--font-size-xs); opacity: 0.8; margin: var(--space-xs) 0;">
-                    Powered by Stripe. Your payment information is encrypted and secure.
-                </p>
-                <div class="payment-methods">
-                    💳 Visa • Mastercard • Amex • Apple Pay • Google Pay
+                <div class="payment-security-note">Powered by Stripe. Your payment information is encrypted and secure.
                 </div>
+                <div class="payment-methods-list">💳 Visa • Mastercard • Amex • Apple Pay • Google Pay</div>
             </div>
 
             <div class="sidebar-card">
                 <h3>NEED HELP?</h3>
-                <p style="font-size: var(--font-size-sm); opacity: 0.8; margin-bottom: 1rem;">
-                    Questions about the booking process?
-                </p>
-                <p style="font-size: var(--font-size-sm); margin-bottom: 0;">
-                    <strong>Call:</strong> <a href="tel:+61478128212" style="color: var(--color-accent);">0478 128 212</a><br>
+                <p class="help-text">Questions about the booking process?</p>
+                <p class="contact-info">
+                    <strong>Call:</strong> <a href="tel:+61478128212" class="contact-link-accent">0478 128 212</a><br>
                     <strong>Email:</strong> <a href="mailto:berserk.tattoos.au@gmail.com"
-                        style="color: var(--color-accent); word-break: break-all;">berserk.tattoos.au@gmail.com</a>
+                        class="contact-link-accent">berserk.tattoos.au@gmail.com</a>
                 </p>
             </div>
         </div>
@@ -668,12 +397,12 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Create calendar on step 3
             const bookingWizard = window.bookingWizard;
-            
+
             if (bookingWizard) {
                 const originalShowStep = bookingWizard.showStep.bind(bookingWizard);
-                bookingWizard.showStep = function(stepNumber) {
+                bookingWizard.showStep = function (stepNumber) {
                     originalShowStep(stepNumber);
-                    
+
                     // Initialize calendar on step 3
                     if (stepNumber === 3 && !calendarWidget) {
                         calendarWidget = new CalendarWidget('calendar-widget', {
@@ -706,7 +435,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const wizard = window.bookingWizard;
             if (wizard && typeof gtag !== 'undefined') {
-                wizard.onStepChange = function(stepNumber) {
+                wizard.onStepChange = function (stepNumber) {
                     gtag('event', 'booking_step_' + stepNumber, {
                         event_category: 'booking_funnel',
                         event_label: 'Step ' + stepNumber,
@@ -719,4 +448,3 @@
 </body>
 
 </html>
-
