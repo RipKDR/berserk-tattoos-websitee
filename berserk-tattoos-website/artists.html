@@ -32,6 +32,12 @@
     <!-- Polyfills for older browsers -->
     <script src="js/polyfills.js"></script>
 
+    <!-- Enhanced JavaScript for image loading and tattoo features -->
+    <script src="js/image-loader.js" defer></script>
+    <script src="js/lazy-loader.js" defer></script>
+    <script src="js/gallery-enhanced.js" defer></script>
+    <script src="js/tattoo-studio-enhancements.js" defer></script>
+
     <!-- Browser compatibility CSS -->
     <link rel="stylesheet" href="css/browser-fallbacks.css">
 
@@ -736,7 +742,7 @@
                         srcset="/portfolio/amelia-480w.jpg 480w, /portfolio/amelia-768w.jpg 768w, /portfolio/amelia-1200w.jpg 1200w, /portfolio/amelia.jpg 1200w"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
                     <img src="/portfolio/amelia.jpg" class="media-cover" alt="Portrait of Amelia Kelso" width="1200"
-                        height="1600" loading="lazy" decoding="async" onerror="this.src='/portfolio/amelia.jpg'">
+                        height="1600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.style.background='#1a1a1a'">
                 </picture>
             </div>
             <div class="profile-info">
@@ -880,7 +886,7 @@
                         srcset="/portfolio/ben-480w.jpg 480w, /portfolio/ben-768w.jpg 768w, /portfolio/ben-1200w.jpg 1200w, /portfolio/ben.jpg 1200w"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
                     <img src="/portfolio/ben.jpg" class="media-cover" alt="Portrait of Ben White Raven" width="1200"
-                        height="1600" loading="lazy" decoding="async" onerror="this.src='/portfolio/ben.jpg'">
+                        height="1600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.style.background='#1a1a1a'">
                 </picture>
             </div>
             <div class="profile-info">
@@ -1021,7 +1027,7 @@
                         srcset="/portfolio/monique-480w.jpg 480w, /portfolio/monique-768w.jpg 768w, /portfolio/monique-1200w.jpg 1200w, /portfolio/monique.jpg 1200w"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" type="image/jpeg">
                     <img src="/portfolio/monique.jpg" class="media-cover" alt="Portrait of Monique Moore" width="1200"
-                        height="1600" loading="lazy" decoding="async" onerror="this.src='/portfolio/monique.jpg'">
+                        height="1600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.style.background='#1a1a1a'">
                 </picture>
             </div>
             <div class="profile-info">
@@ -1351,59 +1357,6 @@ OPTIMIZATION NOTES:
 
 -->
 
-<!-- Google Analytics - Replace G-F83QBK5Z4N with your actual GA4 ID -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F83QBK5Z4N"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-F83QBK5Z4N', {
-        send_page_view: true
-    });
-
-    // Track artist page interactions
-    document.addEventListener('DOMContentLoaded', function () {
-        // Track artist tab switches
-        document.querySelectorAll('.artist-nav-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                gtag('event', 'artist_tab_switch', {
-                    'artist_name': this.dataset.artist,
-                    'page_location': window.location.href
-                });
-            });
-        });
-
-        // Track portfolio filter usage
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                gtag('event', 'portfolio_filter', {
-                    'filter_category': this.dataset.filter,
-                    'page_location': window.location.href
-                });
-            });
-        });
-
-        // Track portfolio image views
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.addEventListener('click', function () {
-                gtag('event', 'portfolio_view', {
-                    'image_category': this.dataset.category,
-                    'page_location': window.location.href
-                });
-            });
-        });
-
-        // Track booking CTA clicks
-        document.querySelectorAll('a[href*="book.html"]').forEach(link => {
-            link.addEventListener('click', function () {
-                gtag('event', 'booking_cta_click', {
-                    'cta_location': this.textContent.trim(),
-                    'page_location': window.location.href
-                });
-            });
-        });
-    });
-</script>
 </body>
 
 </html>
