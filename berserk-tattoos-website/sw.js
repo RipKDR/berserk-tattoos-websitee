@@ -46,20 +46,20 @@ const NETWORK_FIRST_PATTERNS = [
  * Install Event - Precache critical assets
  */
 self.addEventListener('install', event => {
-  console.log('[Service Worker] Installing...');
+  // Service Worker installing
   
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('[Service Worker] Precaching assets');
+        // Precaching assets
         return cache.addAll(PRECACHE_ASSETS);
       })
       .then(() => {
-        console.log('[Service Worker] Installed successfully');
+        // Installed successfully
         return self.skipWaiting();
       })
       .catch(error => {
-        console.error('[Service Worker] Installation failed:', error);
+        // Installation failed - handled silently
       })
   );
 });
@@ -68,7 +68,7 @@ self.addEventListener('install', event => {
  * Activate Event - Clean up old caches
  */
 self.addEventListener('activate', event => {
-  console.log('[Service Worker] Activating...');
+  // Service Worker activating
   
   event.waitUntil(
     caches.keys()
@@ -80,13 +80,13 @@ self.addEventListener('activate', event => {
               return cacheName.startsWith('berserk-') && cacheName !== CACHE_NAME;
             })
             .map(cacheName => {
-              console.log('[Service Worker] Deleting old cache:', cacheName);
+              // Deleting old cache
               return caches.delete(cacheName);
             })
         );
       })
       .then(() => {
-        console.log('[Service Worker] Activated successfully');
+        // Activated successfully
         return self.clients.claim();
       })
   );
@@ -145,12 +145,12 @@ async function cacheFirstStrategy(request) {
     // Check cache first
     const cachedResponse = await caches.match(request);
     if (cachedResponse) {
-      console.log('[Service Worker] Cache hit:', request.url);
+      // Cache hit
       return cachedResponse;
     }
     
     // Not in cache, fetch from network
-    console.log('[Service Worker] Cache miss, fetching:', request.url);
+    // Cache miss, fetching
     const networkResponse = await fetch(request);
     
     // Cache the response for future use
@@ -161,7 +161,7 @@ async function cacheFirstStrategy(request) {
     
     return networkResponse;
   } catch (error) {
-    console.error('[Service Worker] Cache-first failed:', error);
+    // Cache-first failed
     // Could return a fallback image here
     throw error;
   }
@@ -185,12 +185,12 @@ async function networkFirstStrategy(request) {
     
     return networkResponse;
   } catch (error) {
-    console.log('[Service Worker] Network failed, trying cache:', request.url);
+    // Network failed, trying cache
     
     // Network failed, try cache
     const cachedResponse = await caches.match(request);
     if (cachedResponse) {
-      console.log('[Service Worker] Serving from cache:', request.url);
+      // Serving from cache
       return cachedResponse;
     }
     
@@ -219,7 +219,7 @@ self.addEventListener('sync', event => {
  * Sync booking form submissions when back online
  */
 async function syncBookingForm() {
-  console.log('[Service Worker] Syncing booking forms...');
+  // Syncing booking forms
   // Future implementation for offline form submissions
   // Would retrieve submissions from IndexedDB and POST to server
 }
@@ -228,7 +228,7 @@ async function syncBookingForm() {
  * Push Notification Event (for future notifications)
  */
 self.addEventListener('push', event => {
-  console.log('[Service Worker] Push notification received');
+  // Push notification received
   
   const options = {
     body: event.data ? event.data.text() : 'New update from Berserk Tattoos',
@@ -262,7 +262,7 @@ self.addEventListener('push', event => {
  * Notification Click Event
  */
 self.addEventListener('notificationclick', event => {
-  console.log('[Service Worker] Notification clicked');
+  // Notification clicked
   
   event.notification.close();
   
@@ -289,5 +289,5 @@ self.addEventListener('message', event => {
   }
 });
 
-console.log('[Service Worker] Loaded and ready');
+// Service Worker loaded and ready
 

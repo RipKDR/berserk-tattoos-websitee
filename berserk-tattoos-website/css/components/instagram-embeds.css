@@ -1,0 +1,257 @@
+/**
+ * Instagram Embeds Styles
+ * Extracted from inline styles to fix linter warnings
+ * BMAD Optimization - Phase 1.2
+ */
+
+/* Instagram Media Block */
+.instagram-media {
+    background: #FFF !important;
+    border: 0 !important;
+    border-radius: 3px !important;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15) !important;
+    margin: 1px !important;
+    max-width: 540px !important;
+    min-width: 326px !important;
+    padding: 0 !important;
+    width: 99.375% !important;
+    width: -webkit-calc(100% - 2px) !important;
+    width: calc(100% - 2px) !important;
+}
+
+/* Instagram Link */
+.instagram-media a {
+    background: #FFFFFF !important;
+    line-height: 0 !important;
+    padding: 0 0 !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    width: 100% !important;
+}
+
+/* Header Row */
+.instagram-header-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+/* Avatar Circle */
+.instagram-avatar {
+    background-color: #F4F4F4 !important;
+    border-radius: 50% !important;
+    flex-grow: 0 !important;
+    height: 40px !important;
+    margin-right: 14px !important;
+    width: 40px !important;
+}
+
+/* User Info */
+.instagram-user-info {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    justify-content: center !important;
+}
+
+/* Username Placeholder */
+.instagram-username-placeholder {
+    background-color: #F4F4F4 !important;
+    border-radius: 4px !important;
+    flex-grow: 0 !important;
+    height: 14px !important;
+    margin-bottom: 6px !important;
+    width: 100px !important;
+}
+
+/* Handle Placeholder */
+.instagram-handle-placeholder {
+    background-color: #F4F4F4 !important;
+    border-radius: 4px !important;
+    flex-grow: 0 !important;
+    height: 14px !important;
+    width: 60px !important;
+}
+
+/* Content Padding */
+.instagram-content-padding {
+    padding: 16px !important;
+}
+
+/* Image Container */
+.instagram-image-padding {
+    padding: 19% 0 !important;
+}
+
+/* Instagram Logo Container */
+.instagram-logo-container {
+    display: block !important;
+    height: 50px !important;
+    margin: 0 auto 12px !important;
+    width: 50px !important;
+}
+
+/* View Post Text */
+.instagram-view-post {
+    color: #3897f0 !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 550 !important;
+    line-height: 18px !important;
+}
+
+/* View Post Container */
+.instagram-view-post-container {
+    padding-top: 8px !important;
+}
+
+/* Middle Padding */
+.instagram-middle-padding {
+    padding: 12.5% 0 !important;
+}
+
+/* Icons Row */
+.instagram-icons-row {
+    display: flex !important;
+    flex-direction: row !important;
+    margin-bottom: 14px !important;
+    align-items: center !important;
+}
+
+/* Like Icon Elements */
+.instagram-like-circle-1 {
+    background-color: #F4F4F4 !important;
+    border-radius: 50% !important;
+    height: 12.5px !important;
+    width: 12.5px !important;
+    transform: translateX(0px) translateY(7px) !important;
+}
+
+.instagram-like-diamond {
+    background-color: #F4F4F4 !important;
+    height: 12.5px !important;
+    transform: rotate(-45deg) translateX(3px) translateY(1px) !important;
+    width: 12.5px !important;
+    flex-grow: 0 !important;
+    margin-right: 14px !important;
+    margin-left: 2px !important;
+}
+
+.instagram-like-circle-2 {
+    background-color: #F4F4F4 !important;
+    border-radius: 50% !important;
+    height: 12.5px !important;
+    width: 12.5px !important;
+    transform: translateX(9px) translateY(-18px) !important;
+}
+
+/* Comment Icon */
+.instagram-comment-container {
+    margin-left: 8px !important;
+}
+
+.instagram-comment-circle {
+    background-color: #F4F4F4 !important;
+    border-radius: 50% !important;
+    flex-grow: 0 !important;
+    height: 20px !important;
+    width: 20px !important;
+}
+
+.instagram-comment-tail {
+    width: 0 !important;
+    height: 0 !important;
+    border-top: 2px solid transparent !important;
+    border-left: 6px solid #f4f4f4 !important;
+    border-bottom: 2px solid transparent !important;
+    transform: translateX(16px) translateY(-4px) rotate(30deg) !important;
+}
+
+/* Share Icon */
+.instagram-share-container {
+    margin-left: auto !important;
+}
+
+.instagram-share-arrow-1 {
+    width: 0px !important;
+    border-top: 8px solid #F4F4F4 !important;
+    border-right: 8px solid transparent !important;
+    transform: translateY(16px) !important;
+}
+
+.instagram-share-body {
+    background-color: #F4F4F4 !important;
+    flex-grow: 0 !important;
+    height: 12px !important;
+    width: 16px !important;
+    transform: translateY(-4px) !important;
+}
+
+.instagram-share-arrow-2 {
+    width: 0 !important;
+    height: 0 !important;
+    border-top: 8px solid #F4F4F4 !important;
+    border-left: 8px solid transparent !important;
+    transform: translateY(-4px) translateX(8px) !important;
+}
+
+/* Caption Area */
+.instagram-caption-area {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    justify-content: center !important;
+    margin-bottom: 24px !important;
+}
+
+.instagram-caption-line-1 {
+    background-color: #F4F4F4 !important;
+    border-radius: 4px !important;
+    flex-grow: 0 !important;
+    height: 14px !important;
+    margin-bottom: 6px !important;
+    width: 224px !important;
+}
+
+.instagram-caption-line-2 {
+    background-color: #F4F4F4 !important;
+    border-radius: 4px !important;
+    flex-grow: 0 !important;
+    height: 14px !important;
+    width: 144px !important;
+}
+
+/* Footer */
+.instagram-footer {
+    color: #c9c8cd !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 14px !important;
+    line-height: 17px !important;
+    margin-bottom: 0 !important;
+    margin-top: 8px !important;
+    overflow: hidden !important;
+    padding: 8px 0 7px !important;
+    text-align: center !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.instagram-footer a {
+    color: #c9c8cd !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    line-height: 17px !important;
+    text-decoration: none !important;
+}
+
+/* Grid Container */
+.instagram-embeds-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 1.5rem !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}

@@ -178,6 +178,9 @@
         },
         
         logMetrics: function() {
+            // Only log in development mode
+            if (!DEBUG_MODE) return;
+            
             window.addEventListener('load', function() {
                 setTimeout(function() {
                     console.log('=== Performance Metrics ===');

@@ -1,0 +1,208 @@
+/**
+ * Lazy Loading Styles for Berserk Tattoos
+ * BMAD Optimization - Phase 2.3
+ * 
+ * Provides visual feedback for lazy loading states
+ * Smooth transitions and loading indicators
+ */
+
+/* Base lazy loading styles */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+img.lazy-loaded {
+    opacity: 1;
+}
+
+img.lazy-error {
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+/* Loading placeholder */
+.lazy-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Component loading states */
+[data-lazy-component] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+[data-lazy-component].loading {
+    opacity: 0.3;
+}
+
+[data-lazy-component].loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Instagram embed loading */
+.instagram-embed-wrapper {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.instagram-embed-wrapper.loading {
+    opacity: 0.3;
+    background: #f5f5f5;
+    border-radius: 8px;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.instagram-embed-wrapper.loading::before {
+    content: "Loading Instagram post...";
+    color: #666;
+    font-size: 14px;
+}
+
+.instagram-embed-wrapper.loaded {
+    opacity: 1;
+}
+
+/* Testimonial card animations */
+.testimonial-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.testimonial-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Portfolio gallery loading */
+.portfolio-gallery {
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+
+.portfolio-gallery.loading {
+    opacity: 0.5;
+}
+
+.portfolio-gallery.loaded {
+    opacity: 1;
+}
+
+.portfolio-gallery.loaded .portfolio-item {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.portfolio-item {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-item:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-item:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-item:nth-child(4) { animation-delay: 0.4s; }
+.portfolio-item:nth-child(5) { animation-delay: 0.5s; }
+.portfolio-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading spinner for components */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #7B1113;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Skeleton loading for text content */
+.skeleton-text {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+    height: 1em;
+    margin: 0.5em 0;
+}
+
+.skeleton-text.short {
+    width: 60%;
+}
+
+.skeleton-text.medium {
+    width: 80%;
+}
+
+.skeleton-text.long {
+    width: 100%;
+}
+
+/* Progressive enhancement - hide loading states if JS is disabled */
+.no-js [data-lazy-component] {
+    opacity: 1;
+    transform: none;
+}
+
+.no-js img[data-src] {
+    opacity: 1;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    img[data-src],
+    [data-lazy-component],
+    .testimonial-card,
+    .portfolio-item {
+        transition: none;
+        animation: none;
+    }
+    
+    .lazy-placeholder,
+    .skeleton-text {
+        animation: none;
+        background: #f0f0f0;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .lazy-placeholder,
+    .skeleton-text {
+        background: #000;
+        color: #fff;
+    }
+    
+    .instagram-embed-wrapper.loading::before {
+        color: #000;
+    }
+}

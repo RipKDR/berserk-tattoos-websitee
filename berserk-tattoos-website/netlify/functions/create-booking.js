@@ -84,8 +84,10 @@ exports.handler = async (event, context) => {
     // In production, save booking to database here
     // Example: await saveBookingToDatabase(bookingId, bookingData, 'pending');
 
-    // Log booking creation (in production, use proper logging service)
-    console.log(`Booking created: ${bookingId} for ${bookingData.email}`);
+    // Log booking creation (only in development)
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`Booking created: ${bookingId} for ${bookingData.email}`);
+    }
 
     // Return success with Stripe URL
     return {

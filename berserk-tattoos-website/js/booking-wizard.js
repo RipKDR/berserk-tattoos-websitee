@@ -414,7 +414,7 @@ class BookingWizard {
     try {
       localStorage.setItem(this.storageKey, JSON.stringify(this.formData));
     } catch (e) {
-      console.warn('Could not save form data:', e);
+      // Silently handle localStorage errors in production
     }
   }
 
@@ -442,7 +442,7 @@ class BookingWizard {
 
       }
     } catch (e) {
-      console.warn('Could not load form data:', e);
+      // Silently handle localStorage errors in production
     }
   }
 
@@ -451,7 +451,7 @@ class BookingWizard {
       localStorage.removeItem(this.storageKey);
       this.formData = {};
     } catch (e) {
-      console.warn('Could not clear form data:', e);
+      // Silently handle localStorage errors in production
     }
   }
 
@@ -576,7 +576,14 @@ class BookingWizard {
       }
 
     } catch (error) {
-      console.error('Booking error:', error);
+      // Log error silently in production, track via analytics
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'booking_error', {
+          event_category: 'booking',
+          event_label: error.message,
+          value: 1
+        });
+      }
       this.hideLoading();
       this.showError('There was an error processing your booking. Please try again or contact us directly.');
     }

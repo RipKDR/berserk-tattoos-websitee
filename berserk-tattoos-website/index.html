@@ -32,6 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://browser.sentry-cdn.com">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
     <!-- Fonts (Optimized: 8 weights → 4 weights, ~80KB savings) -->
@@ -99,6 +100,7 @@
 
     <!-- Polyfills for older browsers -->
     <script src="js/polyfills.js"></script>
+    <script src="js/sentry-init.js"></script>
 
     <!-- IE11 specific compatibility -->
     <!--[if IE]>
@@ -114,11 +116,13 @@
     <link rel="stylesheet" href="css/core/utilities.css">
     <link rel="stylesheet" href="css/components/hero.css">
     <link rel="stylesheet" href="css/components/gallery.css">
+    <link rel="stylesheet" href="css/components/lazy-loading.css">
 
     <!-- Enhanced JavaScript -->
     <script src="js/image-loader.js" defer></script>
     <script src="js/gallery-enhanced.js" defer></script>
     <script src="js/performance-monitor.js" defer></script>
+    <script src="js/lazy-loader.js" defer></script>
 
     <style>
         /* ===== CRITICAL CSS FOR ABOVE-THE-FOLD CONTENT ===== */
