@@ -3,7 +3,7 @@
  * Returns available booking slots for a specific artist
  */
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
     // Allow GET requests
     if (event.httpMethod !== 'GET') {
         return {

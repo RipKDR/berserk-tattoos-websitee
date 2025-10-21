@@ -1,3 +1,4 @@
+/* global gtag */
 /**
  * Berserk Tattoos - Advanced Booking Enhancements
  * Features: Online deposits, automated reminders, referral tracking
@@ -94,7 +95,7 @@ class BookingEnhancements {
         }
     }
 
-    async processSquarePayment(data) {
+    async processSquarePayment() {
         // Square integration would go here
         // For demo purposes, simulate successful payment
         return new Promise(resolve => {
@@ -104,7 +105,7 @@ class BookingEnhancements {
         });
     }
 
-    async processPayPalPayment(data) {
+    async processPayPalPayment() {
         // PayPal integration would go here
         // For demo purposes, simulate successful payment
         return new Promise(resolve => {

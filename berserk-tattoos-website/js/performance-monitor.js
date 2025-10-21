@@ -1,3 +1,4 @@
+/* global gtag */
 /* Performance Monitoring Script - Berserk Tattoos */
 /* This script tracks real-world performance metrics across different browsers */
 

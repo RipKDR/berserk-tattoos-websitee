@@ -142,7 +142,7 @@ class AftercareTimeline {
   setupInteractiveTimeline() {
     const timelineItems = document.querySelectorAll('.timeline-item');
 
-    timelineItems.forEach((item, index) => {
+    timelineItems.forEach((item) => {
       // Add expand/collapse functionality
       const content = item.querySelector('.timeline-content');
       if (!content) return;
@@ -160,7 +160,7 @@ class AftercareTimeline {
       const checklist = item.querySelector('.timeline-list');
       if (checklist) {
         const items = checklist.querySelectorAll('li');
-        items.forEach((listItem, i) => {
+        items.forEach((listItem) => {
           listItem.style.cursor = 'pointer';
           listItem.addEventListener('click', () => {
             listItem.classList.toggle('completed');

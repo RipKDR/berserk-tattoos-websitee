@@ -81,7 +81,6 @@ class MobileTouchEnhancements {
       this.touchEndY = e.changedTouches[0].screenY;
 
       const swipeTime = Date.now() - touchStartTime;
-      const swipeSpeed = this.minSwipeDistance / swipeTime;
 
       // Only register quick swipes (< 300ms)
       if (swipeTime > 300) return;

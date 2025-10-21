@@ -1,7 +1,7 @@
 /**
  * Sentry Error Tracking for Berserk Tattoos
  * BMAD Optimization - Phase 1.3
- * 
+ *
  * Provides error tracking and performance monitoring
  * Only loads in production to avoid development noise
  */

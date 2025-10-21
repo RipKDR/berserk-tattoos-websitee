@@ -1,7 +1,7 @@
 // Favicon Generator Script for Berserk Tattoos
 // Run this in a browser console or save as HTML file
 
-function createFavicon(size, filename) {
+function createFavicon(size) {
     const canvas = document.createElement('canvas');
     canvas.width = size;
     canvas.height = size;
@@ -62,6 +62,7 @@ function downloadCanvas(canvas, filename) {
 }
 
 // Generate all favicon files
+// eslint-disable-next-line no-unused-vars
 function generateAllFavicons() {
     console.log('Generating favicon files...');
     

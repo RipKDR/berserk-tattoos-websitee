@@ -16,9 +16,10 @@
  * node optimize-images.js
  */
 
-const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
+
+const sharp = require('sharp');
 
 // Configuration
 const SOURCE_DIR = './portfolio';

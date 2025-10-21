@@ -106,9 +106,8 @@ if (!Element.prototype.closest) {
 
 // Smooth Scroll Polyfill
 (function() {
-    if (!browserSupport.smoothScroll) {
-        // Simple smooth scroll implementation
-        function smoothScrollTo(element, target, duration) {
+    // Simple smooth scroll implementation
+    var smoothScrollTo = function(element, target, duration) {
             target = Math.round(target);
             duration = Math.round(duration);
             
@@ -148,8 +147,9 @@ if (!Element.prototype.closest) {
             };
             
             scroll();
-        }
-        
+        };
+
+    if (!browserSupport.smoothScroll) {
         // Override scrollIntoView
         Element.prototype.scrollIntoView = function(options) {
             if (options === undefined) {
@@ -184,7 +184,7 @@ if (!Element.prototype.closest) {
 (function() {
     if (!browserSupport.intersectionObserver) {
         // Very basic polyfill - just loads all images immediately
-        window.IntersectionObserver = function(callback, options) {
+        window.IntersectionObserver = function(callback) {
             this.callback = callback;
             this.elements = [];
         };
@@ -198,7 +198,7 @@ if (!Element.prototype.closest) {
             }], this);
         };
         
-        window.IntersectionObserver.prototype.unobserve = function(element) {
+        window.IntersectionObserver.prototype.unobserve = function() {
             // No-op
         };
         
@@ -359,7 +359,7 @@ if (!Array.prototype.includes) {
     }
     
     if (!window.requestAnimationFrame) {
-        window.requestAnimationFrame = function(callback, element) {
+        window.requestAnimationFrame = function(callback) {
             var currTime = new Date().getTime();
             var timeToCall = Math.max(0, 16 - (currTime - lastTime));
             var id = window.setTimeout(function() {

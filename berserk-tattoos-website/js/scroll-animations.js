@@ -185,7 +185,6 @@ class ScrollAnimations {
     elements.forEach(element => {
       const rect = element.getBoundingClientRect();
       const elementTop = rect.top + scrollY;
-      const elementHeight = rect.height;
       const viewportHeight = window.innerHeight;
 
       // Only calculate if element is in viewport

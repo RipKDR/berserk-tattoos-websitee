@@ -221,7 +221,7 @@
             activeButton.classList.add('active');
 
             // Filter images
-            this.images.forEach((item, index) => {
+            this.images.forEach((item) => {
                 const category = item.dataset.category || 'all';
                 const shouldShow = filter === 'all' || category === filter;
 
