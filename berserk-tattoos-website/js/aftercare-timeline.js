@@ -17,7 +17,6 @@ class AftercareTimeline {
     this.setupPrintButton();
     this.loadUserProgress();
 
-    console.log('✓ Aftercare Timeline initialized');
   }
 
   setupProgressTracker() {

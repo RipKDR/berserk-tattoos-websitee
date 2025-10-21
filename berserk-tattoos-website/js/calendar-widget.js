@@ -39,7 +39,6 @@ class CalendarWidget {
     // Render calendar
     this.render();
 
-    console.log('✓ Calendar Widget initialized');
   }
 
   render() {
@@ -172,7 +171,6 @@ class CalendarWidget {
       this.onDateSelect(this.selectedDate);
     }
 
-    console.log('Date selected:', dateString);
   }
 
   renderTimeSlots(date) {
@@ -244,7 +242,6 @@ class CalendarWidget {
       this.onTimeSelect(this.selectedDate, time);
     }
 
-    console.log('Time selected:', time);
   }
 
   previousMonth() {

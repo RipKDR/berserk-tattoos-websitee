@@ -39,8 +39,6 @@ class BookingWizard {
 
     // Auto-save on form changes
     this.setupAutoSave();
-
-    console.log('✓ Booking Wizard initialized');
   }
 
   setupEventListeners() {
@@ -52,6 +50,18 @@ class BookingWizard {
     if (this.nextBtn) {
       this.nextBtn.addEventListener('click', () => this.nextStep());
     }
+
+    // Consultation type selection
+    const consultationOptions = document.querySelectorAll('.consultation-option');
+    consultationOptions.forEach(option => {
+      option.addEventListener('click', () => this.selectConsultation(option));
+      option.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.selectConsultation(option);
+        }
+      });
+    });
 
     // Artist selection
     const artistCards = document.querySelectorAll('.artist-card');
@@ -180,6 +190,51 @@ class BookingWizard {
     }
   }
 
+  selectConsultation(option) {
+    // Remove previous selections
+    document.querySelectorAll('.consultation-option').forEach(opt => {
+      opt.classList.remove('selected');
+    });
+
+    // Select clicked option
+    option.classList.add('selected');
+
+    // Get consultation type
+    const consultationType = option.dataset.consultation;
+    const hiddenInput = document.querySelector('input[name="consultationType"]');
+    if (hiddenInput) {
+      hiddenInput.value = consultationType;
+    }
+
+    // Store in form data
+    this.formData.consultationType = consultationType;
+
+    // Update consultation fee display
+    const feeDisplay = document.getElementById('consultation-fee-display');
+    const creditNote = document.getElementById('credit-note');
+    
+    if (consultationType === 'phone') {
+      if (feeDisplay) feeDisplay.textContent = '$0.00';
+      if (creditNote) creditNote.style.display = 'none';
+    } else if (consultationType === 'in-person') {
+      if (feeDisplay) feeDisplay.textContent = '$100.00';
+      if (creditNote) creditNote.style.display = 'block';
+    }
+
+    // Show artist selection after consultation type is selected
+    const artistWrapper = document.querySelector('.artist-selection-wrapper');
+    if (artistWrapper) {
+      artistWrapper.style.display = 'block';
+      // Smooth scroll to artist selection
+      setTimeout(() => {
+        artistWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+
+    // Save form data
+    this.saveFormData();
+  }
+
   selectArtist(card) {
     // Remove previous selections
     document.querySelectorAll('.artist-card').forEach(c => {
@@ -204,7 +259,6 @@ class BookingWizard {
     // Save to localStorage
     this.saveFormData();
 
-    console.log('Artist selected:', artistName);
   }
 
   validateCurrentStep() {
@@ -220,8 +274,14 @@ class BookingWizard {
       }
     });
 
-    // Special validation for step 1 (artist selection)
+    // Special validation for step 1 (consultation type and artist selection)
     if (this.currentStep === 1) {
+      const selectedConsultation = document.querySelector('.consultation-option.selected');
+      if (!selectedConsultation) {
+        this.showError('Please select a consultation type to continue');
+        isValid = false;
+      }
+      
       const selectedArtist = document.querySelector('.artist-card.selected');
       if (!selectedArtist) {
         this.showError('Please select an artist to continue');
@@ -353,7 +413,6 @@ class BookingWizard {
     // Save to localStorage
     try {
       localStorage.setItem(this.storageKey, JSON.stringify(this.formData));
-      console.log('Form data saved');
     } catch (e) {
       console.warn('Could not save form data:', e);
     }
@@ -381,7 +440,6 @@ class BookingWizard {
           }
         }
 
-        console.log('Form data loaded from localStorage');
       }
     } catch (e) {
       console.warn('Could not load form data:', e);
@@ -392,7 +450,6 @@ class BookingWizard {
     try {
       localStorage.removeItem(this.storageKey);
       this.formData = {};
-      console.log('Form data cleared');
     } catch (e) {
       console.warn('Could not clear form data:', e);
     }
@@ -530,7 +587,6 @@ class BookingWizard {
     this.formData.appointmentDate = date;
     this.formData.appointmentTime = time;
     this.saveFormData();
-    console.log(`Appointment set: ${date} at ${time}`);
   }
 
   // Public method to get current form data
@@ -545,7 +601,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.booking-wizard')) {
     window.bookingWizard = new BookingWizard({
       onComplete: function () {
-        console.log('Booking wizard completed');
       },
       onStepChange: function (stepNumber) {
         // Track step changes in analytics

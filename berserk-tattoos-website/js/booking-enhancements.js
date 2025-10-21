@@ -99,7 +99,6 @@ class BookingEnhancements {
         // For demo purposes, simulate successful payment
         return new Promise(resolve => {
             setTimeout(() => {
-                console.log('Square payment processed:', data);
                 resolve({ success: true, transactionId: 'sq_' + Date.now() });
             }, 1500);
         });
@@ -110,7 +109,6 @@ class BookingEnhancements {
         // For demo purposes, simulate successful payment
         return new Promise(resolve => {
             setTimeout(() => {
-                console.log('PayPal payment processed:', data);
                 resolve({ success: true, transactionId: 'pp_' + Date.now() });
             }, 1500);
         });
@@ -615,8 +613,6 @@ class BookingEnhancements {
             });
         }
 
-        // Console log for development
-        console.log('Event tracked:', eventName, parameters);
     }
 
     showLoading(message) {

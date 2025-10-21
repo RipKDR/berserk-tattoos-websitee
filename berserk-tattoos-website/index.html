@@ -570,6 +570,477 @@
             transform: translateX(5px);
         }
 
+        /* Safety & Hygiene Section */
+        .safety-section {
+            padding: var(--space-3xl) 5%;
+            background: linear-gradient(180deg, #0a0a0a 0%, var(--color-dark) 100%);
+        }
+
+        .safety-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+            max-width: 1400px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .safety-card {
+            background: rgba(242, 242, 242, 0.02);
+            border: 1px solid rgba(123, 17, 19, 0.3);
+            padding: var(--space-xl);
+            border-radius: 8px;
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+
+        .safety-card:hover {
+            background: rgba(123, 17, 19, 0.05);
+            border-color: var(--color-accent);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(123, 17, 19, 0.2);
+        }
+
+        .safety-icon {
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+        }
+
+        .safety-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+            color: var(--color-light);
+        }
+
+        .safety-card p {
+            opacity: 0.85;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .safety-banner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+            background: var(--color-accent-alpha);
+            border: 2px solid var(--color-accent);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .safety-banner strong {
+            color: var(--color-accent);
+        }
+
+        /* First-Timer Welcome Section */
+        .first-timer-welcome {
+            padding: var(--space-3xl) 5%;
+            background: var(--color-dark);
+            border-top: 1px solid rgba(123, 17, 19, 0.3);
+        }
+
+        .welcome-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .welcome-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .welcome-header h2 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            margin-bottom: var(--space-md);
+        }
+
+        .welcome-subtitle {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .welcome-card {
+            background: rgba(242, 242, 242, 0.02);
+            border: 1px solid rgba(242, 242, 242, 0.1);
+            padding: var(--space-xl);
+            border-radius: 12px;
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+
+        .welcome-card:hover {
+            background: rgba(242, 242, 242, 0.04);
+            border-color: rgba(123, 17, 19, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .welcome-icon {
+            font-size: 3.5rem;
+            margin-bottom: var(--space-md);
+            filter: grayscale(0.3);
+        }
+
+        .welcome-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+            color: var(--color-light);
+        }
+
+        .welcome-card p {
+            opacity: 0.85;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .welcome-cta-box {
+            background: linear-gradient(135deg, rgba(123, 17, 19, 0.1), rgba(155, 19, 21, 0.1));
+            border: 2px solid var(--color-accent);
+            border-radius: 12px;
+            padding: var(--space-2xl);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .welcome-cta-text {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-lg);
+            line-height: 1.7;
+        }
+
+        .welcome-cta-text strong {
+            color: var(--color-accent);
+        }
+
+        .welcome-cta-btn {
+            display: inline-block;
+            background: var(--color-accent);
+            color: white;
+            padding: var(--space-md) var(--space-2xl);
+            border-radius: 6px;
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-base);
+            letter-spacing: 0.05em;
+        }
+
+        .welcome-cta-btn:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(123, 17, 19, 0.3);
+        }
+
+        /* Walk-In Hours Section */
+        .walk-in-hours {
+            padding: var(--space-3xl) 5%;
+            background: linear-gradient(180deg, #0a0a0a 0%, var(--color-dark) 100%);
+            border-top: 1px solid rgba(123, 17, 19, 0.3);
+        }
+
+        .walk-in-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .walk-in-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .walk-in-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-accent), #9B1315);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-md);
+        }
+
+        .walk-in-header h2 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            margin-bottom: var(--space-sm);
+        }
+
+        .walk-in-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .walk-in-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .walk-in-schedule {
+            background: rgba(123, 17, 19, 0.1);
+            border: 2px solid var(--color-accent);
+            border-radius: 12px;
+            padding: var(--space-xl);
+        }
+
+        .walk-in-schedule h3 {
+            font-size: 1.75rem;
+            margin-bottom: var(--space-lg);
+            color: var(--color-accent);
+            text-align: center;
+        }
+
+        .schedule-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .schedule-item {
+            background: rgba(242, 242, 242, 0.02);
+            border: 1px solid rgba(242, 242, 242, 0.1);
+            border-radius: 8px;
+            padding: var(--space-lg);
+            text-align: center;
+        }
+
+        .schedule-days {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-time {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        .walk-in-details {
+            background: rgba(242, 242, 242, 0.02);
+            border: 1px solid rgba(242, 242, 242, 0.1);
+            border-radius: 12px;
+            padding: var(--space-xl);
+        }
+
+        .walk-in-details h3 {
+            font-size: 1.75rem;
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+
+        .walk-in-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .walk-in-list li {
+            padding: var(--space-sm) 0;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .walk-in-list li strong {
+            color: var(--color-accent);
+        }
+
+        .walk-in-cta {
+            background: rgba(242, 242, 242, 0.02);
+            border: 2px solid rgba(242, 242, 242, 0.1);
+            border-radius: 12px;
+            padding: var(--space-2xl);
+            text-align: center;
+        }
+
+        .walk-in-cta p {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-lg);
+        }
+
+        .walk-in-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .walk-in-btn {
+            display: inline-block;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: 6px;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-base);
+            letter-spacing: 0.05em;
+        }
+
+        .walk-in-btn.primary {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .walk-in-btn.primary:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(123, 17, 19, 0.3);
+        }
+
+        .walk-in-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .walk-in-btn.secondary:hover {
+            background: rgba(123, 17, 19, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Instagram Feed Section */
+        .instagram-feed {
+            padding: var(--space-3xl) 5%;
+            background: #0a0a0a;
+            border-top: 1px solid rgba(123, 17, 19, 0.3);
+        }
+
+        .instagram-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .instagram-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .instagram-header h2 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            margin-bottom: var(--space-sm);
+        }
+
+        .instagram-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: var(--space-md);
+        }
+
+        .instagram-handle {
+            display: inline-block;
+            color: var(--color-accent);
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+
+        .instagram-handle:hover {
+            color: var(--color-accent-light);
+            transform: scale(1.05);
+        }
+
+        .instagram-widget-wrapper {
+            margin-bottom: var(--space-2xl);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Instagram Placeholder (temporary until SnapWidget is added) */
+        .instagram-placeholder {
+            text-align: center;
+            padding: var(--space-3xl);
+            background: rgba(242, 242, 242, 0.02);
+            border: 2px dashed rgba(123, 17, 19, 0.3);
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .placeholder-icon {
+            color: var(--color-accent);
+            margin-bottom: var(--space-lg);
+            opacity: 0.6;
+        }
+
+        .instagram-placeholder h3 {
+            font-size: 1.75rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .instagram-placeholder p {
+            opacity: 0.8;
+            margin-bottom: var(--space-lg);
+        }
+
+        .instagram-placeholder p a {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .instagram-cta-btn {
+            display: inline-block;
+            background: var(--color-accent);
+            color: white;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+
+        .instagram-cta-btn:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(123, 17, 19, 0.3);
+        }
+
+        .instagram-footer {
+            text-align: center;
+        }
+
+        .instagram-follow-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #833AB4, #C13584, #E1306C);
+            color: white;
+            padding: var(--space-md) var(--space-2xl);
+            border-radius: 6px;
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-base);
+            letter-spacing: 0.05em;
+        }
+
+        .instagram-follow-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(193, 53, 132, 0.4);
+        }
+
         /* Gallery Section */
         .gallery {
             padding: var(--space-3xl) 5%;
@@ -610,34 +1081,52 @@
             background: var(--color-dark);
         }
 
-        .testimonial-slider {
-            max-width: 1000px;
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-xl);
+            max-width: 1400px;
             margin: 0 auto;
-            text-align: center;
         }
 
         .testimonial {
-            padding: var(--space-xl);
+            background: rgba(242, 242, 242, 0.02);
+            border: 1px solid rgba(242, 242, 242, 0.1);
+            border-radius: 12px;
+            padding: var(--space-2xl);
+            transition: all var(--transition-base);
+            display: flex;
+            flex-direction: column;
         }
 
-        .testimonial-text {
-            font-size: 1.5rem;
-            font-style: italic;
-            margin-bottom: var(--space-lg);
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-
-        .testimonial-author {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--color-accent);
+        .testimonial:hover {
+            background: rgba(242, 242, 242, 0.04);
+            border-color: rgba(123, 17, 19, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
         }
 
         .testimonial-rating {
-            margin-top: var(--space-sm);
             color: var(--color-accent);
-            font-size: 1.25rem;
+            font-size: 1.75rem;
+            margin-bottom: var(--space-md);
+            letter-spacing: 0.2em;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: var(--space-lg);
+            opacity: 0.9;
+            flex-grow: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--color-accent);
+            margin-top: auto;
         }
 
         /* Contact Section */
@@ -698,7 +1187,50 @@
             border-top: 1px solid rgba(242, 242, 242, 0.1);
             text-align: center;
             font-size: 0.875rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p {
             opacity: 0.6;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+        
+        .footer-legal a {
+            opacity: 0.7;
+            transition: opacity var(--transition-base);
+            font-size: 0.8125rem;
+        }
+        
+        .footer-legal a:hover {
+            opacity: 1;
+            color: var(--color-accent);
+        }
+        
+        .footer-legal .separator {
+            opacity: 0.3;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-legal {
+                flex-direction: column;
+                gap: var(--space-xs);
+            }
+            
+            .footer-legal .separator {
+                display: none;
+            }
         }
 
         /* Image Modal */
@@ -871,6 +1403,36 @@
                 grid-template-columns: 1fr;
             }
 
+            .safety-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .welcome-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+
+            .welcome-icon {
+                font-size: 2.5rem;
+            }
+
+            .welcome-cta-box {
+                padding: var(--space-lg);
+            }
+
+            .walk-in-content {
+                grid-template-columns: 1fr;
+            }
+
+            .walk-in-cta {
+                padding: var(--space-lg);
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
@@ -988,6 +1550,47 @@
         </div>
     </section>
 
+    <!-- First-Timer Welcome Section -->
+    <section class="first-timer-welcome" id="first-timers">
+        <div class="welcome-container">
+            <div class="welcome-header">
+                <h2>First Tattoo? Welcome.</h2>
+                <p class="welcome-subtitle">We get it. Getting your first tattoo is a big decision. Here's what makes Berserk Tattoos the perfect place to start your ink journey.</p>
+            </div>
+
+            <div class="welcome-grid">
+                <div class="welcome-card">
+                    <div class="welcome-icon">🤝</div>
+                    <h3>Zero Judgment Zone</h3>
+                    <p>Everyone starts somewhere. Our artists have worked with countless first-timers and create a welcoming, pressure-free environment. No question is too basic.</p>
+                </div>
+
+                <div class="welcome-card">
+                    <div class="welcome-icon">💊</div>
+                    <h3>Pain Management Support</h3>
+                    <p>We'll walk you through what to expect, recommend optimal placements for your pain tolerance, and provide techniques to stay comfortable throughout the session.</p>
+                </div>
+
+                <div class="welcome-card">
+                    <div class="welcome-icon">👥</div>
+                    <h3>Bring a Friend</h3>
+                    <p>Feeling nervous? Bring a friend or family member for moral support. They're welcome to sit in during your consultation and tattoo session.</p>
+                </div>
+
+                <div class="welcome-card">
+                    <div class="welcome-icon">✋</div>
+                    <h3>Stop Anytime</h3>
+                    <p>Need a break? Want to stop? That's completely fine. Your comfort is our priority. We'll work at your pace, with as many breaks as you need.</p>
+                </div>
+            </div>
+
+            <div class="welcome-cta-box">
+                <p class="welcome-cta-text"><strong>Still have questions?</strong> Book a FREE phone consultation to chat with our team. No pressure, just honest answers about the tattoo process.</p>
+                <a href="book.html" class="welcome-cta-btn">Get Your Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Artists Section -->
     <section class="artists" id="artists">
         <div class="section-header">
@@ -1070,6 +1673,65 @@
                     <a href="artists.html#monique" class="artist-cta">VIEW PORTFOLIO</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Safety & Hygiene Section -->
+    <section class="safety-section" id="safety">
+        <div class="section-header">
+            <h2>SAFETY & HYGIENE FIRST</h2>
+            <p class="section-subtitle">Your health and safety are our highest priorities. Every session meets the strictest Australian health standards.</p>
+        </div>
+
+        <div class="safety-grid">
+            <div class="safety-card">
+                <div class="safety-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h3>Medical-Grade Sterilization</h3>
+                <p>All equipment undergoes hospital-grade autoclave sterilization. Single-use needles disposed immediately after each session. Sterile technique maintained throughout every procedure.</p>
+            </div>
+
+            <div class="safety-card">
+                <div class="safety-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="9" y1="15" x2="15" y2="15"/>
+                    </svg>
+                </div>
+                <h3>Certified & Licensed</h3>
+                <p>All artists hold current Victorian health certifications, bloodborne pathogen training, and comprehensive tattoo licenses. Studio inspected and approved by local health authorities.</p>
+            </div>
+
+            <div class="safety-card">
+                <div class="safety-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16v-4"/>
+                        <path d="M12 8h.01"/>
+                    </svg>
+                </div>
+                <h3>COVID-Safe Practices</h3>
+                <p>Enhanced sanitation protocols, air purification systems, and flexible scheduling for your comfort. Masks available upon request. Private consultation and tattooing rooms.</p>
+            </div>
+
+            <div class="safety-card">
+                <div class="safety-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                        <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/>
+                    </svg>
+                </div>
+                <h3>First Aid Certified</h3>
+                <p>All staff maintain current first aid and CPR certifications. Emergency protocols in place. Fully stocked medical supplies and sterile wound care products on-site.</p>
+            </div>
+        </div>
+
+        <div class="safety-banner">
+            <strong>🏥 Professional Standards:</strong> We exceed Australian Tattoo Industry Council guidelines. Our studio uses premium, vegan-friendly inks and maintains a spotless environment you can trust.
         </div>
     </section>
 
@@ -1235,13 +1897,25 @@
             <p class="section-subtitle">Real stories from our satisfied clients</p>
         </div>
 
-        <div class="testimonial-slider">
+        <div class="testimonial-grid">
             <div class="testimonial">
+                <div class="testimonial-rating">★★★★★</div>
                 <p class="testimonial-text">"From consultation to final session, the professionalism and artistry
                     exceeded every expectation. My portrait piece gets stopped on the street constantly. Worth every
                     dollar and every minute in the chair. This is where you come for tattoos that last a lifetime."</p>
                 <p class="testimonial-author">— Marcus T., Full Sleeve Client</p>
+            </div>
+
+            <div class="testimonial">
                 <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">"Amelia's fine line work is absolutely stunning. She took my vague Pinterest board and created something uniquely mine. The healing process was smooth, and the final result is even better than I imagined. Zero regrets, 100% would book again."</p>
+                <p class="testimonial-author">— Sarah L., Fine Line Botanical</p>
+            </div>
+
+            <div class="testimonial">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">"Best tattoo experience in Melbourne, hands down. The studio is immaculate, the vibe is welcoming, and Monique's blackwork is next level. Brought my nervous friend for her first tattoo - she's already planning her next one. That's the Berserk difference."</p>
+                <p class="testimonial-author">— Jake R., Blackwork Chest Piece</p>
             </div>
         </div>
     </section>
@@ -1288,9 +1962,132 @@
         </div>
     </section>
 
+    <!-- Walk-In Hours Section -->
+    <section class="walk-in-hours" id="walk-ins">
+        <div class="walk-in-container">
+            <div class="walk-in-header">
+                <span class="walk-in-badge">⚡ NO APPOINTMENT NEEDED</span>
+                <h2>Walk-In Welcome</h2>
+                <p class="walk-in-subtitle">Last-minute inspiration? Small piece idea? We've got you covered with walk-in hours.</p>
+            </div>
+
+            <div class="walk-in-content">
+                <div class="walk-in-schedule">
+                    <h3>Walk-In Hours</h3>
+                    <div class="schedule-grid">
+                        <div class="schedule-item">
+                            <div class="schedule-days">Tuesday - Friday</div>
+                            <div class="schedule-time">2:00 PM - 5:00 PM</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-days">Saturday</div>
+                            <div class="schedule-time">12:00 PM - 3:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="walk-in-details">
+                    <h3>Walk-In Information</h3>
+                    <ul class="walk-in-list">
+                        <li><strong>$120 Minimum:</strong> Covers studio time and small pieces</li>
+                        <li><strong>First-Come, First-Served:</strong> Arrive early for best availability</li>
+                        <li><strong>Simple Designs:</strong> Flash work, small pieces, lettering (under 1 hour)</li>
+                        <li><strong>ID Required:</strong> Must be 18+ with valid government-issued photo ID</li>
+                        <li><strong>Artist Choice:</strong> Available artist works with you based on style match</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="walk-in-cta">
+                <p><strong>Need something larger or more complex?</strong> Book a proper consultation for custom work with your preferred artist.</p>
+                <div class="walk-in-buttons">
+                    <a href="book.html" class="walk-in-btn primary">Book Consultation</a>
+                    <a href="artists.html" class="walk-in-btn secondary">View Flash Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="instagram-feed" id="instagram">
+        <div class="instagram-container">
+            <div class="instagram-header">
+                <h2>Follow Our Journey</h2>
+                <p class="instagram-subtitle">See our latest work, behind-the-scenes, and client transformations on Instagram</p>
+                <a href="https://www.instagram.com/berserk_tattoos/" target="_blank" rel="noopener" class="instagram-handle">@berserk_tattoos</a>
+            </div>
+
+            <!-- SnapWidget Embed Placeholder -->
+            <div class="instagram-widget-wrapper">
+                <!-- 
+                    📸 INSTAGRAM FEED SETUP REQUIRED
+                    
+                    To display your Instagram feed here:
+                    
+                    1. Go to https://snapwidget.com/
+                    2. Create a FREE account
+                    3. Click "Create New Widget"
+                    4. Select "Grid" layout
+                    5. Configure:
+                       - Source: Instagram (@berserk_tattoos)
+                       - Layout: 3 columns × 3 rows (9 posts)
+                       - Width: Responsive
+                       - Spacing: 10px
+                       - Theme: Dark
+                    6. Copy the embed code
+                    7. Replace this comment block with the SnapWidget embed code
+                    
+                    Your embed code will look like:
+                    <script src="https://snapwidget.com/js/snapwidget.js"></script>
+                    <iframe src="https://snapwidget.com/embed/XXXXXX" ...></iframe>
+                -->
+                
+                <!-- Instagram Posts Grid - See INSTAGRAM-EMBEDS.html for full embed codes -->
+                <div class="instagram-embeds-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- Post 1 - @moniquemoore666 -->
+                    <div class="instagram-embed-wrapper">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DP8p5qHkrRn/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DP8p5qHkrRn/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DP8p5qHkrRn/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by 𝕸𝖔𝖓𝖎𝖖𝖚𝖊 𝕸𝖔𝖔𝖗𝖊 (@moniquemoore666)</a></p></div></blockquote>
+                    </div>
+                    <!-- Post 2 - @moniquemoore666 -->
+                    <div class="instagram-embed-wrapper">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DP51yQOkibN/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DP51yQOkibN/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DP51yQOkibN/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by 𝕸𝖔𝖓𝖎𝖖𝖚𝖊 𝕸𝖔𝖔𝖗𝖊 (@moniquemoore666)</a></p></div></blockquote>
+                    </div>
+                    <!-- Post 3 - @moniquemoore666 -->
+                    <div class="instagram-embed-wrapper">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPYModpkvWj/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DPYModpkvWj/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DP51yQOkibN/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by 𝕸𝖔𝖓𝖎𝖖𝖚𝖊 𝕸𝖔𝖔𝖗𝖊 (@moniquemoore666)</a></p></div></blockquote>
+                    </div>
+                    <!-- Post 4 - @moniquemoore666 -->
+                    <div class="instagram-embed-wrapper"></div>
+                    <!-- Post 5 - @berserk_tattoos -->
+                    <div class="instagram-embed-wrapper"></div>
+                </div>
+                
+                <!-- Note: Instagram embed script loads at bottom of page -->
+                <p style="text-align: center; margin-top: 2rem; opacity: 0.7;">
+                    📸 <strong>Instagram embeds provided</strong> - See INSTAGRAM-EMBEDS.html to copy full embed codes into each wrapper above
+                </p>
+            </div>
+
+            <div class="instagram-footer">
+                <a href="https://www.instagram.com/berserk_tattoos/" target="_blank" rel="noopener" class="instagram-follow-btn">
+                    Follow Us on Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Berserk Tattoos. All rights reserved.</p>
+        <div class="footer-content">
+            <p>&copy; 2025 Berserk Tattoos. All rights reserved.</p>
+            <nav class="footer-legal">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <span class="separator">|</span>
+                <a href="cookie-policy.html">Cookie Policy</a>
+            </nav>
+        </div>
     </footer>
 
     <!-- JavaScript -->
@@ -1374,17 +2171,17 @@
     SETUP INSTRUCTIONS:
     1. Create GA4 property at https://analytics.google.com/
     2. Copy your Measurement ID (format: G-XXXXXXXXXX)
-    3. Replace GA_MEASUREMENT_ID below with your actual ID
+    3. Replace G-F83QBK5Z4N below with your actual ID
     4. Deploy and verify tracking in GA4 Real-Time reports
     -->
-    <script defer src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-F83QBK5Z4N"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        // IMPORTANT: Replace GA_MEASUREMENT_ID with your actual Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX)
+        // IMPORTANT: Replace G-F83QBK5Z4N with your actual Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX)
         // To get your ID: 1) Go to analytics.google.com 2) Create new property 3) Find Measurement ID in Admin > Data Streams
-        gtag('config', 'GA_MEASUREMENT_ID', {
+        gtag('config', 'G-F83QBK5Z4N', {
             'anonymize_ip': true,
             'cookie_flags': 'SameSite=None;Secure'
         });
@@ -1440,6 +2237,9 @@
             });
         }
     </script>
+
+    <!-- Instagram Embed Script -->
+    <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 
 </html>

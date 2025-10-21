@@ -19,7 +19,6 @@ class MicroInteractions {
     this.setupLoadingStates();
     this.setupSuccessAnimations();
 
-    console.log('✓ Micro-interactions initialized');
   }
 
   // Button ripple effect

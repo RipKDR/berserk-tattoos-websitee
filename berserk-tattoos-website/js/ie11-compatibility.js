@@ -7,10 +7,6 @@ if (isIE11) {
     // Add IE11 class to body for CSS targeting
     document.body.className += ' ie11';
     
-    // Console log for debugging
-    if (window.console) {
-        console.log('IE11 detected - applying compatibility fixes');
-    }
     
     // Fix for forEach on NodeList (already in polyfills but ensuring)
     if (window.NodeList && !NodeList.prototype.forEach) {

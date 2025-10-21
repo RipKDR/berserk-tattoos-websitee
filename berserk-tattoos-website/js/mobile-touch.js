@@ -17,7 +17,6 @@ class MobileTouchEnhancements {
 
   init() {
     if (!this.isTouchDevice()) {
-      console.log('⚠ Touch enhancements skipped (not a touch device)');
       return;
     }
 
@@ -27,7 +26,6 @@ class MobileTouchEnhancements {
     this.preventZoomOnDoubleTap();
     this.optimizeTouchTargets();
 
-    console.log('✓ Mobile touch enhancements initialized');
   }
 
   isTouchDevice() {

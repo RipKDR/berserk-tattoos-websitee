@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "Production-ready static website for Berserk Tattoos Melbourne with BMad Method performance optimizations",
 	"scripts": {
+		"generate-og-image": "start generate-og-image.html",
 		"optimize-images": "node optimize-images.js",
 		"update-html": "node update-html-images.js",
 		"optimize-all": "npm run optimize-images && npm run update-html",
@@ -12,7 +13,19 @@
 		"lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore",
 		"lint:html": "htmlhint \"**/*.html\" --config .htmlhintrc",
 		"lint": "npm-run-all --parallel lint:*",
-		"format": "prettier --write \"**/*.{js,css,html,json,md}\""
+		"format": "prettier --write \"**/*.{js,css,html,json,md}\"",
+		"test": "playwright test",
+		"test:ui": "playwright test --ui",
+		"test:headed": "playwright test --headed",
+		"test:debug": "playwright test --debug",
+		"mcp:playwright": "npx @playwright/mcp@latest",
+		"mcp:vercel": "npx @vercel/mcp@latest",
+		"mcp:sentry": "npx @sentry/mcp@latest",
+		"mcp:github": "npx @github/mcp@latest",
+		"mcp:context7": "npx @context7/mcp@latest",
+		"mcp:ref": "npx @ref/mcp@latest",
+		"mcp:web-search": "npx @web-search/mcp@latest",
+		"mcp:all": "npm-run-all --parallel mcp:*"
 	},
 	"keywords": [
 		"tattoo",
@@ -36,7 +49,16 @@
 		"stylelint": "^15.11.0",
 		"stylelint-config-standard": "^34.0.0",
 		"htmlhint": "^1.1.5",
-		"npm-run-all": "^4.1.5"
+		"npm-run-all": "^4.1.5",
+		"@playwright/test": "^1.40.0",
+		"playwright": "^1.40.0",
+		"@playwright/mcp": "^0.1.0",
+		"@vercel/mcp": "^0.1.0",
+		"@sentry/mcp": "^0.1.0",
+		"@github/mcp": "^0.1.0",
+		"@context7/mcp": "^0.1.0",
+		"@ref/mcp": "^0.1.0",
+		"@web-search/mcp": "^0.1.0"
 	},
 	"engines": {
 		"node": ">=14.0.0"

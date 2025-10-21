@@ -1,0 +1,46 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "vercel": {
+      "command": "npx",
+      "args": ["@vercel/mcp@latest"],
+      "env": {
+        "VERCEL_TOKEN": "${VERCEL_TOKEN}"
+      }
+    },
+    "sentry": {
+      "command": "npx",
+      "args": ["@sentry/mcp@latest"],
+      "env": {
+        "SENTRY_AUTH_TOKEN": "${SENTRY_AUTH_TOKEN}",
+        "SENTRY_ORG": "berserk-tattoos",
+        "SENTRY_PROJECT": "berserk-tattoos-website"
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["@github/mcp@latest"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["@context7/mcp@latest"]
+    },
+    "ref": {
+      "command": "npx",
+      "args": ["@ref/mcp@latest"]
+    },
+    "web-search": {
+      "command": "npx",
+      "args": ["@web-search/mcp@latest"]
+    }
+  }
+}

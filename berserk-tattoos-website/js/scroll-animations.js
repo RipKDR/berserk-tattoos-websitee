@@ -21,7 +21,6 @@ class ScrollAnimations {
   init() {
     // Check for reduced motion preference
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      console.log('⚠ Animations disabled (prefers-reduced-motion)');
       return;
     }
 
@@ -37,7 +36,6 @@ class ScrollAnimations {
     // Setup scroll progress indicator
     this.setupScrollProgress();
 
-    console.log('✓ Scroll animations initialized');
   }
 
   createObserver() {

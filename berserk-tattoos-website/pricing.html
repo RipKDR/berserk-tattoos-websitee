@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Tattoo Pricing & Packages | Berserk Tattoos Melbourne</title>
+    <meta name="title" content="Tattoo Pricing & Packages - Berserk Tattoos">
+    <meta name="description"
+        content="Transparent pricing for custom tattoos in Melbourne. Hourly rates, package deals, and interactive price calculator. $100 deposit fully credited toward your tattoo.">
+    <meta name="keywords"
+        content="tattoo pricing Melbourne, tattoo cost, custom tattoo price, Berserk Tattoos rates, tattoo packages Melbourne">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://berserktattoos.com/pricing.html">
+    <meta property="og:title" content="Tattoo Pricing & Packages - Berserk Tattoos Melbourne">
+    <meta property="og:description"
+        content="Transparent pricing for exceptional tattoo artistry. Interactive calculator, hourly rates, and package deals.">
+    <meta property="og:image" content="https://berserktattoos.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://berserktattoos.com/pricing.html">
+    <meta property="twitter:title" content="Tattoo Pricing & Packages - Berserk Tattoos Melbourne">
+    <meta property="twitter:description" content="Transparent pricing for exceptional tattoo artistry.">
+    <meta property="twitter:image" content="https://berserktattoos.com/og-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://berserktattoos.com/pricing.html">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <style>
+        /* ===== DESIGN SYSTEM ===== */
+        :root {
+            --color-dark: #111111;
+            --color-light: #F2F2F2;
+            --color-accent: #7B1113;
+            --color-accent-alpha: rgba(123, 17, 19, 0.1);
+            --color-accent-light: #9B1315;
+
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+
+            --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            --shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-dark);
+            color: var(--color-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: var(--space-md);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: var(--space-md);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: var(--color-dark);
+            padding: var(--space-md) 0;
+            border-bottom: 2px solid var(--color-accent);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--color-light);
+            text-decoration: none;
+            transition: color var(--transition-base);
+        }
+
+        .logo:hover {
+            color: var(--color-accent);
+        }
+
+        .nav {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        .nav a {
+            color: var(--color-light);
+            text-decoration: none;
+            transition: color var(--transition-base);
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: var(--color-accent);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: var(--space-3xl) var(--space-md);
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-dark) 0%, #1a1a1a 100%);
+            border-bottom: 1px solid rgba(123, 17, 19, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto var(--space-lg);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--color-accent-alpha);
+            color: var(--color-accent);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: var(--space-lg);
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-md);
+        }
+
+        .section {
+            margin-bottom: var(--space-3xl);
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-2xl);
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* ===== CALCULATOR ===== */
+        .calculator-card {
+            background: #1a1a1a;
+            border: 2px solid rgba(123, 17, 19, 0.3);
+            border-radius: 12px;
+            padding: var(--space-2xl);
+            margin-bottom: var(--space-3xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+
+        .input-group label {
+            font-weight: 600;
+            color: var(--color-accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .input-group select,
+        .input-group input {
+            background: var(--color-dark);
+            border: 2px solid rgba(242, 242, 242, 0.1);
+            color: var(--color-light);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color var(--transition-base);
+        }
+
+        .input-group select:focus,
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .input-group input[type="range"] {
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .range-value {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-top: var(--space-xs);
+        }
+
+        .calculator-result {
+            background: var(--color-accent-alpha);
+            border: 2px solid var(--color-accent);
+            border-radius: 8px;
+            padding: var(--space-xl);
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
+        .calculator-result h3 {
+            margin-bottom: var(--space-sm);
+            font-size: 2.5rem;
+            color: var(--color-accent);
+        }
+
+        .calculator-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid rgba(123, 17, 19, 0.3);
+        }
+
+        .breakdown-item {
+            text-align: center;
+        }
+
+        .breakdown-item strong {
+            display: block;
+            font-size: 1.25rem;
+            color: var(--color-accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .breakdown-item span {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== PRICING CARDS ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-3xl);
+        }
+
+        .pricing-card {
+            background: #1a1a1a;
+            border: 2px solid rgba(123, 17, 19, 0.3);
+            border-radius: 12px;
+            padding: var(--space-xl);
+            transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 30px rgba(123, 17, 19, 0.3);
+        }
+
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--color-accent);
+            color: white;
+            padding: 0.25rem 3rem;
+            transform: rotate(45deg);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-lg);
+            border-bottom: 2px solid rgba(123, 17, 19, 0.2);
+        }
+
+        .pricing-title {
+            font-size: 1.75rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            font-family: var(--font-display);
+        }
+
+        .pricing-price small {
+            font-size: 1.25rem;
+            opacity: 0.7;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: var(--space-xl);
+        }
+
+        .pricing-features li {
+            padding: var(--space-sm) 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .pricing-cta {
+            display: block;
+            width: 100%;
+            background: var(--color-accent);
+            color: white;
+            padding: var(--space-md);
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background var(--transition-base), transform var(--transition-base);
+        }
+
+        .pricing-cta:hover {
+            background: var(--color-accent-light);
+            transform: scale(1.02);
+        }
+
+        /* ===== HOURLY RATES ===== */
+        .rates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .rate-card {
+            background: #1a1a1a;
+            border: 2px solid rgba(123, 17, 19, 0.3);
+            border-radius: 12px;
+            padding: var(--space-xl);
+            text-align: center;
+            transition: transform var(--transition-base), border-color var(--transition-base);
+        }
+
+        .rate-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-accent);
+        }
+
+        .rate-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: var(--space-md);
+            border: 3px solid var(--color-accent);
+            object-fit: cover;
+        }
+
+        .rate-artist {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .rate-specialty {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .rate-price {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            font-family: var(--font-display);
+        }
+
+        .rate-price small {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        /* ===== INFO BANNER ===== */
+        .info-banner {
+            background: var(--color-accent-alpha);
+            border-left: 4px solid var(--color-accent);
+            padding: var(--space-lg);
+            border-radius: 8px;
+            margin: var(--space-2xl) 0;
+        }
+
+        .info-banner h3 {
+            color: var(--color-accent);
+            margin-bottom: var(--space-sm);
+        }
+
+        .info-banner ul {
+            list-style-position: inside;
+            opacity: 0.9;
+        }
+
+        .info-banner ul li {
+            padding: 0.25rem 0;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #0a0a0a;
+            border-top: 2px solid var(--color-accent);
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--color-light);
+            text-decoration: none;
+            transition: color var(--transition-base);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: var(--space-2xl) var(--space-md);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">BERSERK TATTOOS</a>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="artists.html">Artists</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="book.html">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">💎 Transparent Pricing, No Hidden Fees</div>
+        <h1>Tattoo Pricing & Packages</h1>
+        <p class="hero-subtitle">
+            Exceptional artistry deserves transparent pricing. Calculate your estimate, explore package deals, and book
+            with confidence.
+        </p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Interactive Calculator -->
+        <section class="section">
+            <h2>💰 Price Calculator</h2>
+            <p class="section-intro">
+                Get an instant estimate for your custom tattoo. Prices may vary based on design complexity, placement,
+                and detail level.
+            </p>
+
+            <div class="calculator-card">
+                <div class="calculator-grid">
+                    <div class="input-group">
+                        <label for="artist">Select Artist</label>
+                        <select id="artist">
+                            <option value="150">Amelia Kelso - Fine Line ($150/hr)</option>
+                            <option value="160">Ben White Raven - Realism ($160/hr)</option>
+                            <option value="155">Monique Moore - Blackwork ($155/hr)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="size">Tattoo Size</label>
+                        <select id="size">
+                            <option value="1">Small (< 5cm) - 1-2 hours</option>
+                            <option value="2">Medium (5-10cm) - 2-4 hours</option>
+                            <option value="4">Large (10-20cm) - 4-6 hours</option>
+                            <option value="6">Extra Large (20cm+) - 6+ hours</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="complexity">Design Complexity</label>
+                        <select id="complexity">
+                            <option value="1">Simple (outlines, minimal detail)</option>
+                            <option value="1.2">Moderate (some shading/color)</option>
+                            <option value="1.4">Complex (detailed, multiple colors)</option>
+                            <option value="1.6">Intricate (hyper-realistic, extensive detail)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="hours">Estimated Hours: <span id="hoursValue">2</span></label>
+                    <input type="range" id="hours" min="1" max="10" value="2" step="0.5">
+                </div>
+
+                <div class="calculator-result" id="result">
+                    <h3 id="totalPrice">$300</h3>
+                    <p>Estimated Total Price (AUD)</p>
+                    <div class="calculator-breakdown">
+                        <div class="breakdown-item">
+                            <strong id="breakdownRate">$150/hr</strong>
+                            <span>Hourly Rate</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <strong id="breakdownHours">2 hours</strong>
+                            <span>Estimated Time</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <strong>$100</strong>
+                            <span>Deposit Required</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Package Deals -->
+        <section class="section">
+            <h2>🎁 Package Deals</h2>
+            <p class="section-intro">
+                Save money with our exclusive packages. Perfect for larger pieces or multiple sessions.
+            </p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Half Sleeve</h3>
+                        <div class="pricing-price">$1,200<small></small></div>
+                        <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 0.5rem;">Save $150+</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>8-10 hours of work</li>
+                        <li>Custom design consultation</li>
+                        <li>Multiple session scheduling</li>
+                        <li>Free touch-up within 6 months</li>
+                        <li>Aftercare kit included</li>
+                    </ul>
+                    <a href="book.html" class="pricing-cta">Book Half Sleeve</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Full Sleeve</h3>
+                        <div class="pricing-price">$2,200<small></small></div>
+                        <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 0.5rem;">Save $350+</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>15-18 hours of work</li>
+                        <li>Premium custom design</li>
+                        <li>Priority scheduling</li>
+                        <li>Free touch-ups within 1 year</li>
+                        <li>Premium aftercare kit</li>
+                        <li>Photo session included</li>
+                    </ul>
+                    <a href="book.html" class="pricing-cta">Book Full Sleeve</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Back Piece</h3>
+                        <div class="pricing-price">$3,500<small>+</small></div>
+                        <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 0.5rem;">Custom Quote</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>25+ hours of work</li>
+                        <li>Masterpiece-level design</li>
+                        <li>VIP scheduling priority</li>
+                        <li>Unlimited touch-ups (2 years)</li>
+                        <li>Deluxe aftercare package</li>
+                        <li>Professional photo shoot</li>
+                        <li>Deposit flexible payment plan</li>
+                    </ul>
+                    <a href="book.html" class="pricing-cta">Request Quote</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hourly Rates -->
+        <section class="section">
+            <h2>⏱️ Artist Hourly Rates</h2>
+            <p class="section-intro">
+                Each of our master artists brings unique expertise and specialization. Choose based on style preference.
+            </p>
+
+            <div class="rates-grid">
+                <div class="rate-card">
+                    <img src="/portfolio/amelia-1.jpg" alt="Amelia Kelso" loading="lazy">
+                    <h3 class="rate-artist">Amelia Kelso</h3>
+                    <p class="rate-specialty">Fine Line & Minimalist</p>
+                    <div class="rate-price">$150<small>/hr</small></div>
+                    <a href="book.html?artist=amelia" class="pricing-cta" style="margin-top: 1rem;">Book Amelia</a>
+                </div>
+
+                <div class="rate-card">
+                    <img src="/portfolio/ben-1.jpg" alt="Ben White Raven" loading="lazy">
+                    <h3 class="rate-artist">Ben White Raven</h3>
+                    <p class="rate-specialty">Realism & Portraiture</p>
+                    <div class="rate-price">$160<small>/hr</small></div>
+                    <a href="book.html?artist=ben" class="pricing-cta" style="margin-top: 1rem;">Book Ben</a>
+                </div>
+
+                <div class="rate-card">
+                    <img src="/portfolio/monique-1.jpg" alt="Monique Moore" loading="lazy">
+                    <h3 class="rate-artist">Monique Moore</h3>
+                    <p class="rate-specialty">Bold Blackwork & Geometric</p>
+                    <div class="rate-price">$155<small>/hr</small></div>
+                    <a href="book.html?artist=monique" class="pricing-cta" style="margin-top: 1rem;">Book Monique</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Important Information -->
+        <div class="info-banner">
+            <h3>📋 Important Pricing Information</h3>
+            <ul>
+                <li><strong>$100 Deposit Required:</strong> Fully credited toward your final tattoo cost</li>
+                <li><strong>Minimum Charge:</strong> $120 for walk-ins (covers shop minimum & setup)</li>
+                <li><strong>Payment Methods:</strong> Card (Visa, Mastercard, Amex), cash accepted for final balance
+                </li>
+                <li><strong>Cancellation Policy:</strong> 48-hour notice required or deposit is forfeited</li>
+                <li><strong>Touch-Ups:</strong> Free within first 3 months if proper aftercare followed</li>
+                <li><strong>Consultation:</strong> Always free! Discuss your design and get accurate quote</li>
+            </ul>
+        </div>
+
+        <div class="info-banner" style="background: rgba(123, 17, 19, 0.05);">
+            <h3>🎨 What Affects Pricing?</h3>
+            <ul>
+                <li><strong>Size:</strong> Larger tattoos require more time and ink</li>
+                <li><strong>Complexity:</strong> Intricate designs with fine details take longer</li>
+                <li><strong>Placement:</strong> Some body areas are more challenging to tattoo</li>
+                <li><strong>Color:</strong> Full color work typically takes longer than black & grey</li>
+                <li><strong>Artist Experience:</strong> Our artists have 5-15 years of specialized expertise</li>
+                <li><strong>Custom Design:</strong> Original artwork included in hourly rate</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="artists.html">Artists</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="aftercare.html">Aftercare</a>
+            <a href="book.html">Book Now</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="cookie-policy.html">Cookie Policy</a>
+        </div>
+        <p>&copy; 2025 Berserk Tattoos. All rights reserved.</p>
+        <p style="opacity: 0.7; font-size: 0.9rem; margin-top: 0.5rem;">
+            33 Southern Road, Heidelberg Heights, Melbourne VIC
+        </p>
+    </footer>
+
+    <!-- Calculator Script -->
+    <script>
+        // Price Calculator
+        const artistSelect = document.getElementById('artist');
+        const sizeSelect = document.getElementById('size');
+        const complexitySelect = document.getElementById('complexity');
+        const hoursSlider = document.getElementById('hours');
+        const hoursValue = document.getElementById('hoursValue');
+        const totalPrice = document.getElementById('totalPrice');
+        const breakdownRate = document.getElementById('breakdownRate');
+        const breakdownHours = document.getElementById('breakdownHours');
+
+        function calculatePrice() {
+            const artistRate = parseInt(artistSelect.value);
+            const sizeHours = parseInt(sizeSelect.value);
+            const complexityMultiplier = parseFloat(complexitySelect.value);
+            const manualHours = parseFloat(hoursSlider.value);
+
+            // Use manual hours if adjusted, otherwise use size estimate
+            const totalHours = manualHours;
+            const estimatedPrice = Math.round(artistRate * totalHours * complexityMultiplier);
+
+            // Update display
+            totalPrice.textContent = `$${estimatedPrice.toLocaleString()}`;
+            hoursValue.textContent = totalHours;
+            breakdownRate.textContent = `$${artistRate}/hr`;
+            breakdownHours.textContent = `${totalHours} hour${totalHours !== 1 ? 's' : ''}`;
+        }
+
+        // Update hours slider when size changes
+        sizeSelect.addEventListener('change', function () {
+            const sizeHours = parseInt(this.value);
+            hoursSlider.value = sizeHours;
+            calculatePrice();
+        });
+
+        // Event listeners
+        artistSelect.addEventListener('change', calculatePrice);
+        complexitySelect.addEventListener('change', calculatePrice);
+        hoursSlider.addEventListener('input', calculatePrice);
+
+        // Initial calculation
+        calculatePrice();
+
+        // Google Analytics tracking (if GA is loaded)
+        if (typeof gtag !== 'undefined') {
+            // Track calculator usage
+            document.querySelector('.calculator-card').addEventListener('change', function () {
+                gtag('event', 'pricing_calculator_used', {
+                    'event_category': 'engagement',
+                    'event_label': 'pricing_calculator'
+                });
+            });
+
+            // Track package selection
+            document.querySelectorAll('.pricing-cta').forEach(button => {
+                button.addEventListener('click', function () {
+                    gtag('event', 'package_selected', {
+                        'event_category': 'conversion',
+                        'event_label': this.textContent.trim()
+                    });
+                });
+            });
+        }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F83QBK5Z4N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F83QBK5Z4N', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Image Generator - Berserk Tattoos</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            text-align: center;
+        }
+        canvas {
+            border: 3px solid #7B1113;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            margin: 20px 0;
+        }
+        button {
+            background: #7B1113;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #9B1315;
+            transform: translateY(-2px);
+        }
+        .info {
+            background: #111;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #7B1113;
+        }
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: #7B1113;
+            margin: 0 0 10px 0;
+        }
+        .success {
+            color: #4CAF50;
+            font-weight: 600;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>OG Image Generator</h1>
+        <p>Generate social sharing image (1200x630px) for Berserk Tattoos</p>
+        
+        <canvas id="ogCanvas" width="1200" height="630"></canvas>
+        
+        <div>
+            <button onclick="generateImage()">Generate Image</button>
+            <button onclick="downloadImage()">Download og-image.jpg</button>
+        </div>
+        
+        <div class="success" id="successMsg">✅ Image generated! Click "Download og-image.jpg" to save it.</div>
+        
+        <div class="info">
+            <strong>Instructions:</strong><br>
+            1. Click "Generate Image" to create the OG image<br>
+            2. Click "Download og-image.jpg" to save it<br>
+            3. Place the downloaded file in the root directory: <code>berserk-tattoos-website/og-image.jpg</code><br>
+            4. The image is already referenced in all HTML files' meta tags
+        </div>
+    </div>
+
+    <script>
+        function generateImage() {
+            const canvas = document.getElementById('ogCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Brand colors
+            const bgColor = '#111111';
+            const accentColor = '#7B1113';
+            const textColor = '#FFFFFF';
+            
+            // Background gradient
+            const bgGradient = ctx.createLinearGradient(0, 0, 1200, 630);
+            bgGradient.addColorStop(0, bgColor);
+            bgGradient.addColorStop(1, '#1a1a1a');
+            ctx.fillStyle = bgGradient;
+            ctx.fillRect(0, 0, 1200, 630);
+            
+            // Top accent line
+            const topGradient = ctx.createLinearGradient(0, 180, 1200, 180);
+            topGradient.addColorStop(0, 'transparent');
+            topGradient.addColorStop(0.5, accentColor);
+            topGradient.addColorStop(1, 'transparent');
+            ctx.fillStyle = topGradient;
+            ctx.globalAlpha = 0.6;
+            ctx.fillRect(0, 180, 1200, 3);
+            
+            // Bottom accent line
+            const bottomGradient = ctx.createLinearGradient(0, 450, 1200, 450);
+            bottomGradient.addColorStop(0, 'transparent');
+            bottomGradient.addColorStop(0.5, accentColor);
+            bottomGradient.addColorStop(1, 'transparent');
+            ctx.fillStyle = bottomGradient;
+            ctx.fillRect(0, 450, 1200, 3);
+            ctx.globalAlpha = 1.0;
+            
+            // Main heading
+            ctx.font = '600 92px "Cinzel", serif';
+            ctx.fillStyle = textColor;
+            ctx.textAlign = 'center';
+            ctx.letterSpacing = '2px';
+            ctx.fillText('BERSERK TATTOOS', 600, 280);
+            
+            // Subheading
+            ctx.font = '400 32px "Inter", sans-serif';
+            ctx.fillStyle = textColor;
+            ctx.globalAlpha = 0.9;
+            ctx.fillText("Melbourne's Premier Custom Tattoo Studio", 600, 360);
+            ctx.globalAlpha = 1.0;
+            
+            // Location
+            ctx.font = '400 24px "Inter", sans-serif';
+            ctx.fillStyle = accentColor;
+            ctx.fillText('Heidelberg Heights • 33 Southern Road', 600, 520);
+            
+            // Tagline
+            ctx.font = 'italic 20px "Cinzel", serif';
+            ctx.fillStyle = textColor;
+            ctx.globalAlpha = 0.7;
+            ctx.fillText('Three Master Artists. One Relentless Pursuit of Perfection.', 600, 560);
+            ctx.globalAlpha = 1.0;
+            
+            // Show success message
+            document.getElementById('successMsg').style.display = 'block';
+        }
+        
+        function downloadImage() {
+            const canvas = document.getElementById('ogCanvas');
+            const link = document.createElement('a');
+            link.download = 'og-image.jpg';
+            canvas.toBlob(function(blob) {
+                link.href = URL.createObjectURL(blob);
+                link.click();
+            }, 'image/jpeg', 0.95);
+        }
+        
+        // Auto-generate on page load
+        window.addEventListener('load', function() {
+            // Wait for fonts to load
+            document.fonts.ready.then(generateImage);
+        });
+    </script>
+</body>
+</html>
+
