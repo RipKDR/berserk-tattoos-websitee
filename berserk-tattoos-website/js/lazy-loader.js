@@ -55,40 +55,50 @@
         loadImage: function(img) {
             const src = img.dataset.src;
             const srcset = img.dataset.srcset;
-            
+
             // Create new image to preload
             const newImg = new Image();
-            
+            const self = this;
+
             newImg.onload = function() {
                 // Fade in effect
                 img.style.opacity = '0';
-                img.style.transition = `opacity ${this.config.fadeInDuration}ms ease-in-out`;
-                
+                img.style.transition = `opacity ${self.config.fadeInDuration}ms ease-in-out`;
+
                 // Set sources
                 img.src = src;
                 if (srcset) {
                     img.srcset = srcset;
                 }
-                
+
                 // Remove data attributes
                 img.removeAttribute('data-src');
                 img.removeAttribute('data-srcset');
-                
+
                 // Add loaded class
                 img.classList.add('lazy-loaded');
-                
+                img.removeAttribute('aria-busy');
+
                 // Fade in
                 setTimeout(() => {
                     img.style.opacity = '1';
                 }, 10);
-            }.bind(this);
-            
+            };
+
             newImg.onerror = function() {
                 // Handle image load error
                 img.classList.add('lazy-error');
-                img.src = '/portfolio/placeholder.jpg'; // Fallback image
+                img.removeAttribute('aria-busy');
+                // Hide failed image gracefully
+                img.style.display = 'none';
+                if (img.parentElement) {
+                    img.parentElement.style.background = '#1a1a1a';
+                }
             };
-            
+
+            // Add loading state
+            img.setAttribute('aria-busy', 'true');
+
             // Start loading
             newImg.src = src;
             if (srcset) {
@@ -162,15 +172,18 @@
         loadInstagramEmbed: function(embed) {
             // Add loading class
             embed.classList.add('loading');
-            
+            embed.setAttribute('aria-busy', 'true');
+
             // Simulate loading delay for better UX
             setTimeout(() => {
                 embed.classList.remove('loading');
                 embed.classList.add('loaded');
-                
-                // Trigger Instagram script if not already loaded
-                if (window.instgrm && !embed.querySelector('iframe')) {
+                embed.setAttribute('aria-busy', 'false');
+
+                // Trigger Instagram script if not already processed
+                if (window.instgrm && !embed.querySelector('iframe') && !embed.dataset.processed) {
                     window.instgrm.Embeds.process();
+                    embed.dataset.processed = 'true';
                 }
             }, 500);
         },

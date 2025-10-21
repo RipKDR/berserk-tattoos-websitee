@@ -66,9 +66,10 @@
 
         loadImage(element) {
             const parent = element.closest('.image-container, .gallery-item, .artist-image, .portfolio-item, .hero-gallery-item');
-            
+
             if (parent) {
                 parent.classList.add('loading');
+                parent.setAttribute('aria-busy', 'true');
             }
 
             // Handle <picture> elements
@@ -76,11 +77,12 @@
                 element.srcset = element.dataset.srcset;
                 delete element.dataset.srcset;
             }
-            
+
             // Handle <img> elements
             if (element.tagName === 'IMG') {
                 const img = element;
-                
+                img.setAttribute('aria-busy', 'true');
+
                 // If it has a data-src, use that
                 if (img.dataset.src) {
                     this.loadWithProgress(img, img.dataset.src);
@@ -110,16 +112,18 @@
 
         handleImageLoad(img) {
             const parent = img.closest('.image-container, .gallery-item, .artist-image, .portfolio-item, .hero-gallery-item');
-            
+
             // Wait for next frame to ensure image is painted
             requestAnimationFrame(() => {
                 img.classList.add('loaded');
-                
+                img.removeAttribute('aria-busy');
+
                 if (parent) {
                     parent.classList.remove('loading');
                     parent.classList.add('loaded');
+                    parent.removeAttribute('aria-busy');
                 }
-                
+
                 // Remove blur-up placeholder if exists
                 const placeholder = parent?.querySelector('.image-placeholder');
                 if (placeholder) {
@@ -128,21 +132,27 @@
                         setTimeout(() => placeholder.remove(), this.config.fadeInDuration);
                     }, 100);
                 }
-                
+
                 // Trigger custom event
-                img.dispatchEvent(new CustomEvent('imageLoaded', { bubbles: true }));
+                img.dispatchEvent(new CustomEvent('imageLoaded', {
+                    bubbles: true,
+                    detail: { src: img.src, alt: img.alt }
+                }));
             });
         }
 
         handleImageError(img) {
             const parent = img.closest('.image-container, .gallery-item, .artist-image, .portfolio-item, .hero-gallery-item');
-            
+
             img.classList.add('error');
+            img.removeAttribute('aria-busy');
+
             if (parent) {
                 parent.classList.remove('loading');
                 parent.classList.add('error');
+                parent.removeAttribute('aria-busy');
             }
-            
+
             // Try fallback if available
             if (img.dataset.fallback) {
                 img.src = img.dataset.fallback;
@@ -150,8 +160,16 @@
                 // Let the inline onerror handler deal with it
                 return;
             } else {
-                // Show error placeholder
-                this.showErrorPlaceholder(img);
+                // Hide failed image gracefully
+                img.style.display = 'none';
+                if (parent) {
+                    parent.style.background = '#1a1a1a';
+                }
+            }
+
+            // Log error for monitoring
+            if (window.BerserkSentry) {
+                window.BerserkSentry.captureMessage('Image load failed: ' + img.src);
             }
         }
 
