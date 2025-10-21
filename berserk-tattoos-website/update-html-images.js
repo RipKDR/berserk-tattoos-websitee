@@ -21,9 +21,10 @@ const path = require('path');
 
 // Configuration
 const HTML_FILES = ['index.html', 'artists.html', 'book.html'];
-const PORTFOLIO_DIR = '/portfolio';
+// const PORTFOLIO_DIR = '/portfolio'; // Currently unused
 
 // Image patterns to replace
+// eslint-disable-next-line no-unused-vars
 const IMAGE_PATTERNS = [
   // Pattern 1: <img src="/portfolio/image.jpg" ...>
   {

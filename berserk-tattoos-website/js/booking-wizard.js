@@ -1,3 +1,4 @@
+/* global gtag */
 /**
  * Booking Wizard
  * 5-step booking flow with form persistence, validation, and Stripe integration
@@ -302,7 +303,6 @@ class BookingWizard {
 
   validateField(field) {
     const value = field.value.trim();
-    const fieldName = field.name || field.id;
     let isValid = true;
     let errorMessage = '';
 
@@ -323,7 +323,7 @@ class BookingWizard {
 
     // Phone validation
     if (field.type === 'tel' && value) {
-      const phoneRegex = /^[\d\s\-\+\(\)]{8,}$/;
+      const phoneRegex = /^[\d\s\-+()]{8,}$/;
       if (!phoneRegex.test(value)) {
         isValid = false;
         errorMessage = 'Please enter a valid phone number';

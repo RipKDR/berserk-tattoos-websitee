@@ -5,7 +5,7 @@
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
   // Only allow POST requests
   if (event.httpMethod !== 'POST') {
     return {
@@ -115,7 +115,7 @@ async function sendConfirmationEmail(email, metadata) {
   console.log(`Sending confirmation email to: ${email}`);
 
   // Example email content:
-  const emailContent = {
+  const emailData = {
     to: email,
     subject: 'Booking Confirmed - Berserk Tattoos',
     html: `
@@ -135,7 +135,8 @@ async function sendConfirmationEmail(email, metadata) {
   };
 
   // Implement actual email sending here
-  // await emailService.send(emailContent);
+  // await emailService.send(emailData);
+  return emailData;
 }
 
 // Send notification to studio
@@ -143,11 +144,11 @@ async function sendStudioNotification(metadata) {
   console.log('Sending notification to studio');
 
   // In production, send notification via email, Slack, SMS, etc.
-  const notification = {
+  const notificationData = {
     subject: `New Booking: ${metadata.firstName} ${metadata.lastName}`,
     message: `
             New consultation booking received:
-            
+
             Customer: ${metadata.firstName} ${metadata.lastName}
             Email: ${metadata.email}
             Phone: ${metadata.phone}
@@ -161,5 +162,7 @@ async function sendStudioNotification(metadata) {
   };
 
   // Implement notification sending here
+  // TODO: Send notificationData via email, Slack, or SMS service
+  return notificationData;
 }
 

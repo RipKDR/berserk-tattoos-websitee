@@ -356,7 +356,7 @@ class MicroInteractions {
     });
   }
 
-  playSuccessAnimation(element) {
+  playSuccessAnimation() {
     // Create success overlay
     const overlay = document.createElement('div');
     overlay.style.cssText = `

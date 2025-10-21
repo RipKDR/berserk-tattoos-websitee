@@ -1,7 +1,8 @@
+/* global clients */
 /**
  * Service Worker for Berserk Tattoos
  * BMad Method Stage 6: Advanced Optimizations
- * 
+ *
  * Features:
  * - Offline support for critical pages
  * - Aggressive caching of images
@@ -58,7 +59,7 @@ self.addEventListener('install', event => {
         // Installed successfully
         return self.skipWaiting();
       })
-      .catch(error => {
+      .catch(() => {
         // Installation failed - handled silently
       })
   );
@@ -141,30 +142,24 @@ function shouldUseNetworkFirst(request) {
  * Good for: Images, fonts, static assets
  */
 async function cacheFirstStrategy(request) {
-  try {
-    // Check cache first
-    const cachedResponse = await caches.match(request);
-    if (cachedResponse) {
-      // Cache hit
-      return cachedResponse;
-    }
-    
-    // Not in cache, fetch from network
-    // Cache miss, fetching
-    const networkResponse = await fetch(request);
-    
-    // Cache the response for future use
-    if (networkResponse && networkResponse.status === 200) {
-      const cache = await caches.open(CACHE_NAME);
-      cache.put(request, networkResponse.clone());
-    }
-    
-    return networkResponse;
-  } catch (error) {
-    // Cache-first failed
-    // Could return a fallback image here
-    throw error;
+  // Check cache first
+  const cachedResponse = await caches.match(request);
+  if (cachedResponse) {
+    // Cache hit
+    return cachedResponse;
   }
+
+  // Not in cache, fetch from network
+  // Cache miss, fetching
+  const networkResponse = await fetch(request);
+
+  // Cache the response for future use
+  if (networkResponse && networkResponse.status === 200) {
+    const cache = await caches.open(CACHE_NAME);
+    cache.put(request, networkResponse.clone());
+  }
+
+  return networkResponse;
 }
 
 /**

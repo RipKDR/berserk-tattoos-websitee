@@ -68,69 +68,71 @@ if (isIE11) {
     })();
     
     // Fix CSS Grid layout with flexbox fallback
-    function applyFlexboxFallback() {
+    var applyFlexboxFallback = function() {
+        var i, j, k, l;
+
         // Artists grid
         var artistsGrid = document.querySelector('.artists-grid');
         if (artistsGrid) {
             artistsGrid.style.display = 'flex';
             artistsGrid.style.flexWrap = 'wrap';
             artistsGrid.style.margin = '-1rem';
-            
+
             var artistCards = artistsGrid.querySelectorAll('.artist-card');
-            for (var i = 0; i < artistCards.length; i++) {
+            for (i = 0; i < artistCards.length; i++) {
                 artistCards[i].style.flex = '1 1 320px';
                 artistCards[i].style.margin = '1rem';
                 artistCards[i].style.maxWidth = 'calc(33.333% - 2rem)';
             }
         }
-        
+
         // Gallery grid
         var galleryGrid = document.querySelector('.gallery-grid');
         if (galleryGrid) {
             galleryGrid.style.display = 'flex';
             galleryGrid.style.flexWrap = 'wrap';
             galleryGrid.style.margin = '-0.5rem';
-            
+
             var galleryItems = galleryGrid.querySelectorAll('.gallery-item');
-            for (var i = 0; i < galleryItems.length; i++) {
-                galleryItems[i].style.flex = '1 1 300px';
-                galleryItems[i].style.margin = '0.5rem';
-                galleryItems[i].style.maxWidth = 'calc(33.333% - 1rem)';
+            for (j = 0; j < galleryItems.length; j++) {
+                galleryItems[j].style.flex = '1 1 300px';
+                galleryItems[j].style.margin = '0.5rem';
+                galleryItems[j].style.maxWidth = 'calc(33.333% - 1rem)';
             }
         }
-        
+
         // Contact grid
         var contactGrid = document.querySelector('.contact-grid');
         if (contactGrid) {
             contactGrid.style.display = 'flex';
             contactGrid.style.flexWrap = 'wrap';
             contactGrid.style.margin = '-1rem';
-            
+
             var contactCards = contactGrid.querySelectorAll('.contact-card');
-            for (var i = 0; i < contactCards.length; i++) {
-                contactCards[i].style.flex = '1 1 250px';
-                contactCards[i].style.margin = '1rem';
+            for (k = 0; k < contactCards.length; k++) {
+                contactCards[k].style.flex = '1 1 250px';
+                contactCards[k].style.margin = '1rem';
             }
         }
-        
+
         // Portfolio grid
         var portfolioGrid = document.querySelector('.portfolio-grid');
         if (portfolioGrid) {
             portfolioGrid.style.display = 'flex';
             portfolioGrid.style.flexWrap = 'wrap';
             portfolioGrid.style.margin = '-0.5rem';
-            
+
             var portfolioItems = portfolioGrid.querySelectorAll('.portfolio-item');
-            for (var i = 0; i < portfolioItems.length; i++) {
-                portfolioItems[i].style.flex = '1 1 300px';
-                portfolioItems[i].style.margin = '0.5rem';
-                portfolioItems[i].style.maxWidth = 'calc(33.333% - 1rem)';
+            for (l = 0; l < portfolioItems.length; l++) {
+                portfolioItems[l].style.flex = '1 1 300px';
+                portfolioItems[l].style.margin = '0.5rem';
+                portfolioItems[l].style.maxWidth = 'calc(33.333% - 1rem)';
                 // Reset grid spanning
-                portfolioItems[i].style.gridColumn = 'auto';
-                portfolioItems[i].style.gridRow = 'auto';
+                portfolioItems[l].style.gridColumn = 'auto';
+                portfolioItems[l].style.gridRow = 'auto';
             }
         }
-    }
+    };
     
     // Apply fixes when DOM is ready
     if (document.readyState === 'loading') {
@@ -140,7 +142,7 @@ if (isIE11) {
     }
     
     // Fix for object-fit
-    function fixObjectFit() {
+    var fixObjectFit = function() {
         var images = document.querySelectorAll('.media-cover');
         for (var i = 0; i < images.length; i++) {
             var img = images[i];
@@ -160,7 +162,7 @@ if (isIE11) {
             img.style.width = 'auto';
             img.style.height = 'auto';
         }
-    }
+    };
     
     // Apply object-fit fix
     if (document.readyState === 'loading') {
@@ -189,7 +191,7 @@ if (isIE11) {
     });
     
     // Fix CSS variables with static values
-    function applyCSSVariableFallbacks() {
+    var applyCSSVariableFallbacks = function() {
         // This would be more comprehensive in production
         var style = document.createElement('style');
         style.innerHTML = `
@@ -204,8 +206,8 @@ if (isIE11) {
             }
         `;
         document.head.appendChild(style);
-    }
-    
+    };
+
     applyCSSVariableFallbacks();
     
     // Performance warning
