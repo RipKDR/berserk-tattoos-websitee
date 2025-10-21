@@ -94,9 +94,9 @@
   # status = 301
 
 [[redirects]]
-  # Redirect www to non-www (or vice versa)
-  from = "https://www.berserktattoos.com/*"
-  to = "https://berserktattoos.com/:splat"
+  # Redirect non-www to www (primary domain)
+  from = "https://berserk-tattoos.com/*"
+  to = "https://www.berserk-tattoos.com/:splat"
   status = 301
   force = true
 
