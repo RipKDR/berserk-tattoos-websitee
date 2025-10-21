@@ -4,8 +4,8 @@
 
 Your MCP servers are now fully configured with the provided tokens:
 
-- ✅ **Vercel Token**: `4h3qDyidPp7brvvIa89HaSwg`
-- ✅ **Sentry Token**: `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`
+- ✅ **Vercel Token**: `[REDACTED_FOR_SECURITY]`
+- ✅ **Sentry Token**: `[REDACTED_FOR_SECURITY]`
 - ✅ **Environment File**: `.env` created with all tokens
 - ✅ **Configuration**: `mcp-config.json` updated
 - ✅ **Documentation**: Complete setup guides created
@@ -93,10 +93,10 @@ npm run test:headed     # Test with visible browser
 Your `.env` file contains:
 ```env
 # Vercel Configuration
-VERCEL_TOKEN=4h3qDyidPp7brvvIa89HaSwg
+VERCEL_TOKEN=[REDACTED_FOR_SECURITY]
 
 # Sentry Configuration
-SENTRY_AUTH_TOKEN=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
+SENTRY_AUTH_TOKEN=[REDACTED_FOR_SECURITY]
 SENTRY_ORG=berserk-tattoos
 SENTRY_PROJECT=berserk-tattoos-website
 

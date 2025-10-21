@@ -56,8 +56,8 @@
 GOOGLE ANALYTICS: G-F83QBK5Z4N ✅ (Already configured)
 
 STRIPE KEYS: See STRIPE-LIVE-KEYS.md 🔐 (Add to Netlify)
-  - Publishable: pk_live_51SIdL...
-  - Secret: sk_live_51SIdL...
+  - Publishable: pk_live_[REDACTED]
+  - Secret: sk_live_[REDACTED]
   - Webhook: whsec_D4oSCG...
 
 INSTAGRAM: 5 embeds in INSTAGRAM-EMBEDS.html (Copy-paste ready)

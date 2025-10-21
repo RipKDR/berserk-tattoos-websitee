@@ -31,11 +31,11 @@ Your Stripe live keys are in `STRIPE-LIVE-KEYS.md` (NOT in git).
 
    **Variable 1:**
    - Key: `STRIPE_PUBLISHABLE_KEY`
-   - Value: `pk_live_51SIdLNHuUq6j6XUeVODGkk4UJ4Gm2P9Xp4YAVNin44ealnopxulrRk6u05LP87rphyC9ZsMdI5pJPbhL51TZ8GFp00HtSV7QRl`
+   - Value: `pk_live_[REDACTED_FOR_SECURITY]`
 
    **Variable 2:**
    - Key: `STRIPE_SECRET_KEY`
-   - Value: `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`
+   - Value: `sk_live_[REDACTED_FOR_SECURITY]`
 
    **Variable 3:**
    - Key: `STRIPE_WEBHOOK_SECRET`

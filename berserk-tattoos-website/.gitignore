@@ -23,6 +23,9 @@ build/
 # Stripe live keys (NEVER COMMIT!)
 STRIPE-LIVE-KEYS.md
 
+# Secure keys backup (NEVER COMMIT!)
+SECURE-KEYS-BACKUP.md
+
 # MCP Server logs and cache
 .mcp-cache/
 mcp-logs/

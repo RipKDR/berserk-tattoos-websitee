@@ -26,8 +26,8 @@ Your Berserk Tattoos website is **100% complete**. Follow these 5 steps to go li
 
 **Your Keys (see `STRIPE-LIVE-KEYS.md` for copy-paste):**
 ```
-STRIPE_PUBLISHABLE_KEY = pk_live_51SIdLNHuUq6j6XUe...
-STRIPE_SECRET_KEY = sk_live_51SIdLNHuUq6j6XUe...
+STRIPE_PUBLISHABLE_KEY = pk_live_[REDACTED]
+STRIPE_SECRET_KEY = sk_live_[REDACTED]
 STRIPE_WEBHOOK_SECRET = whsec_D4oSCGNArQd6FUwO...
 URL = https://berserktattoos.com
 ```

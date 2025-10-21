@@ -16,8 +16,8 @@ npm install
 
 ### Step 3: Environment Already Configured ✅
 Your `.env` file is already set up with:
-- ✅ Vercel token: `4h3qDyidPp7brvvIa89HaSwg`
-- ✅ Sentry token: `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`
+- ✅ Vercel token: `[REDACTED_FOR_SECURITY]`
+- ✅ Sentry token: `[REDACTED_FOR_SECURITY]`
 
 ### Step 4: Start MCP Servers
 ```bash
