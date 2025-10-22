@@ -153,7 +153,6 @@
                 if (!img || !overlay) return;
 
                 // Extract metadata from image attributes
-                const alt = img.alt || '';
                 const category = item.dataset.category || '';
 
                 // Enhance overlay with metadata

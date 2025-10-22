@@ -151,7 +151,7 @@
 .no-css-variables {
     /* Colors */
     color: #F2F2F2;
-    background-color: #111111;
+    background-color: #111;
 }
 
 .no-css-variables .nav-container,
@@ -162,7 +162,7 @@
 .no-css-variables .contact,
 .no-css-variables footer {
     color: #F2F2F2;
-    background-color: #111111;
+    background-color: #111;
 }
 
 .no-css-variables .btn-primary,

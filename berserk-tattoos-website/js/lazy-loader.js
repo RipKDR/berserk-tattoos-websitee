@@ -20,9 +20,21 @@
         config: {
             rootMargin: '50px 0px',
             threshold: 0.1,
-            fadeInDuration: 300
+            fadeInDuration: 300,
+            // Component loading delays (ms)
+            delays: {
+                imageFadeStart: 10,
+                instagramEmbed: 500,
+                instagramFeed: 800,
+                testimonials: 300,
+                testimonialStagger: 100,
+                portfolioGallery: 400
+            }
         },
-        
+
+        // Check if user prefers reduced motion
+        prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+
         // Initialize lazy loading
         init: function() {
             this.lazyLoadImages();
@@ -61,10 +73,6 @@
             const self = this;
 
             newImg.onload = function() {
-                // Fade in effect
-                img.style.opacity = '0';
-                img.style.transition = `opacity ${self.config.fadeInDuration}ms ease-in-out`;
-
                 // Set sources
                 img.src = src;
                 if (srcset) {
@@ -79,10 +87,18 @@
                 img.classList.add('lazy-loaded');
                 img.removeAttribute('aria-busy');
 
-                // Fade in
-                setTimeout(() => {
+                // Apply fade-in effect (skip if user prefers reduced motion)
+                if (!self.prefersReducedMotion) {
+                    img.style.opacity = '0';
+                    img.style.transition = `opacity ${self.config.fadeInDuration}ms ease-in-out`;
+
+                    setTimeout(() => {
+                        img.style.opacity = '1';
+                    }, self.config.delays.imageFadeStart);
+                } else {
+                    // No animation for reduced motion users
                     img.style.opacity = '1';
-                }, 10);
+                }
             };
 
             newImg.onerror = function() {
@@ -185,54 +201,54 @@
                     window.instgrm.Embeds.process();
                     embed.dataset.processed = 'true';
                 }
-            }, 500);
+            }, this.config.delays.instagramEmbed);
         },
         
         // Load Instagram feed
         loadInstagramFeed: function(component) {
             component.classList.add('loading');
-            
+
             // Simulate API call delay
             setTimeout(() => {
                 component.classList.remove('loading');
                 component.classList.add('loaded');
-                
+
                 // Trigger any Instagram processing
                 if (window.instgrm) {
                     window.instgrm.Embeds.process();
                 }
-            }, 800);
+            }, this.config.delays.instagramFeed);
         },
         
         // Load testimonials
         loadTestimonials: function(component) {
             component.classList.add('loading');
-            
+
             setTimeout(() => {
                 component.classList.remove('loading');
                 component.classList.add('loaded');
-                
+
                 // Add animation classes
                 const testimonialCards = component.querySelectorAll('.testimonial-card');
                 testimonialCards.forEach((card, index) => {
                     setTimeout(() => {
                         card.classList.add('animate-in');
-                    }, index * 100);
+                    }, index * this.config.delays.testimonialStagger);
                 });
-            }, 300);
+            }, this.config.delays.testimonials);
         },
         
         // Load portfolio gallery
         loadPortfolioGallery: function(component) {
             component.classList.add('loading');
-            
+
             setTimeout(() => {
                 component.classList.remove('loading');
                 component.classList.add('loaded');
-                
+
                 // Initialize gallery interactions
                 this.initGalleryInteractions(component);
-            }, 400);
+            }, this.config.delays.portfolioGallery);
         },
         
         // Initialize gallery interactions
