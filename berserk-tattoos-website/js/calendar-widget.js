@@ -8,7 +8,9 @@ class CalendarWidget {
   constructor(containerId, options = {}) {
     this.container = document.getElementById(containerId);
     if (!this.container) {
-      console.error(`Calendar container #${containerId} not found`);
+      if (window.BerserkLogger) {
+        window.BerserkLogger.error(`Calendar container #${containerId} not found`);
+      }
       return;
     }
 
@@ -344,7 +346,9 @@ class CalendarWidget {
         // this.availableSlots = data.slots;
       }
     } catch (error) {
-      console.warn('Could not load availability:', error);
+      if (window.BerserkLogger) {
+        window.BerserkLogger.warn('Could not load availability:', error);
+      }
     }
   }
 
