@@ -90,7 +90,9 @@ class BookingEnhancements {
             }, 2000);
 
         } catch (error) {
-            console.error('Payment processing error:', error);
+            if (window.BerserkLogger) {
+                window.BerserkLogger.error('Payment processing error:', error);
+            }
             this.showError('Payment failed. Please try again or contact us directly.');
         }
     }
@@ -212,7 +214,9 @@ class BookingEnhancements {
                 this.showError('Invalid referral code. Please check and try again.');
             }
         } catch (error) {
-            console.error('Referral code error:', error);
+            if (window.BerserkLogger) {
+                window.BerserkLogger.error('Referral code error:', error);
+            }
             this.showError('Error applying referral code. Please contact us.');
         }
     }
@@ -366,7 +370,9 @@ class BookingEnhancements {
             document.getElementById('feedback-text').value = '';
 
         } catch (error) {
-            console.error('Feedback submission error:', error);
+            if (window.BerserkLogger) {
+                window.BerserkLogger.error('Feedback submission error:', error);
+            }
             this.showError('Error submitting feedback. Please try again.');
         }
     }

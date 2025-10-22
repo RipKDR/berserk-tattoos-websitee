@@ -13,15 +13,24 @@
                 rootMargin: '50px',
                 threshold: 0.01,
                 fadeInDuration: 600,
-                blurAmount: 20
+                blurAmount: 20,
+                // Retry configuration for failed image loads
+                maxRetries: 3,
+                retryDelays: [1000, 2000, 4000] // Exponential backoff: 1s, 2s, 4s
             };
-            
+
             this.observer = null;
             this.images = [];
+            this.retryAttempts = new Map(); // Track retry attempts per image
+            // Check if user prefers reduced motion
+            this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             this.init();
         }
 
         init() {
+            // Create ARIA live region for screen reader announcements
+            this.createLiveRegion();
+
             // Check for IntersectionObserver support
             if ('IntersectionObserver' in window) {
                 this.setupIntersectionObserver();
@@ -32,9 +41,37 @@
 
             // Set up error handling for all images
             this.setupErrorHandling();
-            
+
             // Initialize blur-up for images
             this.initializeBlurUp();
+        }
+
+        createLiveRegion() {
+            // Create hidden live region for screen reader announcements
+            if (!document.getElementById('image-loader-status')) {
+                const liveRegion = document.createElement('div');
+                liveRegion.id = 'image-loader-status';
+                liveRegion.setAttribute('role', 'status');
+                liveRegion.setAttribute('aria-live', 'polite');
+                liveRegion.setAttribute('aria-atomic', 'true');
+                liveRegion.className = 'sr-only'; // Visually hidden but accessible
+                liveRegion.style.cssText = 'position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;';
+                document.body.appendChild(liveRegion);
+                this.liveRegion = liveRegion;
+            } else {
+                this.liveRegion = document.getElementById('image-loader-status');
+            }
+        }
+
+        announce(message) {
+            // Announce to screen readers
+            if (this.liveRegion) {
+                this.liveRegion.textContent = message;
+                // Clear after a short delay to allow re-announcement of same message
+                setTimeout(() => {
+                    this.liveRegion.textContent = '';
+                }, 1000);
+            }
         }
 
         setupIntersectionObserver() {
@@ -96,18 +133,46 @@
         loadWithProgress(img, src) {
             // Create a new image to preload
             const tempImg = new Image();
-            
+
             tempImg.onload = () => {
                 img.src = src;
                 delete img.dataset.src;
+                // Clear retry attempts on success
+                this.retryAttempts.delete(img);
                 this.handleImageLoad(img);
             };
-            
+
             tempImg.onerror = () => {
-                this.handleImageError(img);
+                this.retryLoad(img, src);
             };
-            
+
             tempImg.src = src;
+        }
+
+        retryLoad(img, src) {
+            const currentAttempts = this.retryAttempts.get(img) || 0;
+
+            if (currentAttempts < this.config.maxRetries) {
+                // Increment retry count
+                this.retryAttempts.set(img, currentAttempts + 1);
+
+                // Get delay for this retry attempt (exponential backoff)
+                const delay = this.config.retryDelays[currentAttempts] || this.config.retryDelays[this.config.retryDelays.length - 1];
+
+                // Log retry attempt (for debugging)
+                if (window.BerserkLogger) {
+                    window.BerserkLogger.info(`Retrying image load (attempt ${currentAttempts + 1}/${this.config.maxRetries}): ${src}`);
+                }
+
+                // Retry after delay
+                setTimeout(() => {
+                    this.loadWithProgress(img, src);
+                }, delay);
+            } else {
+                // Max retries reached, handle error
+                this.retryAttempts.delete(img);
+                this.handleImageError(img);
+            }
         }
 
         handleImageLoad(img) {
@@ -124,13 +189,23 @@
                     parent.removeAttribute('aria-busy');
                 }
 
+                // Announce to screen readers (only for meaningful images)
+                if (img.alt && img.alt.trim()) {
+                    this.announce(`Image loaded: ${img.alt}`);
+                }
+
                 // Remove blur-up placeholder if exists
                 const placeholder = parent?.querySelector('.image-placeholder');
                 if (placeholder) {
-                    setTimeout(() => {
-                        placeholder.style.opacity = '0';
-                        setTimeout(() => placeholder.remove(), this.config.fadeInDuration);
-                    }, 100);
+                    if (this.prefersReducedMotion) {
+                        // Skip animation for users who prefer reduced motion
+                        placeholder.remove();
+                    } else {
+                        setTimeout(() => {
+                            placeholder.style.opacity = '0';
+                            setTimeout(() => placeholder.remove(), this.config.fadeInDuration);
+                        }, 100);
+                    }
                 }
 
                 // Trigger custom event
@@ -146,11 +221,17 @@
 
             img.classList.add('error');
             img.removeAttribute('aria-busy');
+            img.setAttribute('aria-label', 'Image failed to load');
 
             if (parent) {
                 parent.classList.remove('loading');
                 parent.classList.add('error');
                 parent.removeAttribute('aria-busy');
+            }
+
+            // Announce error to screen readers
+            if (img.alt && img.alt.trim()) {
+                this.announce(`Image unavailable: ${img.alt}`);
             }
 
             // Try fallback if available

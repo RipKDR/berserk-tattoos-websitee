@@ -223,7 +223,9 @@ class AftercareTimeline {
           }
         });
       } catch (e) {
-        console.warn('Could not load checklist progress');
+        if (window.BerserkLogger) {
+          window.BerserkLogger.warn('Could not load checklist progress');
+        }
       }
     }
   }
