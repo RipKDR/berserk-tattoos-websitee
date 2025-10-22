@@ -2234,14 +2234,21 @@
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js')
                     .then(registration => {
-                        console.log('✓ Service Worker registered successfully');
+                        if (window.BerserkLogger) {
+                            window.BerserkLogger.info('Service Worker registered successfully');
+                        }
                     })
                     .catch(error => {
-                        console.error('✗ Service Worker registration failed:', error);
+                        if (window.BerserkLogger) {
+                            window.BerserkLogger.error('Service Worker registration failed:', error);
+                        }
                     });
             });
         }
     </script>
+
+    <!-- Conversion Optimization -->
+    <script src="js/conversion-optimizer.js" defer></script>
 
     <!-- Instagram Embed Script -->
     <script async src="https://www.instagram.com/embed.js"></script>
